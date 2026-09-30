@@ -33,12 +33,30 @@ Source : webarchive de la page Carte de pignon.webapp.lv, plus des captures du s
 
 Les chiffres viennent de l’exemple publié sur le site (Place du Vieux-Marché, Rouen). Trois éléments sont illustratifs : la position des huit ouvertures sur la frise (cohérente avec les textes du site), les valeurs du « Local B » dans le comparateur, et la carte, qui est procédurale et ne représente pas Rouen.
 
+## Pignon · ombres portées — 15 s, 9:16
+
+**Vidéo : [`renders/pignon-ombres-15s-9x16.mp4`](renders/pignon-ombres-15s-9x16.mp4)** — 1080 × 1920, 60 i/s, sans son.
+Couverture : [`renders/pignon-ombres-couverture.png`](renders/pignon-ombres-couverture.png).
+
+![Planche](renders/pignon-ombres-planche.png)
+
+| Temps | Scène | Contenu |
+|---|---|---|
+| 0 – 2,1 s | Accroche | « Votre terrasse, au soleil ou à l’ombre ? » La terrasse se dessine devant le local. |
+| 2,1 – 6,4 s | 01 · L’heure | Le panneau « Ombres portées » de la carte. Le curseur Heure avance par pas d’une heure, de 8 h à 19 h le 21 juin ; les ombres tournent et la pastille passe de « À l’ombre » à « Au soleil ». |
+| 6,4 – 9,6 s | 02 · La saison | « Et le 21 décembre à 15 h ? » Le curseur Saison glisse du 21 juin au 21 décembre ; les ombres s’allongent. |
+| 9,6 – 11,7 s | 03 · Toute l’année | Bilan : soleil sur la terrasse de 8 h à 19 h, aux deux équinoxes et aux deux solstices. |
+| 11,7 – 15 s | Appel à l’action | Le point de la terrasse devient le point du i. « Le bail dure trois ans. Le soleil, lui, tourne. », « Explorer la carte → » |
+
+Les ombres ne sont pas animées à la main : chaque image calcule la position du soleil à Rouen pour la date et l’heure affichées (`pignon-ombres/soleil.js`, formules NOAA, heure d’été 2026), puis projette chaque bâtiment au sol selon sa hauteur. L’état de la pastille et le bilan viennent du même calcul. Les bâtiments, leurs hauteurs (9 à 24 m) et la terrasse sont fictifs : la terrasse est choisie automatiquement pour que soleil et ombre s’y relaient. Le panneau reprend `.pgn-panneau-ombres` (curseur Saison de 0 à 364, curseur Heure de 8 h à 19 h, repères et icônes du site). La phrase « Le soleil, lui, tourne. » est une proposition, elle n’est pas reprise du site.
+
 ## Utilisation
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/ ou /pignon-ombres/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
+npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
 npm run render:30           # variante 30 i/s
 npm run stills              # images clés et planche dans renders/stills/
 ```

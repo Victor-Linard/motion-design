@@ -6,8 +6,9 @@
   "scripts": {
     "preview": "node scripts/serve.mjs",
     "render": "node scripts/render.mjs pignon --fps 60 --crf 17",
-    "render:30": "node scripts/render.mjs pignon --fps 30",
-    "stills": "node scripts/render.mjs pignon --stills 1.9,3.9,6.7,9.0,11.3,12.1,13.3,14.9"
+    "render:ombres": "node scripts/render.mjs pignon-ombres --fps 60 --crf 17",
+    "stills": "node scripts/render.mjs pignon --stills 1.9,3.9,6.7,9.0,11.3,12.1,13.3,14.9",
+    "stills:ombres": "node scripts/render.mjs pignon-ombres --stills 1.6,3.4,5.2,6.1,9.3,11.4,14.9"
   },
   "dependencies": {
     "gsap": "3.15.0"

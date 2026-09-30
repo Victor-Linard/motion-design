@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · ombres portées · 15 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="ombres.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile"></div>
+    <div class="fade-top" id="fonduHaut"></div>
+    <div class="fade-bottom"></div>
+
+    <!-- Terrasse : étiquette et état soleil / ombre, calculé à chaque image -->
+    <div class="terrasse-etiquette" id="terrasseEtiquette">Votre future terrasse</div>
+    <div class="terrasse-etat" id="terrasseEtat">
+      <span class="etat etat--soleil" id="etatSoleil">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        Au soleil
+      </span>
+      <span class="etat etat--ombre" id="etatOmbre">
+        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        À l’ombre
+      </span>
+    </div>
+
+    <!-- Point du local : il finira sur le i du logo -->
+    <div class="pin" id="pin">
+      <span class="pin-onde" id="onde1"></span>
+      <span class="pin-dot" id="pinPoint"></span>
+    </div>
+
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <!-- 0 — Accroche -->
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Ombres portées</p>
+      <h1 class="gros-titre" data-mots>Votre terrasse,<br>au soleil<br><em>ou à l’ombre&nbsp;?</em></h1>
+    </section>
+
+    <!-- 1 — L'heure -->
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>01 · L’heure</p>
+      <h1 class="gros-titre" data-mots>De 8&nbsp;h à 19&nbsp;h,<br><em>heure par heure.</em></h1>
+    </section>
+
+    <!-- 2 — La saison -->
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>02 · La saison</p>
+      <h1 class="gros-titre" data-mots>Et le 21 décembre<br><em>à 15&nbsp;h&nbsp;?</em></h1>
+    </section>
+
+    <!-- 3 — Toute l'année -->
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>03 · Toute l’année</p>
+      <h1 class="gros-titre" data-mots>Le soleil,<br><em>saison par saison.</em></h1>
+    </section>
+
+    <!-- Panneau « Ombres portées » de la carte (pignon-map.css), à l'échelle de la vidéo -->
+    <div class="panneau-ombres" id="panneau">
+      <p class="po-titre">Ombres portées</p>
+      <div class="po-ligne">
+        <p class="po-etiquette">Saison</p>
+        <div class="po-piste" id="pisteSaison"><span class="po-rail"></span><span class="po-curseur" id="curseurSaison"></span></div>
+        <div class="po-reperes">
+          <span class="po-repere" id="repere0" style="left:21.4%"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"></path><path d="M12 7.5V9"></path><path d="M7.5 12H9"></path><path d="M16.5 12H15"></path><path d="M12 16.5V15"></path><path d="m8 8 1.88 1.88"></path><path d="M14.12 9.88 16 8"></path><path d="m8 16 1.88-1.88"></path><path d="M14.12 14.12 16 16"></path></svg></span>
+          <span class="po-repere" id="repere1" style="left:47%"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+          <span class="po-repere" id="repere2" style="left:72.8%"><svg viewBox="0 0 24 24"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"></path><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"></path></svg></span>
+          <span class="po-repere" id="repere3" style="left:97.3%"><svg viewBox="0 0 24 24"><path d="m10 20-1.25-2.5L6 18"></path><path d="M10 4 8.75 6.5 6 6"></path><path d="m14 20 1.25-2.5L18 18"></path><path d="m14 4 1.25 2.5L18 6"></path><path d="m17 21-3-6h-4"></path><path d="m17 3-3 6 1.5 3"></path><path d="M2 12h6.5L10 9"></path><path d="m20 10-1.5 2 1.5 2"></path><path d="M22 12h-6.5L14 15"></path><path d="m4 10 1.5 2L4 14"></path><path d="m7 21 3-6-1.5-3"></path><path d="m7 3 3 6h4"></path></svg></span>
+        </div>
+      </div>
+      <div class="po-ligne">
+        <p class="po-etiquette">Heure</p>
+        <div class="po-piste" id="pisteHeure"><span class="po-rail"></span><span class="po-curseur" id="curseurHeure"></span></div>
+      </div>
+      <p class="po-valeur" id="valeur">21 juin à 8h</p>
+    </div>
+
+    <!-- Bilan : soleil sur la terrasse, 4 dates x 8 h - 19 h (calculé) -->
+    <div class="carte carte--bilan" id="carteBilan">
+      <p class="micro">Soleil sur la terrasse · 8&nbsp;h – 19&nbsp;h</p>
+      <div class="bilan-lignes" id="bilanLignes"></div>
+      <div class="bilan-axe" id="bilanAxe"></div>
+      <div class="bilan-legende">
+        <span><i class="leg leg--soleil"></i>soleil</span>
+        <span><i class="leg leg--ombre"></i>ombre</span>
+        <span><i class="leg leg--nuit"></i>nuit</span>
+      </div>
+    </div>
+
+    <!-- Appel à l'action -->
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Le bail dure trois ans.<br><em>Le soleil, lui, tourne.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Explorer la carte
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="15" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="soleil.js"></script>
+  <script src="ombres.js"></script>
+</body>
+</html>

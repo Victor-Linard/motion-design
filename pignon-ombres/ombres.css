@@ -1,0 +1,85 @@
+/* Compléments de la composition « ombres portées » (le socle vient de ../pignon/style.css). */
+
+/* Étiquettes posées sur la terrasse */
+.terrasse-etiquette, .terrasse-etat { position: absolute; left: 0; top: 0; }
+.terrasse-etiquette {
+  white-space: nowrap;
+  font-family: var(--pgn-font-mono);
+  font-weight: 500;
+  font-size: 23px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pgn-terracotta-700);
+  background: var(--pgn-neutre-0);
+  border: 1.5px solid var(--pgn-terracotta-200);
+  border-radius: 999px;
+  padding: 12px 22px;
+  box-shadow: 0 12px 28px -14px rgba(23, 19, 16, .35);
+}
+.etat {
+  position: absolute; left: 0; top: 0;
+  display: inline-flex; align-items: center; gap: 12px;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 30px;
+  border-radius: 999px;
+  padding: 12px 24px 12px 16px;
+  box-shadow: 0 12px 28px -12px rgba(23, 19, 16, .4);
+  transform: translate(-50%, -50%);
+}
+.etat svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.etat--soleil { background: var(--pgn-attention-bg); color: var(--pgn-attention-bg-text); }
+.etat--ombre { background: var(--pgn-petrole-700); color: var(--pgn-petrole-50); }
+
+/* Panneau « Ombres portées » : .pgn-panneau-ombres de la carte, agrandi x3,6 */
+.panneau-ombres {
+  position: absolute;
+  left: var(--marge);
+  top: 1186px;
+  width: var(--largeur);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 38px 46px 40px;
+  background: var(--pgn-neutre-0);
+  border: 1.5px solid var(--pgn-neutre-200);
+  border-radius: 16px;
+  box-shadow: var(--ombre-carte);
+}
+.po-titre { font-weight: 600; font-size: 40px; }
+.po-ligne { display: flex; flex-direction: column; gap: 16px; }
+.po-etiquette { font-size: 30px; color: var(--pgn-neutre-600); }
+.po-piste { position: relative; height: 44px; }
+.po-rail { position: absolute; left: 0; right: 0; top: 17px; height: 10px; border-radius: 5px; background: var(--pgn-neutre-200); }
+.po-curseur {
+  position: absolute; top: 0; left: 0;
+  width: 44px; height: 44px; margin-left: -22px;
+  border-radius: 50%;
+  background: var(--pgn-petrole-600);
+  border: 6px solid var(--pgn-neutre-0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .28);
+}
+.po-reperes { position: relative; height: 50px; margin-top: 4px; }
+.po-repere { position: absolute; top: 0; width: 50px; height: 50px; margin-left: -25px; color: var(--pgn-neutre-500); }
+.po-repere svg { width: 50px; height: 50px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.po-repere.actif { color: var(--pgn-petrole-600); }
+.po-valeur { font-family: var(--pgn-font-mono); font-size: 34px; color: var(--pgn-neutre-700); }
+
+/* Bilan annuel */
+.carte--bilan { top: 660px; padding: 44px 48px 44px; }
+.bilan-lignes { margin-top: 34px; display: flex; flex-direction: column; gap: 30px; }
+.bilan-ligne { display: grid; grid-template-columns: 200px 1fr 136px; align-items: center; gap: 22px; }
+.bilan-date { display: flex; align-items: center; gap: 14px; font-size: 32px; white-space: nowrap; }
+.bilan-date svg { width: 36px; height: 36px; flex: none; fill: none; stroke: var(--pgn-neutre-600); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.bilan-ruban { position: relative; height: 64px; border-radius: 8px; overflow: hidden; background: var(--pgn-neutre-100); }
+.bilan-ruban canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.bilan-total { font-family: var(--pgn-font-mono); font-weight: 500; font-size: 38px; text-align: right; white-space: nowrap; }
+.bilan-total small { font-size: 24px; color: var(--pgn-neutre-600); }
+.bilan-axe { position: relative; height: 34px; margin: 16px 158px 0 222px; }
+.bilan-axe span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; font-family: var(--pgn-font-mono); font-size: 21px; color: var(--pgn-neutre-500); }
+.bilan-legende { display: flex; gap: 34px; margin-top: 26px; font-size: 27px; color: var(--pgn-neutre-600); }
+.bilan-legende span { display: inline-flex; align-items: center; gap: 10px; }
+.leg { width: 26px; height: 16px; border-radius: 4px; }
+.leg--soleil { background: #d9b36a; }
+.leg--ombre { background: var(--pgn-petrole-300); }
+.leg--nuit { background: var(--pgn-neutre-300); }
