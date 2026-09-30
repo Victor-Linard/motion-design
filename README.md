@@ -57,7 +57,6 @@ npm install                 # Chromium : npx playwright install chromium (hors d
 npm run preview             # http://127.0.0.1:4173/pignon/ ou /pignon-ombres/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
-npm run render:30           # variante 30 i/s
 npm run stills              # images clés et planche dans renders/stills/
 ```
 
