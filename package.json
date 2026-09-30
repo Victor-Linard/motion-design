@@ -10,7 +10,9 @@
     "stills": "node scripts/render.mjs pignon --stills 1.9,3.9,6.7,9.0,11.3,12.1,13.3,14.9",
     "stills:ombres": "node scripts/render.mjs pignon-ombres --stills 1.6,3.4,5.2,6.1,9.3,11.4,14.9",
     "render:ia": "node scripts/render.mjs pignon-ia --fps 60 --crf 17",
-    "stills:ia": "node scripts/render.mjs pignon-ia --stills 1.9,4.6,8.4,11.6,12.6,14.9"
+    "stills:ia": "node scripts/render.mjs pignon-ia --stills 1.9,4.6,8.4,11.6,12.6,14.9",
+    "render:tuto": "node scripts/render.mjs pignon-tuto --fps 60 --crf 17",
+    "stills:tuto": "node scripts/render.mjs pignon-tuto --stills 3.6,6.2,7.9,12.6,14.3,16.8,19.95"
   },
   "dependencies": {
     "gsap": "3.15.0"

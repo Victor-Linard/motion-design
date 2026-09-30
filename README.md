@@ -67,14 +67,33 @@ Couverture : [`renders/pignon-ia-couverture.png`](renders/pignon-ia-couverture.p
 
 Les échanges s’inspirent de trois sessions réelles, reformulées et raccourcies. Les chiffres viennent de ces sessions ; aucune adresse n’est citée (les deux emplacements comparés deviennent « Local A » et « Local B »). Le widget reprend `pignon-chat.css` : bouton rond pétrole, en-tête pétrole, bulles pétrole-100 pour l’assistant et neutre-100 pour l’utilisateur. Les commerces qui apparaissent dans le rayon sont illustratifs.
 
+## Pignon · tuto « De la carte à la décision » — 20 s, 9:16
+
+**Vidéo : [`renders/pignon-tuto-20s-9x16.mp4`](renders/pignon-tuto-20s-9x16.mp4)** — 1080 × 1920, 60 i/s, sans son.
+Couverture : [`renders/pignon-tuto-couverture.png`](renders/pignon-tuto-couverture.png).
+
+![Planche](renders/pignon-tuto-planche.png)
+
+| Temps | Étape | Contenu |
+|---|---|---|
+| 0 – 2 s | Accroche | « De la carte à la décision. » (texte du site) et la progression en 4 étapes. |
+| 2 – 4,9 s | 1 · Cliquez sur une adresse | Le curseur clique un local : le point apparaît, le panneau s’ouvre. |
+| 4,9 – 8,9 s | 2 · Verrouillez-la : elle s’enregistre | Au survol du bouton IA, l’info-bulle de l’app : « Enregistrez ce point avant de pouvoir en discuter avec Insights IA. » Clic sur le cadenas : point verrouillé et enregistré, le bouton IA s’active. |
+| 8,9 – 12,8 s | 3 · Parlez-en à l’IA | Le point enregistré est joint à la discussion ; question et réponse chiffrée. |
+| 12,8 – 17,3 s | 4 · Comparez, puis partagez | Mes analyses : deux sessions cochées, « Comparer les analyses cochées », puis partage en lecture ou en modification. |
+| 17,3 – 20 s | Appel à l’action | La dernière étape validée devient le point du i. « Enregistrez vos points, parlez-en à l’IA. », « Créer un compte gratuit → » |
+
+Parcours et libellés repris de l’app (cadenas du panneau, message d’Insights IA sur l’enregistrement, Mes analyses, « Comparer les analyses cochées ») et du site (« Invitez vos associés à lire ou à modifier », « Pignon vous prévient quand les données ont changé »). La forme exacte du partage (sélecteur Lecture / Modification, « Invitation envoyée ») est une mise en scène. Aucune adresse n’est citée.
+
 ## Utilisation
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/ ou /pignon-ia/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/ ou /pignon-tuto/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
 npm run render:ia           # renders/pignon-ia-15s-9x16.mp4
+npm run render:tuto         # renders/pignon-tuto-20s-9x16.mp4
 npm run stills              # images clés et planche dans renders/stills/
 ```
 

@@ -1,0 +1,112 @@
+/* Compléments de la composition « tuto » (socle : ../pignon/style.css et ../pignon-ia/ia.css). */
+
+/* Progression 1 → 4 */
+.etapes { position: absolute; right: var(--marge); top: 140px; width: 300px; height: 56px; display: flex; justify-content: space-between; align-items: center; }
+.etapes-rail { position: absolute; left: 28px; right: 28px; top: 26px; height: 4px; border-radius: 2px; background: var(--pgn-neutre-200); }
+.etapes-rail-plein { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-radius: 2px; background: var(--pgn-petrole-600); transform-origin: 0 50%; }
+.etape {
+  position: relative; width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--pgn-neutre-0); border: 3px solid var(--pgn-neutre-300);
+  font-family: var(--pgn-font-mono); font-weight: 500; font-size: 26px; color: var(--pgn-neutre-500);
+}
+.etape b { font-weight: 500; }
+.etape svg { position: absolute; width: 30px; height: 30px; fill: none; stroke: var(--pgn-neutre-0); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+
+/* Panneau du point */
+.panneau-point { top: 600px; left: 432px; width: 564px; padding: 26px 36px 18px; }
+.pp-entete { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.pp-titre { flex: 1; font-weight: 600; font-size: 30px; }
+.pp-btn {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--pgn-neutre-200); background: var(--pgn-neutre-0); color: var(--pgn-neutre-400);
+}
+.pp-btn svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.pp-btn--cadenas { color: var(--pgn-neutre-700); }
+#anse { transform-origin: 17px 11px; transform-box: view-box; }
+
+.info-bulle {
+  position: absolute; left: 432px; top: 700px; width: 564px;
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 24px 28px;
+  border-radius: 14px;
+  background: var(--pgn-neutre-800); color: var(--pgn-neutre-0);
+  font-size: 29px; line-height: 1.4;
+  box-shadow: 0 20px 44px -16px rgba(11, 8, 7, .5);
+}
+.info-bulle::before { content: ''; position: absolute; top: -12px; right: 120px; width: 24px; height: 24px; background: inherit; transform: rotate(45deg); border-radius: 4px; }
+.info-bulle svg { width: 36px; height: 36px; flex: none; fill: none; stroke: var(--pgn-attention-bg); stroke-width: 2.2; stroke-linecap: round; margin-top: 2px; }
+.info-bulle strong { color: var(--pgn-petrole-200); }
+
+.toast {
+  position: absolute; left: 50%; top: 1400px;
+  display: inline-flex; align-items: center; gap: 16px;
+  white-space: nowrap;
+  padding: 22px 34px 22px 28px;
+  border-radius: 999px;
+  background: var(--pgn-petrole-700); color: var(--pgn-petrole-50);
+  font-size: 30px; font-weight: 600;
+  box-shadow: 0 20px 44px -16px rgba(0, 39, 39, .55);
+}
+.toast svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Discussion */
+.chat--tuto { top: 1070px; height: 560px; }
+.chat--tuto .bulle-u, .chat--tuto .bulle-a { font-size: 33px; }
+.point-joint {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--pgn-font-mono); font-size: 22px; letter-spacing: .06em; text-transform: uppercase; color: var(--pgn-petrole-600);
+}
+.point-joint i { width: 16px; height: 16px; border-radius: 50%; background: var(--pgn-petrole-600); }
+
+/* Mes analyses */
+.mes-analyses { top: 600px; padding: 34px 40px 32px; }
+.ma-ligne { display: flex; align-items: center; gap: 22px; padding: 22px 0; border-bottom: 1.5px solid var(--pgn-neutre-200); }
+.ma-ligne:first-of-type { margin-top: 16px; border-top: 1.5px solid var(--pgn-neutre-200); }
+.case {
+  width: 44px; height: 44px; flex: none; border-radius: 9px;
+  border: 3px solid var(--pgn-neutre-400); background: var(--pgn-neutre-0);
+  display: flex; align-items: center; justify-content: center;
+}
+.case svg { width: 30px; height: 30px; fill: none; stroke: var(--pgn-neutre-0); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+.ma-icone { width: 64px; height: 64px; flex: none; border-radius: 12px; background: var(--pgn-petrole-50); color: var(--pgn-petrole-600); display: flex; align-items: center; justify-content: center; }
+.ma-icone svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ma-nom { font-weight: 600; font-size: 31px; }
+.ma-nom small { display: block; font-weight: 400; font-size: 24px; color: var(--pgn-neutre-600); margin-top: 2px; }
+.ma-actions { display: flex; align-items: center; justify-content: flex-end; gap: 22px; margin-top: 26px; }
+.ma-compte { font-size: 24px; color: var(--pgn-neutre-600); }
+.bouton-primaire {
+  display: inline-flex; align-items: center; padding: 20px 30px; border-radius: 10px;
+  background: var(--pgn-terracotta-600); color: var(--pgn-neutre-0); font-weight: 600; font-size: 28px; white-space: nowrap;
+}
+.bouton-secondaire {
+  display: inline-flex; align-items: center; gap: 12px; padding: 18px 28px; border-radius: 10px;
+  border: 2px solid var(--pgn-neutre-300); background: var(--pgn-neutre-0); color: var(--pgn-neutre-800); font-weight: 600; font-size: 28px;
+}
+.bouton-secondaire svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Comparaison et partage */
+.comparer-tuto { top: 600px; }
+.ct-actions { display: flex; justify-content: flex-end; padding: 22px 0 12px; border-top: 1.5px solid var(--pgn-neutre-200); }
+.partage { top: 1150px; padding: 34px 40px 36px; }
+.pa-titre { font-weight: 600; font-size: 32px; }
+.pa-choix { display: inline-flex; margin-top: 22px; padding: 6px; border-radius: 999px; background: var(--pgn-neutre-100); }
+.pa-option { padding: 14px 30px; border-radius: 999px; font-size: 27px; font-weight: 600; color: var(--pgn-neutre-600); }
+.pa-option--actif { background: var(--pgn-neutre-0); color: var(--pgn-neutre-900); box-shadow: 0 2px 8px rgba(23, 19, 16, .12); }
+.pa-note { margin-top: 22px !important; font-size: 26px; line-height: 1.4; color: var(--pgn-neutre-600); }
+.pa-ok {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 20px;
+  padding: 10px 22px 10px 16px; border-radius: 999px;
+  background: var(--pgn-attention-bg); color: var(--pgn-attention-bg-text); font-weight: 600; font-size: 26px;
+}
+.pa-ok svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Curseur : la pointe est à l'origine de l'élément */
+.souris { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+.souris svg { position: absolute; left: -14px; top: -7px; width: 64px; height: 64px; overflow: visible; filter: drop-shadow(0 6px 10px rgba(11, 8, 7, .35)); }
+.souris path { fill: var(--pgn-neutre-900); stroke: var(--pgn-neutre-0); stroke-width: 2; stroke-linejoin: round; }
+.clic { position: absolute; left: -36px; top: -36px; width: 72px; height: 72px; border-radius: 50%; background: rgba(0, 73, 74, .28); border: 3px solid var(--pgn-petrole-500); opacity: 0; }
+
+/* Appel à l'action : deux lignes, bouton plus long */
+.cta .cta-ligne { font-size: 66px; top: 910px; }

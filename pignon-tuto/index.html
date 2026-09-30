@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · tuto « De la carte à la décision » · 20 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="../pignon-ia/ia.css">
+  <link rel="stylesheet" href="tuto.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile"></div>
+    <div class="fade-top" id="fonduHaut"></div>
+
+    <div class="pin" id="pin">
+      <span class="pin-onde" id="onde1"></span>
+      <span class="pin-dot" id="pinPoint"></span>
+    </div>
+
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <!-- Progression du tuto -->
+    <div class="etapes" id="etapes">
+      <span class="etapes-rail"><span class="etapes-rail-plein" id="railPlein"></span></span>
+      <span class="etape" id="etape1"><b>1</b><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+      <span class="etape" id="etape2"><b>2</b><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+      <span class="etape" id="etape3"><b>3</b><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+      <span class="etape" id="etape4"><b>4</b><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+    </div>
+
+    <!-- Titres -->
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Tuto · 4 étapes</p>
+      <h1 class="gros-titre" data-mots>De la carte<br><em>à la décision.</em></h1>
+    </section>
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>Étape 1 sur 4</p>
+      <h1 class="gros-titre" data-mots>Cliquez sur<br><em>une adresse.</em></h1>
+    </section>
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>Étape 2 sur 4</p>
+      <h1 class="gros-titre" data-mots>Verrouillez-la&nbsp;:<br><em>elle s’enregistre.</em></h1>
+    </section>
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>Étape 3 sur 4</p>
+      <h1 class="gros-titre" data-mots>Parlez-en<br><em>à l’IA.</em></h1>
+    </section>
+    <section class="titre" id="titre4">
+      <p class="surtitre" data-frappe>Étape 4 sur 4</p>
+      <h1 class="gros-titre" data-mots>Comparez,<br><em>puis partagez.</em></h1>
+    </section>
+
+    <!-- Panneau du point (étapes 1 à 3) -->
+    <div class="carte panneau-point" id="panneauPoint">
+      <div class="pp-entete">
+        <p class="pp-titre">Point sélectionné</p>
+        <span class="pp-btn pp-btn--ia" id="btnIA">
+          <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        </span>
+        <span class="pp-btn pp-btn--cadenas" id="btnCadenas">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path id="anse" d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </span>
+      </div>
+      <div class="ps-ligne"><p class="ps-lib">Population<small>rayon de 500&nbsp;m</small></p><p class="ps-val">10&nbsp;756 <small>hab.</small></p></div>
+      <div class="ps-ligne"><p class="ps-lib">Parking le plus proche</p><p class="ps-val">47 <small>m</small></p></div>
+      <div class="ps-ligne"><p class="ps-lib">Commerces actifs</p><p class="ps-val">2&nbsp;436</p></div>
+    </div>
+
+    <!-- Info-bulle : sans enregistrement, pas d'IA -->
+    <div class="info-bulle" id="infoBulle">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      <p>Enregistrez ce point avant de pouvoir en discuter avec <strong>Insights IA</strong>.</p>
+    </div>
+
+    <!-- Confirmation d'enregistrement -->
+    <div class="toast" id="toast">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      Point verrouillé · enregistré dans votre session
+    </div>
+
+    <!-- Discussion (étape 3) -->
+    <div class="chat chat--tuto" id="chat">
+      <div class="chat-entete">
+        <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        Insights IA
+      </div>
+      <div class="chat-corps">
+        <div class="chat-groupe" id="groupe1">
+          <span class="point-joint"><i></i>Point enregistré joint à la discussion</span>
+          <div class="bulle-u">Mes clients viennent en voiture. Ce point tient la route&nbsp;?</div>
+          <div class="bulle-a" data-mots-flux>Plutôt oui&nbsp;: parking à <strong>47&nbsp;m</strong>. Mais <strong>2&nbsp;436</strong> commerces autour&nbsp;: plus de flux, et plus de concurrence.</div>
+        </div>
+        <div class="bulle-attente-ia" id="attente"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <!-- Étape 4 : Mes analyses -->
+    <div class="carte mes-analyses" id="mesAnalyses">
+      <p class="micro">Mes analyses · sessions enregistrées</p>
+      <div class="ma-ligne" id="ligneA">
+        <span class="case" id="caseA"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span class="ma-icone"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+        <p class="ma-nom">Local A<small>1 point · modifiée à l’instant</small></p>
+      </div>
+      <div class="ma-ligne" id="ligneB">
+        <span class="case" id="caseB"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span class="ma-icone"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+        <p class="ma-nom">Local B<small>1 point · modifiée hier</small></p>
+      </div>
+      <div class="ma-actions">
+        <span class="ma-compte">2 / 2 sélectionnées</span>
+        <span class="bouton-primaire" id="btnComparer">Comparer les analyses cochées</span>
+      </div>
+    </div>
+
+    <!-- Étape 4 : comparaison -->
+    <div class="carte comparer-ia comparer-tuto" id="carteComparer">
+      <div class="ci-entete">
+        <span></span>
+        <span class="cmp-adresse cmp-adresse--a"><i></i>Local A</span>
+        <span class="cmp-adresse cmp-adresse--b"><i></i>Local B</span>
+      </div>
+      <div class="ci-ligne"><p class="ci-lib">Parking le plus proche</p><p class="ci-val ci-val--gagne">47 <small>m</small></p><p class="ci-val">299 <small>m</small></p></div>
+      <div class="ci-ligne"><p class="ci-lib">Commerces actifs</p><p class="ci-val">2&nbsp;436</p><p class="ci-val">584</p></div>
+      <div class="ci-ligne"><p class="ci-lib">Habitants</p><p class="ci-val">10&nbsp;756</p><p class="ci-val">5&nbsp;489</p></div>
+      <div class="ct-actions"><span class="bouton-secondaire" id="btnPartager">
+        <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+        Partager</span></div>
+    </div>
+
+    <!-- Étape 4 : partage -->
+    <div class="carte partage" id="partage">
+      <p class="pa-titre">Partager avec un associé</p>
+      <div class="pa-choix">
+        <span class="pa-option" id="optLecture">Lecture</span>
+        <span class="pa-option" id="optModif">Modification</span>
+      </div>
+      <p class="pa-note">Chaque analyse est figée et datée&nbsp;; Pignon vous prévient si les données changent.</p>
+      <span class="pa-ok" id="lienCopie"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Invitation envoyée</span>
+    </div>
+
+    <!-- Curseur du tuto -->
+    <div class="souris" id="souris">
+      <span class="clic" id="clic"></span>
+      <svg viewBox="0 0 32 32"><path d="M7 3.5v21.2l5.3-5.1 3.6 8.2 3.7-1.6-3.6-8.1h7.4z"></path></svg>
+    </div>
+
+    <!-- Appel à l'action -->
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Enregistrez vos points,<br><em>parlez-en à l’IA.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Créer un compte gratuit
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="20" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="tuto.js"></script>
+</body>
+</html>
