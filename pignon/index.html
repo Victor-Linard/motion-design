@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · motion 15 s · 9:16</title>
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+
+    <!-- Fond : page chaude + halos pétrole / terracotta de la page d'accueil -->
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+
+    <!-- Carte (canvas) et voiles -->
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile"></div>
+    <div class="fade-top" id="fonduHaut"></div>
+    <div class="fade-bottom"></div>
+
+    <!-- Pastilles posées sur la carte (F2) -->
+    <div class="pastille-carte pastille-carte--petrole" id="pastilleIso">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      10&nbsp;min à pied
+    </div>
+    <div class="pastille-carte pastille-carte--terracotta" id="pastilleConcurrents">
+      <svg viewBox="0 0 24 24"><path d="M5 3h14l2 6H3z"></path><path d="M4 9v12h16V9"></path><path d="M10 21v-6h4v6"></path></svg>
+      Vos concurrents
+    </div>
+
+    <!-- Épingle : le point verrouillé sur la carte -->
+    <div class="pin" id="pin">
+      <span class="pin-tape" id="pinTape"></span>
+      <span class="pin-onde" id="onde1"></span>
+      <span class="pin-onde" id="onde2"></span>
+      <span class="pin-dot" id="pinPoint"></span>
+      <span class="pin-etiquette" id="pinEtiquette">Place du Vieux-Marché · Rouen</span>
+    </div>
+
+    <!-- Logo discret, comme la barre de navigation -->
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <!-- 0 — Accroche -->
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Où je m’installe&nbsp;?</p>
+      <h1 class="gros-titre" data-mots>Chaque adresse a<br>quelque chose<br><em>à cacher.</em></h1>
+    </section>
+
+    <!-- 1 — L'adresse : survie du métier + historique du local -->
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>01 · L’adresse</p>
+      <h1 class="gros-titre" data-mots>Qui a tenu <em>ici&nbsp;?</em></h1>
+    </section>
+
+    <div class="carte carte--survie" id="carteSurvie">
+      <p class="micro">Débits de boissons du quartier</p>
+      <div class="survie-ligne">
+        <p class="gros-chiffre"><span id="compteur63">63</span><span class="unite">%</span></p>
+        <p class="survie-texte">encore ouverts<br>après 5&nbsp;ans</p>
+      </div>
+      <div class="fourchette">
+        <span class="fourchette-piste"></span>
+        <span class="fourchette-bande" id="bande63" style="left:51%; width:23%"></span>
+        <span class="fourchette-marque" id="marque63" style="left:63%"></span>
+      </div>
+      <div class="fourchette-pied">
+        <span>Fourchette&nbsp;: 51 à 74&nbsp;%</span>
+        <span class="badge" id="badgeMarge">marge d’erreur comprise</span>
+      </div>
+    </div>
+
+    <div class="carte carte--histo" id="carteHisto">
+      <h2 class="carte-titre">Huit ouvertures depuis 1992.</h2>
+      <p class="carte-sous-titre">Quatre n’ont pas passé le cap des deux&nbsp;ans.</p>
+      <div class="frise" id="frise">
+        <span class="frise-piste"></span>
+      </div>
+    </div>
+
+    <!-- 2 — Autour du point -->
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>02 · Autour du point</p>
+      <h1 class="gros-titre" data-mots>Jusqu’où à<br><em>10&nbsp;minutes&nbsp;?</em></h1>
+    </section>
+
+    <div class="carte carte--chiffres" id="carteChiffres">
+      <div class="tuile">
+        <p class="micro">Rayon de 500&nbsp;m</p>
+        <p class="donnee-xl"><span id="compteur10790">10&nbsp;790</span> <span class="unite">hab.</span></p>
+        <p class="legende">dont 48&nbsp;% de 15 à 29&nbsp;ans</p>
+      </div>
+      <div class="tuile">
+        <p class="micro">Locaux du quartier</p>
+        <p class="donnee-xl"><span id="compteur3800">3&nbsp;800</span> <span class="unite">€/m²</span></p>
+        <p class="legende">prix médian des ventes</p>
+      </div>
+    </div>
+
+    <!-- 3 — Comparateur -->
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>03 · Le comparateur</p>
+      <h1 class="gros-titre" data-mots>Vos adresses,<br><em>côte à côte.</em></h1>
+    </section>
+
+    <div class="carte carte--comparer" id="carteComparer">
+      <div class="cmp-entete">
+        <span class="cmp-adresse cmp-adresse--a"><i></i>Local A</span>
+        <span class="cmp-adresse cmp-adresse--b"><i></i>Local B</span>
+      </div>
+
+      <div class="cmp-ligne">
+        <p class="micro">Survie du métier à 5&nbsp;ans</p>
+        <div class="cmp-serie cmp-serie--a">
+          <div class="cmp-zone"><span class="cmp-piste"></span><span class="cmp-bande" style="left:51%; width:23%"></span><span class="cmp-marque" style="left:63%"></span></div>
+          <p class="cmp-valeur">63<small>%</small></p>
+        </div>
+        <div class="cmp-serie cmp-serie--b">
+          <div class="cmp-zone"><span class="cmp-piste"></span><span class="cmp-bande" style="left:44%; width:22%"></span><span class="cmp-marque" style="left:55%"></span></div>
+          <p class="cmp-valeur">55<small>%</small></p>
+        </div>
+        <span class="verdict" id="verdict">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          Fourchettes qui se chevauchent&nbsp;: écart non établi
+        </span>
+      </div>
+
+      <div class="cmp-ligne">
+        <p class="micro">Habitants · rayon de 500&nbsp;m</p>
+        <div class="cmp-serie cmp-serie--a">
+          <div class="cmp-zone"><span class="cmp-piste"></span><span class="cmp-barre" style="width:100%"></span></div>
+          <p class="cmp-valeur">10&nbsp;790</p>
+        </div>
+        <div class="cmp-serie cmp-serie--b">
+          <div class="cmp-zone"><span class="cmp-piste"></span><span class="cmp-barre" style="width:51%"></span></div>
+          <p class="cmp-valeur">5&nbsp;490</p>
+        </div>
+      </div>
+
+      <div class="cmp-ligne">
+        <p class="micro">Prix médian des locaux</p>
+        <div class="cmp-serie cmp-serie--a">
+          <div class="cmp-zone"><span class="cmp-piste"></span><span class="cmp-barre" style="width:100%"></span></div>
+          <p class="cmp-valeur">3&nbsp;800 <small>€/m²</small></p>
+        </div>
+        <div class="cmp-serie cmp-serie--b">
+          <div class="cmp-zone"><span class="cmp-piste"></span><span class="cmp-barre" style="width:72%"></span></div>
+          <p class="cmp-valeur">2&nbsp;750 <small>€/m²</small></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 — Assistant -->
+    <section class="titre" id="titre4">
+      <p class="surtitre" data-frappe>04 · L’assistant</p>
+      <h1 class="gros-titre" data-mots>Pourquoi,<br><em>pas juste combien.</em></h1>
+    </section>
+
+    <div class="carte carte--chat" id="carteChat">
+      <p class="chat-qui chat-qui--moi" id="quiMoi">Vous</p>
+      <div class="bulle bulle--moi" id="bulleMoi">Il y a eu quoi, ici, avant moi&nbsp;?</div>
+      <p class="chat-qui chat-qui--ia" id="quiIA">
+        <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        Insights IA
+      </p>
+      <div class="chat-ia">
+        <div class="bulle bulle--ia" id="bulleIA" data-mots-flux>Surtout des bars&nbsp;: sept depuis 2004. Le plus durable a tenu près de dix&nbsp;ans.</div>
+        <div class="bulle bulle--ia bulle-attente" id="bulleAttente"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <!-- 5 — Appel à l'action -->
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Le bail dure trois ans.<br><em>Le clic prend trois secondes.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Explorer la carte
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="15" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="city.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
