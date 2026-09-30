@@ -1,0 +1,95 @@
+/* Compléments de la composition « Insights IA » (le socle vient de ../pignon/style.css). */
+
+/* Widget Insights IA : .pgn-chat-global-lanceur / -panneau de pignon-chat.css, agrandis x2,5 */
+.lanceur {
+  position: absolute; left: var(--marge); top: 1614px;
+  width: 116px; height: 116px;
+  border-radius: 50%;
+  background: var(--pgn-petrole-600);
+  color: var(--pgn-neutre-0);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 34px rgba(11, 8, 7, .28);
+}
+.lanceur svg { width: 50px; height: 50px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.chat {
+  position: absolute; left: var(--marge); top: 1030px;
+  width: var(--largeur); height: 560px;
+  display: flex; flex-direction: column;
+  background: var(--pgn-neutre-0);
+  border: 1.5px solid var(--pgn-neutre-200);
+  border-radius: 18px;
+  box-shadow: 0 30px 70px -20px rgba(11, 8, 7, .32);
+  overflow: hidden;
+  transform-origin: 0% 100%;
+}
+.chat-entete {
+  display: flex; align-items: center; gap: 14px;
+  padding: 24px 32px;
+  background: var(--pgn-petrole-600);
+  color: var(--pgn-neutre-0);
+  font-size: 32px; font-weight: 600;
+}
+.chat-entete svg { width: 36px; height: 36px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.chat-corps { position: relative; flex: 1; }
+.chat-vide { position: absolute; left: 40px; right: 40px; top: 40px; font-size: 32px; line-height: 1.5; color: var(--pgn-neutre-600); }
+.chat-groupe { position: absolute; left: 32px; right: 32px; top: 30px; display: flex; flex-direction: column; gap: 22px; }
+.bulle-u, .bulle-a { border-radius: 14px; padding: 24px 32px; font-size: 35px; line-height: 1.42; max-width: 88%; }
+.bulle-u { align-self: flex-end; background: var(--pgn-neutre-100); color: var(--pgn-neutre-900); transform-origin: 100% 100%; }
+.bulle-a { align-self: flex-start; background: var(--pgn-petrole-100); color: var(--pgn-petrole-700); transform-origin: 0% 100%; }
+.bulle-a strong { font-weight: 700; color: var(--pgn-petrole-800); }
+.bulle-attente-ia {
+  position: absolute; left: 32px; top: 0;
+  display: inline-flex; gap: 12px; padding: 28px 32px;
+  border-radius: 14px; background: var(--pgn-petrole-100);
+  transform-origin: 0% 100%;
+}
+.bulle-attente-ia i { width: 15px; height: 15px; border-radius: 50%; background: var(--pgn-petrole-400); }
+
+/* 1 — Panneau de statistiques, à droite comme sur la carte */
+.panneau-stats { top: 560px; left: 432px; width: 564px; padding: 30px 36px 20px; }
+.ps-titre { font-family: var(--pgn-font-editorial); font-size: 46px; line-height: 1.1; margin-bottom: 12px !important; }
+.ps-ligne {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 18px; margin: 0 -18px;
+  border-top: 1.5px solid var(--pgn-neutre-200);
+  border-radius: 10px;
+}
+.ps-ligne::before { content: ''; position: absolute; inset: 0; border-radius: 10px; background: var(--pgn-petrole-100); opacity: var(--surligne, 0); }
+.ps-lib, .ps-val { position: relative; }
+.ps-lib { font-size: 27px; font-weight: 500; line-height: 1.2; }
+.ps-lib small { display: block; font-size: 21px; font-weight: 400; color: var(--pgn-neutre-600); }
+.ps-val { font-family: var(--pgn-font-mono); font-weight: 500; font-size: 42px; white-space: nowrap; }
+.ps-val small { font-size: 24px; color: var(--pgn-neutre-600); }
+
+/* 2 — Comparateur */
+.comparer-ia { top: 566px; padding: 32px 40px 18px; }
+.ci-entete, .ci-ligne { display: grid; grid-template-columns: 1fr 250px 250px; align-items: center; }
+.ci-entete { padding-bottom: 20px; }
+.ci-entete .cmp-adresse { justify-self: end; font-size: 29px; }
+.ci-ligne { position: relative; padding: 22px 18px; margin: 0 -18px; border-top: 1.5px solid var(--pgn-neutre-200); border-radius: 10px; }
+.ci-ligne::before { content: ''; position: absolute; inset: 0; border-radius: 10px; background: var(--pgn-petrole-100); opacity: var(--surligne, 0); }
+.ci-lib, .ci-val { position: relative; }
+.ci-lib { font-size: 29px; font-weight: 500; }
+.ci-val { text-align: right; font-family: var(--pgn-font-mono); font-weight: 500; font-size: 42px; white-space: nowrap; }
+.ci-val small { font-size: 24px; color: var(--pgn-neutre-600); }
+.ci-val--gagne { color: var(--pgn-point-1); }
+
+/* 3 — Barre d'outils de la carte (.pgn-cmdbar) */
+.barre-outils {
+  position: absolute; left: var(--marge); top: 572px; width: var(--largeur);
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px 14px 26px;
+  background: var(--pgn-neutre-0);
+  border: 1.5px solid var(--pgn-neutre-200);
+  border-radius: 999px;
+  box-shadow: 0 16px 40px -18px rgba(11, 8, 7, .35);
+}
+.barre-outils svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.bo-recherche { flex: 1; display: flex; align-items: center; gap: 14px; font-size: 27px; color: var(--pgn-neutre-500); white-space: nowrap; }
+.bo-sep { width: 1.5px; height: 44px; background: var(--pgn-neutre-200); }
+.bo-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 64px; min-width: 64px; border-radius: 999px; color: var(--pgn-neutre-700); font-size: 27px; font-weight: 600; }
+.bo-btn--outil { padding: 0 22px 0 16px; border: 1.5px solid var(--pgn-neutre-200); }
+
+/* Appel à l'action : phrase sur trois lignes */
+.cta .cta-ligne { font-size: 62px; top: 900px; }

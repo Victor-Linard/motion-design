@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · Insights IA · 15 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="ia.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile"></div>
+    <div class="fade-top" id="fonduHaut"></div>
+
+    <div class="pin" id="pin">
+      <span class="pin-onde" id="onde1"></span>
+      <span class="pin-dot" id="pinPoint"></span>
+    </div>
+
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <!-- 0 — Accroche -->
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Insights IA</p>
+      <h1 class="gros-titre" data-mots>Vos données,<br>expliquées<br><em>en français courant.</em></h1>
+    </section>
+    <!-- 1 — Stats d'un lieu -->
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>01 · Les stats d’un lieu</p>
+      <h1 class="gros-titre" data-mots>Vous cliquez,<br><em>il vous explique.</em></h1>
+    </section>
+    <!-- 2 — Comparaison -->
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>02 · Le comparateur</p>
+      <h1 class="gros-titre" data-mots>Deux adresses,<br><em>votre critère.</em></h1>
+    </section>
+    <!-- 3 — Fonctionnalités -->
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>03 · Les outils</p>
+      <h1 class="gros-titre" data-mots>Un outil<br><em>à prendre en main&nbsp;?</em></h1>
+    </section>
+
+    <!-- 1 — Panneau Voisinage (chiffres d'une session réelle, sans adresse) -->
+    <div class="carte panneau-stats" id="panneauStats">
+      <p class="ps-titre">Voisinage</p>
+      <div class="ps-ligne" id="ligneHab"><p class="ps-lib">Population<small>rayon de 500&nbsp;m</small></p><p class="ps-val">11&nbsp;330 <small>hab.</small></p></div>
+      <div class="ps-ligne" id="ligneJeunes"><p class="ps-lib">15 à 29 ans<small>part des habitants</small></p><p class="ps-val">45,5 <small>%</small></p></div>
+      <div class="ps-ligne" id="ligneCommerces"><p class="ps-lib">Commerces actifs<small>voisinage</small></p><p class="ps-val">1&nbsp;950</p></div>
+      <div class="ps-ligne" id="ligneAge"><p class="ps-lib">Âge médian<small>des commerces</small></p><p class="ps-val">8,9 <small>ans</small></p></div>
+    </div>
+
+    <!-- 2 — Comparateur -->
+    <div class="carte comparer-ia" id="carteComparer">
+      <div class="ci-entete">
+        <span></span>
+        <span class="cmp-adresse cmp-adresse--a"><i></i>Local A</span>
+        <span class="cmp-adresse cmp-adresse--b"><i></i>Local B</span>
+      </div>
+      <div class="ci-ligne" id="cmpParking"><p class="ci-lib">Parking le plus proche</p><p class="ci-val ci-val--gagne">47 <small>m</small></p><p class="ci-val">299 <small>m</small></p></div>
+      <div class="ci-ligne" id="cmpCommerces"><p class="ci-lib">Commerces actifs</p><p class="ci-val">2&nbsp;436</p><p class="ci-val">584</p></div>
+      <div class="ci-ligne" id="cmpHabitants"><p class="ci-lib">Habitants</p><p class="ci-val">10&nbsp;756</p><p class="ci-val">5&nbsp;489</p></div>
+    </div>
+
+    <!-- 3 — Barre d'outils de la carte -->
+    <div class="barre-outils" id="barreOutils">
+      <span class="bo-recherche">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        Chercher une entreprise…
+      </span>
+      <span class="bo-sep"></span>
+      <span class="bo-btn"><svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg></span>
+      <span class="bo-btn"><svg viewBox="0 0 24 24"><g transform="rotate(-45 12 12)"><rect x="2" y="9" width="20" height="6" rx="1.2"></rect><line x1="6" y1="9" x2="6" y2="12"></line><line x1="10" y1="9" x2="10" y2="12.5"></line><line x1="14" y1="9" x2="14" y2="12"></line><line x1="18" y1="9" x2="18" y2="12.5"></line></g></svg></span>
+      <span class="bo-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
+      <span class="bo-btn bo-btn--outil" id="outilConcurrence"><svg viewBox="0 0 24 24"><path d="M5 3h14l2 6H3z"></path><path d="M4 9v12h16V9"></path><path d="M10 21v-6h4v6"></path></svg>Concurrence</span>
+    </div>
+
+    <!-- Le widget Insights IA de la carte : bouton rond puis panneau de discussion -->
+    <div class="chat" id="chat">
+      <div class="chat-entete">
+        <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        Insights IA
+      </div>
+      <div class="chat-corps">
+        <p class="chat-vide" id="chatVide">Une question sur un point, une comparaison, un quartier&nbsp;: il répond avec les données, en français courant.</p>
+        <div class="chat-groupe" id="groupe1">
+          <div class="bulle-u">Détaille-moi ce qu’on voit dans le voisinage.</div>
+          <div class="bulle-a" data-mots-flux>Un quartier très jeune&nbsp;: <strong>45,5&nbsp;%</strong> des habitants ont 15 à 29&nbsp;ans. <strong>1&nbsp;950</strong> commerces actifs, âgés de <strong>8,9&nbsp;ans</strong> en médiane&nbsp;: beaucoup d’ouvertures récentes.</div>
+        </div>
+        <div class="chat-groupe" id="groupe2">
+          <div class="bulle-u">J’hésite pour ma boulangerie. Mes clients viennent en voiture, tôt le matin.</div>
+          <div class="bulle-a" data-mots-flux>Sur ton critère clé, <strong>A</strong> gagne&nbsp;: parking à <strong>47&nbsp;m</strong> contre 299&nbsp;m. Mais <strong>4×</strong> plus de commerces autour&nbsp;: plus de flux, plus de concurrence.</div>
+        </div>
+        <div class="chat-groupe" id="groupe3">
+          <div class="bulle-u">Comment voir ma concurrence&nbsp;?</div>
+          <div class="bulle-a" data-mots-flux>Ouvre l’outil <strong>Concurrence</strong>, choisis ton activité et un rayon&nbsp;: les commerces existants s’affichent sur la carte. Données <strong>Sirene</strong> et <strong>BODACC</strong>, sans score.</div>
+        </div>
+        <div class="bulle-attente-ia" id="attente"><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="lanceur" id="lanceur">
+      <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+    </div>
+
+    <!-- Appel à l'action -->
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Demandez-lui.<br><em>Il explique pourquoi,<br>pas juste combien.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Explorer la carte
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="15" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="ia.js"></script>
+</body>
+</html>

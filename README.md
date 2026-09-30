@@ -50,13 +50,31 @@ Couverture : [`renders/pignon-ombres-couverture.png`](renders/pignon-ombres-couv
 
 Les ombres ne sont pas animées à la main : chaque image calcule la position du soleil à Rouen pour la date et l’heure affichées (`pignon-ombres/soleil.js`, formules NOAA, heure d’été 2026), puis projette chaque bâtiment au sol selon sa hauteur. L’état de la pastille et le bilan viennent du même calcul. Les bâtiments, leurs hauteurs (9 à 24 m) et la terrasse sont fictifs : la terrasse est choisie automatiquement pour que soleil et ombre s’y relaient. Le panneau reprend `.pgn-panneau-ombres` (curseur Saison de 0 à 364, curseur Heure de 8 h à 19 h, repères et icônes du site). La phrase « Le soleil, lui, tourne. » est une proposition, elle n’est pas reprise du site.
 
+## Pignon · Insights IA — 15 s, 9:16
+
+**Vidéo : [`renders/pignon-ia-15s-9x16.mp4`](renders/pignon-ia-15s-9x16.mp4)** — 1080 × 1920, 60 i/s, sans son.
+Couverture : [`renders/pignon-ia-couverture.png`](renders/pignon-ia-couverture.png).
+
+![Planche](renders/pignon-ia-planche.png)
+
+| Temps | Scène | Contenu |
+|---|---|---|
+| 0 – 2 s | Accroche | « Vos données, expliquées en français courant. » Le bouton de l’assistant s’ouvre en panneau Insights IA, comme sur la carte. |
+| 2 – 5,6 s | 01 · Les stats d’un lieu | Un clic sur la carte ouvre le panneau Voisinage ; l’IA l’explique et chaque ligne citée s’allume. |
+| 5,6 – 9,2 s | 02 · Le comparateur | Projet de boulangerie, clients en voiture : l’IA tranche sur ce critère (parking à 47 m contre 299 m) et signale la concurrence. |
+| 9,2 – 12,1 s | 03 · Les outils | « Comment voir ma concurrence ? » L’IA explique l’outil Concurrence pendant que la carte le montre : bouton, rayon, commerces. |
+| 12,1 – 15 s | Appel à l’action | Le bouton de l’assistant devient le point du i. « Demandez-lui. Il explique pourquoi, pas juste combien. » (texte du site) |
+
+Les échanges s’inspirent de trois sessions réelles, reformulées et raccourcies. Les chiffres viennent de ces sessions ; aucune adresse n’est citée (les deux emplacements comparés deviennent « Local A » et « Local B »). Le widget reprend `pignon-chat.css` : bouton rond pétrole, en-tête pétrole, bulles pétrole-100 pour l’assistant et neutre-100 pour l’utilisateur. Les commerces qui apparaissent dans le rayon sont illustratifs.
+
 ## Utilisation
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/ ou /pignon-ombres/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/ ou /pignon-ia/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
+npm run render:ia           # renders/pignon-ia-15s-9x16.mp4
 npm run stills              # images clés et planche dans renders/stills/
 ```
 
