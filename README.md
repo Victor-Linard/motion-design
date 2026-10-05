@@ -144,6 +144,16 @@ Sans interface. « Chaque adresse a quelque chose à cacher. » (site) : la vill
 
 Les chiffres du dossier viennent de l’exemple publié sur le site. Les étiquettes de la ville sont illustratives (catégories de l’app, années inventées). La phrase « Sachez-le avant de signer. » est une proposition.
 
+## Pignon · teaser 2 — 14 s, 9:16
+
+**Vidéo : [`renders/pignon-teaser2-14s-9x16.mp4`](renders/pignon-teaser2-14s-9x16.mp4)** · couverture : [`renders/pignon-teaser2-couverture.png`](renders/pignon-teaser2-couverture.png)
+
+![Planche](renders/pignon-teaser2-planche.png)
+
+Variante du teaser : la ville et ses données sont floues, sans caviardage. Le point se balade dans les rues comme dans la première version (trace, deux arrêts), entouré d’une loupe qui rend net ce qu’elle survole. Les données sont variées : population, 15-29 ans, parking, commerces, soleil sur la terrasse, isochrone à 10 min, prix de cession, €/m², survie, CA du secteur, devenir des fermetures, concurrence, âge des commerces. Au local, le dossier se défloute ligne à ligne, puis la loupe s’ouvre sur toute la ville.
+
+Les valeurs viennent de sessions réelles et de l’exemple du site ; leur placement sur la carte est illustratif, et les années du devenir sont inventées. La phrase « Sachez-le avant de signer. » est une proposition.
+
 ## Pignon · avant / après — 21 s, 9:16
 
 **Vidéo : [`renders/pignon-avant-apres-21s-9x16.mp4`](renders/pignon-avant-apres-21s-9x16.mp4)** · couverture : [`renders/pignon-avant-apres-couverture.png`](renders/pignon-avant-apres-couverture.png)
@@ -204,7 +214,7 @@ La phrase de fin, « Ce chiffre change d’un quartier à l’autre. », est une
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/, /pignon-ia2/, /pignon-teaser/, /pignon-avant-apres/, /pignon-parcours/ ou /pignon-chiffre/?ep=2 : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/, /pignon-ia2/, /pignon-teaser/, /pignon-teaser2/, /pignon-avant-apres/, /pignon-parcours/ ou /pignon-chiffre/?ep=2 : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
 npm run render:ia           # renders/pignon-ia-15s-9x16.mp4
@@ -215,6 +225,7 @@ npm run render:metier       # renders/pignon-metier-20s-9x16.mp4
 npm run render:rapports     # renders/pignon-rapports-19s-9x16.mp4
 npm run render:ia2          # renders/pignon-ia2-25s-9x16.mp4
 npm run render:teaser       # renders/pignon-teaser-13.6s-9x16.mp4
+npm run render:teaser2      # renders/pignon-teaser2-14s-9x16.mp4
 npm run render:avant-apres  # renders/pignon-avant-apres-21s-9x16.mp4
 npm run render:parcours     # renders/pignon-parcours-28.5s-9x16.mp4
 npm run render:chiffre      # renders/pignon-chiffre-ep1|ep2|ep3-11.5s-9x16.mp4 (--param ep=N)

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · teaser 2 · 14 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="teaser.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <!-- Ville et données floues -->
+    <canvas class="map map--flou" id="mapFlou" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voileFlou"></div>
+    <div class="calque calque--flou" id="flous"></div>
+    <!-- Sous la loupe : ville nette, données lisibles ; trace du point -->
+    <canvas class="map map--net" id="mapNet" width="1080" height="1920"></canvas>
+    <canvas class="map" id="trace" width="1080" height="1920"></canvas>
+    <div class="calque calque--net" id="reveles"></div>
+    <div class="map-veil" id="voile"></div>
+    <div class="fade-top" id="fonduHaut"></div>
+
+    <span class="loupe" id="loupe"></span>
+    <div class="pin" id="pin">
+      <span class="pin-onde" id="onde1"></span>
+      <span class="pin-dot" id="pinPoint"></span>
+    </div>
+
+    <section class="titre" id="titre0">
+      <h1 class="gros-titre" data-mots>Chaque adresse<br>a quelque chose<br><em>à cacher.</em></h1>
+    </section>
+
+    <!-- Le dossier du local (chiffres de l'exemple publié sur le site) -->
+    <div class="carte dossier" id="dossier">
+      <p class="micro">Ce que cache cette adresse</p>
+      <p class="secret-l">8 commerces ouverts ici depuis 1992</p>
+      <p class="secret-l">4 n’ont pas passé le cap des 2 ans</p>
+      <p class="secret-l">63&nbsp;% des bars du quartier tiennent 5 ans</p>
+      <p class="secret-l">3&nbsp;800&nbsp;€/m², prix médian des ventes</p>
+    </div>
+
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Sachez-le<br><em>avant de signer.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Explorer la carte
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="14" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="teaser.js"></script>
+</body>
+</html>
