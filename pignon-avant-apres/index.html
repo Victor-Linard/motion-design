@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · avant / après · 21 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="../pignon-ia/ia.css">
+  <link rel="stylesheet" href="../pignon/app.css">
+  <link rel="stylesheet" href="avant-apres.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile"></div>
+    <div class="fade-top" id="fonduHaut"></div>
+
+    <!-- Avant : onglets, fenêtres, post-it (sites et fichiers génériques, sans marque) -->
+    <div class="avant" id="avant">
+      <div class="onglets" id="onglets">
+        <span class="onglet"><i></i><span>Recherche · local commercial</span></span>
+        <span class="onglet"><i></i><span>Annonces légales</span></span>
+        <span class="onglet"><i></i><span>Annuaire des entreprises</span></span>
+        <span class="onglet"><i></i><span>stats_quartier_2019.pdf</span></span>
+        <span class="onglet"><i></i><span>comparatif_v7_FINAL.xlsx</span></span>
+        <span class="onglet"><i></i><span>Plan du quartier</span></span>
+        <span class="onglet"><i></i><span>Loyers commerciaux</span></span>
+        <span class="onglet"><i></i><span>Forum · ouvrir un café ?</span></span>
+        <span class="onglet"><i></i><span>Chiffres clés de la commune</span></span>
+        <span class="onglet"><i></i><span>Recensement · tableaux</span></span>
+        <span class="onglet"><i></i><span>Itinéraire</span></span>
+        <span class="onglet"><i></i><span>Concurrents ? · Recherche</span></span>
+        <span class="onglet"><i></i><span>Prix des fonds de commerce</span></span>
+        <span class="onglet"><i></i><span>Nouvel onglet</span></span>
+      </div>
+
+      <div class="fenetre" id="fe1" data-rot="-3" style="left:84px; top:770px; width:640px">
+        <div class="fe-barre"><i></i><i></i><i></i><span>Recherche · « local commercial à louer »</span></div>
+        <div class="fe-corps">
+          <div class="fe-champ">local commercial à louer centre-ville</div>
+          <p class="fe-resultat"><b>Local 85 m² · centre-ville</b><span>Prix sur demande · contactez l’agence</span></p>
+          <p class="fe-resultat"><b>Murs et fonds · bail 3-6-9</b><span>Annonce expirée</span></p>
+          <p class="fe-resultat"><b>Local d’angle, belle visibilité</b><span>Visite sur rendez-vous</span></p>
+        </div>
+      </div>
+
+      <div class="fenetre" id="fe2" data-rot="2.5" style="left:300px; top:930px; width:690px">
+        <div class="fe-barre"><i></i><i></i><i></i><span>comparatif_locaux_v7_FINAL.xlsx</span></div>
+        <div class="tableur">
+          <span class="th"></span><span class="th">Loyer</span><span class="th">Passage</span><span class="th">Concurrents</span><span class="th">Note</span>
+          <span class="tl">Local A</span><span>1 800 €</span><span class="q">?</span><span class="q">?</span><span class="na">#N/A</span>
+          <span class="tl">Local B</span><span>2 100 €</span><span>« bon »</span><span class="q">??</span><span class="na">#N/A</span>
+          <span class="tl">Local C</span><span class="q">?</span><span class="q">?</span><span>4 ou 5</span><span class="na">#DIV/0!</span>
+        </div>
+      </div>
+
+      <div class="fenetre" id="fe3" data-rot="-1.5" style="left:110px; top:1150px; width:520px">
+        <div class="fe-barre"><i></i><i></i><i></i><span>stats_quartier_2019.pdf</span></div>
+        <div class="fe-corps fe-pdf">
+          <p class="pdf-titre">Tableau 47 · Population par tranche d’âge</p>
+          <div class="pdf-barres"><span style="height:38%"></span><span style="height:64%"></span><span style="height:88%"></span><span style="height:71%"></span><span style="height:52%"></span><span style="height:30%"></span></div>
+          <p class="pdf-pied"><span class="pdf-date">Données 2019</span><span>p. 47 / 212</span></p>
+        </div>
+      </div>
+
+      <div class="fenetre" id="fe4" data-rot="3.5" style="left:500px; top:1290px; width:500px">
+        <div class="fe-barre"><i></i><i></i><i></i><span>Annonces légales · recherche avancée</span></div>
+        <div class="fe-corps">
+          <div class="fe-champ">Activité : débit de boissons</div>
+          <div class="fe-champ">Période : ?</div>
+          <p class="fe-vide">Aucun résultat. Affinez votre recherche.</p>
+        </div>
+      </div>
+
+      <div class="fenetre" id="fe5" data-rot="-2.5" style="left:150px; top:1480px; width:600px">
+        <div class="fe-barre"><i></i><i></i><i></i><span>Annuaire des entreprises</span></div>
+        <div class="fe-corps">
+          <p class="fe-compte">Résultats 1 à 20 sur <b>2 436</b></p>
+          <div class="ligne-grise" style="width:92%"></div>
+          <div class="ligne-grise" style="width:78%"></div>
+          <div class="ligne-grise" style="width:85%"></div>
+        </div>
+      </div>
+
+      <p class="postit" id="pi1" data-rot="6" style="left:730px; top:760px">Combien de concurrents&nbsp;??</p>
+      <p class="postit" id="pi2" data-rot="-5" style="left:84px; top:1660px">Rappeler l’agence</p>
+      <p class="postit" id="pi3" data-rot="4" style="left:700px; top:1620px">Le quartier, ça marche&nbsp;?</p>
+    </div>
+
+    <div class="pin" id="pin">
+      <span class="pin-onde" id="onde1"></span>
+      <span class="pin-dot" id="pinPoint"></span>
+    </div>
+
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Avant</p>
+      <h1 class="gros-titre" data-mots>Des onglets,<br>des tableurs,<br><em>et un doute.</em></h1>
+    </section>
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>Avec Pignon</p>
+      <h1 class="gros-titre" data-mots>Tout part<br><em>d’un point.</em></h1>
+    </section>
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>Avec Pignon · le métier</p>
+      <h1 class="gros-titre" data-mots>Votre métier<br><em>tient-il, ici&nbsp;?</em></h1>
+    </section>
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>Avec Pignon · le dossier</p>
+      <h1 class="gros-titre" data-mots>Un rapport,<br><em>un seul lien.</em></h1>
+    </section>
+    <section class="titre" id="titre4">
+      <p class="surtitre" data-frappe>Avant / après</p>
+      <h1 class="gros-titre" data-mots>Moins d’onglets,<br><em>plus de réponses.</em></h1>
+    </section>
+
+    <!-- Avec Pignon · 1 : le panneau du point (session réelle) -->
+    <div class="carte panneau-stats" id="panneauStats">
+      <p class="ps-titre">Voisinage</p>
+      <div class="ps-ligne"><p class="ps-lib">Population<small>rayon de 500&nbsp;m</small></p><p class="ps-val">11&nbsp;330 <small>hab.</small></p></div>
+      <div class="ps-ligne"><p class="ps-lib">15 à 29 ans<small>part des habitants</small></p><p class="ps-val">45,5 <small>%</small></p></div>
+      <div class="ps-ligne"><p class="ps-lib">Commerces actifs<small>voisinage</small></p><p class="ps-val">1&nbsp;950</p></div>
+      <div class="ps-ligne"><p class="ps-lib">Âge médian<small>des commerces</small></p><p class="ps-val">8,9 <small>ans</small></p></div>
+    </div>
+
+    <!-- Avec Pignon · 2 : chances de survie (session réelle, débits de boissons) -->
+    <div class="carte" id="carteSurvie">
+      <p class="micro">Débits de boissons · 94 établissements observés</p>
+      <p class="sc-titre" style="margin-top:14px">Vos chances de survie</p>
+      <p class="sc-sous">Sur 10 commerces de ce type&nbsp;:</p>
+      <div class="picto-ligne"><div class="picto-entete"><span class="picto-horizon">à 3 ans</span><span class="picto-chiffre">75&nbsp;%</span></div><div class="picto-icones" data-pictos="6,2,2"></div></div>
+      <div class="picto-ligne"><div class="picto-entete"><span class="picto-horizon">à 5 ans</span><span class="picto-chiffre">61&nbsp;%</span></div><div class="picto-icones" data-pictos="5,2,3"></div></div>
+      <div class="picto-ligne"><div class="picto-entete"><span class="picto-horizon">à 10 ans</span><span class="picto-chiffre">33&nbsp;%</span></div><div class="picto-icones" data-pictos="2,2,6"></div></div>
+      <div class="picto-legende">
+        <span><span data-pictos="1,0,0"></span>encore ouverts</span>
+        <span><span data-pictos="0,1,0"></span>incertitude</span>
+        <span><span data-pictos="0,0,1"></span>probablement fermés</span>
+      </div>
+    </div>
+
+    <!-- Avec Pignon · 3 : le rapport -->
+    <div class="carte" id="carteRapport">
+      <div class="rapport-entete">
+        <span class="rapport-icone"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></span>
+        <p class="rapport-nom">Projet de café<small>Analyse d’un emplacement + analyse du métier</small></p>
+      </div>
+      <div class="rapport-sections">
+        <p><span class="coche"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Capture de la carte</p>
+        <p><span class="coche"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Voisinage et accessibilité</p>
+        <p><span class="coche"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Analyse du métier</p>
+      </div>
+      <div class="lien" id="lien"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>pignon.webapp.lv/rapports/…<span class="copier" id="copier">Copier le lien</span></div>
+      <span class="sans-compte" id="sansCompte"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Données figées · lisible sans compte</span>
+    </div>
+
+    <!-- Récapitulatif avant / après -->
+    <div class="carte duel" id="carteDuel">
+      <div class="du-entete"><span></span><span class="du-avant">Avant</span><span class="du-apres"><i id="duPoint"></i>Avec Pignon</span></div>
+      <div class="du-ligne"><p class="du-lib">Les données</p><p class="du-v du-v--avant"><span>14 onglets</span><s></s></p><p class="du-v du-v--apres">1 carte</p></div>
+      <div class="du-ligne"><p class="du-lib">Les sources</p><p class="du-v du-v--avant"><span>à retrouver</span><s></s></p><p class="du-v du-v--apres">citées</p></div>
+      <div class="du-ligne"><p class="du-lib">Le partage</p><p class="du-v du-v--avant"><span>par e-mail</span><s></s></p><p class="du-v du-v--apres">1 lien</p></div>
+    </div>
+    <span class="point-vol" id="pointVol"></span>
+
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Fermez les onglets.<br><em>Ouvrez la carte.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Explorer la carte
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="21" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="avant-apres.js"></script>
+</body>
+</html>

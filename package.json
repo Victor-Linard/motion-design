@@ -17,7 +17,11 @@
     "render:simulation": "node scripts/render.mjs pignon-simulation --fps 60 --crf 17",
     "render:metier": "node scripts/render.mjs pignon-metier --fps 60 --crf 17",
     "render:rapports": "node scripts/render.mjs pignon-rapports --fps 60 --crf 17",
-    "render:ia2": "node scripts/render.mjs pignon-ia2 --fps 60 --crf 17"
+    "render:ia2": "node scripts/render.mjs pignon-ia2 --fps 60 --crf 17",
+    "render:teaser": "node scripts/render.mjs pignon-teaser --fps 60 --crf 17",
+    "render:avant-apres": "node scripts/render.mjs pignon-avant-apres --fps 60 --crf 17",
+    "render:parcours": "node scripts/render.mjs pignon-parcours --fps 60 --crf 17",
+    "render:chiffre": "node scripts/render.mjs pignon-chiffre --param ep=1 --fps 60 --crf 17 && node scripts/render.mjs pignon-chiffre --param ep=2 --fps 60 --crf 17 && node scripts/render.mjs pignon-chiffre --param ep=3 --fps 60 --crf 17"
   },
   "dependencies": {
     "gsap": "3.15.0"

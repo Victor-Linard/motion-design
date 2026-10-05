@@ -6,6 +6,7 @@
 //   node scripts/render.mjs pignon                     -> renders/pignon-15s-9x16.mp4
 //   node scripts/render.mjs pignon --fps 60 --crf 14
 //   node scripts/render.mjs pignon --stills 1.2,4.5    -> renders/stills/*.png + planche contact
+//   node scripts/render.mjs pignon-chiffre --param ep=2 -> renders/pignon-chiffre-ep2-…s-9x16.mp4 (?ep=2)
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
@@ -18,7 +19,7 @@ import { servir, RACINE } from './serve.mjs';
 const require = createRequire(import.meta.url);
 
 function lireArgs(argv) {
-  const args = { composition: 'pignon', fps: 30, crf: 16, onglets: Math.max(1, Math.min(4, os.cpus().length)), sortie: null, stills: null };
+  const args = { composition: 'pignon', fps: 30, crf: 16, onglets: Math.max(1, Math.min(4, os.cpus().length)), sortie: null, stills: null, params: [] };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--fps') args.fps = Number(argv[++i]);
@@ -26,8 +27,11 @@ function lireArgs(argv) {
     else if (a === '--onglets') args.onglets = Number(argv[++i]);
     else if (a === '--out') args.sortie = path.resolve(argv[++i]);
     else if (a === '--stills') args.stills = argv[++i].split(',').map(Number);
+    else if (a === '--param') args.params.push(argv[++i].split('='));
     else if (!a.startsWith('--')) args.composition = a;
   }
+  // Nom des fichiers produits : la composition, suivie des paramètres (ep=2 -> -ep2).
+  args.nom = args.composition + args.params.map(([k, v]) => `-${k}${v}`).join('');
   return args;
 }
 
@@ -67,11 +71,11 @@ async function rendreStills(navigateur, url, args) {
   const temps = [...args.stills].sort((a, b) => a - b);
   for (let i = 0; i < temps.length; i++) {
     const buf = await capturer(page, temps[i]);
-    fs.writeFileSync(path.join(dossier, `${args.composition}-${temps[i].toFixed(2)}s.png`), buf);
+    fs.writeFileSync(path.join(dossier, `${args.nom}-${temps[i].toFixed(2)}s.png`), buf);
     fs.writeFileSync(path.join(temp, String(i).padStart(3, '0') + '.png'), buf);
   }
   const colonnes = Math.min(7, temps.length), lignes = Math.ceil(temps.length / colonnes);
-  const planche = path.join(dossier, `${args.composition}-planche.png`);
+  const planche = path.join(dossier, `${args.nom}-planche.png`);
   const { fin } = lancerFfmpeg(['-framerate', '1', '-i', path.join(temp, '%03d.png'),
     '-vf', `scale=324:-1,tile=${colonnes}x${lignes}:padding=12:margin=12:color=0x171310`, '-frames:v', '1', planche]);
   await fin;
@@ -83,7 +87,7 @@ async function rendreVideo(navigateur, url, args) {
   const pages = await Promise.all(Array.from({ length: args.onglets }, () => ouvrirPage(navigateur, url)));
   const duree = await pages[0].evaluate(() => window.__duree);
   const total = Math.round(duree * args.fps);
-  const sortie = args.sortie || path.join(RACINE, 'renders', `${args.composition}-${duree}s-9x16.mp4`);
+  const sortie = args.sortie || path.join(RACINE, 'renders', `${args.nom}-${duree}s-9x16.mp4`);
   fs.mkdirSync(path.dirname(sortie), { recursive: true });
 
   const { ff, fin } = lancerFfmpeg([
@@ -139,7 +143,7 @@ if (!fs.existsSync(path.join(RACINE, args.composition, 'index.html'))) {
 const serveur = await servir();
 const navigateur = await chromium.launch({ args: ['--force-color-profile=srgb', '--hide-scrollbars', '--font-render-hinting=none'] });
 try {
-  const url = `${serveur.url}/${args.composition}/index.html?render`;
+  const url = `${serveur.url}/${args.composition}/index.html?render` + args.params.map(([k, v]) => `&${k}=${encodeURIComponent(v)}`).join('');
   if (args.stills) await rendreStills(navigateur, url, args);
   else await rendreVideo(navigateur, url, args);
 } finally {

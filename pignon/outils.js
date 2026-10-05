@@ -265,6 +265,21 @@
     return cible;
   }
 
+  // Pictogrammes « commerce » de l'app : n = [ouverts, incertains, probablement fermés].
+  var PICTO = '<path d="M5 3h14l2 6H3z"></path><path d="M4 9v12h16V9"></path><path d="M10 21v-6h4v6"></path>';
+  function pictos(el, n) {
+    var etats = [];
+    ['ouvert', 'incertain', 'ferme'].forEach(function (e, i) { for (var k = 0; k < n[i]; k++) etats.push(e); });
+    return etats.map(function (e) {
+      var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      s.setAttribute('viewBox', '0 0 24 24');
+      s.setAttribute('class', 'picto picto--' + e);
+      s.innerHTML = PICTO;
+      el.appendChild(s);
+      return s;
+    });
+  }
+
   window.PignonOutils = {
     cubicBezier: cubicBezier,
     STANDARD: STANDARD,
@@ -280,6 +295,7 @@
     finCta: finCta,
     mesurerCta: mesurerCta,
     dessinerVille: dessinerVille,
-    choisirLocal: choisirLocal
+    choisirLocal: choisirLocal,
+    pictos: pictos
   };
 })();

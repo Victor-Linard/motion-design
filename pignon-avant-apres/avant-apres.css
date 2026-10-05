@@ -1,0 +1,85 @@
+/* Composition « Avant / après » : la pile d'onglets et de fichiers, puis l'app. */
+.fade-top { height: 0; }
+
+/* ---------- Avant ---------- */
+.avant { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.onglets { position: absolute; left: var(--marge); top: 670px; width: var(--largeur); height: 58px; display: flex; gap: 6px; }
+.onglet {
+  flex: 0 1 220px; min-width: 0; height: 58px;
+  display: flex; align-items: center; gap: 10px; padding: 0 14px;
+  border-radius: 14px 14px 0 0; background: var(--pgn-neutre-200);
+  font-size: 21px; color: var(--pgn-neutre-700); white-space: nowrap; overflow: hidden;
+}
+.onglet i { width: 18px; height: 18px; flex: none; border-radius: 5px; background: var(--pgn-neutre-400); }
+.onglet > span { overflow: hidden; text-overflow: ellipsis; }
+.onglet:last-child { background: var(--pgn-neutre-0); box-shadow: 0 -6px 16px -10px rgba(23, 19, 16, .3); }
+
+.fenetre {
+  position: absolute;
+  background: var(--pgn-neutre-0);
+  border: 1.5px solid var(--pgn-neutre-300);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 30px 60px -28px rgba(23, 19, 16, .5), 0 2px 6px rgba(23, 19, 16, .06);
+}
+.fe-barre {
+  display: flex; align-items: center; gap: 9px; height: 54px; padding: 0 20px;
+  background: var(--pgn-neutre-100); border-bottom: 1.5px solid var(--pgn-neutre-200);
+  font-family: var(--pgn-font-mono); font-size: 21px; color: var(--pgn-neutre-600); white-space: nowrap; overflow: hidden;
+}
+.fe-barre i { width: 15px; height: 15px; flex: none; border-radius: 50%; background: var(--pgn-neutre-300); }
+.fe-barre span { margin-left: 10px; overflow: hidden; text-overflow: ellipsis; }
+.fe-corps { padding: 22px 26px 24px; }
+.fe-champ { padding: 14px 18px; border: 1.5px solid var(--pgn-neutre-300); border-radius: 10px; font-size: 24px; color: var(--pgn-neutre-600); margin-bottom: 12px; }
+.fe-resultat { padding: 12px 0; border-top: 1.5px solid var(--pgn-neutre-100); }
+.fe-resultat b { display: block; font-size: 25px; font-weight: 600; color: var(--pgn-neutre-800); }
+.fe-resultat span { font-size: 21px; color: var(--pgn-neutre-500); }
+.fe-vide { margin-top: 16px !important; font-size: 24px; font-weight: 500; color: var(--pgn-terracotta-600); }
+.fe-compte { font-size: 25px; color: var(--pgn-neutre-700); margin-bottom: 8px !important; }
+.ligne-grise { height: 16px; border-radius: 8px; background: var(--pgn-neutre-200); margin: 16px 0; }
+
+.tableur { display: grid; grid-template-columns: 118px repeat(4, 1fr); font-family: var(--pgn-font-mono); font-size: 22px; }
+.tableur span { padding: 14px 10px; border-right: 1px solid var(--pgn-neutre-200); border-bottom: 1px solid var(--pgn-neutre-200); white-space: nowrap; overflow: hidden; color: var(--pgn-neutre-800); }
+.tableur .th { background: var(--pgn-neutre-100); color: var(--pgn-neutre-600); font-weight: 500; }
+.tableur .tl { background: var(--pgn-neutre-50); color: var(--pgn-neutre-700); }
+.tableur .q { color: var(--pgn-terracotta-600); font-weight: 500; }
+.tableur .na { color: var(--pgn-point-2); }
+
+.fe-pdf { background: var(--pgn-neutre-50); }
+.pdf-titre { font-family: var(--pgn-font-editorial); font-size: 27px; color: var(--pgn-neutre-800); }
+.pdf-barres { display: flex; align-items: flex-end; gap: 16px; height: 150px; margin-top: 16px; padding: 0 6px; border-bottom: 2px solid var(--pgn-neutre-300); }
+.pdf-barres span { flex: 1; background: var(--pgn-neutre-300); border-radius: 4px 4px 0 0; }
+.pdf-pied { display: flex; justify-content: space-between; align-items: center; margin-top: 14px !important; font-family: var(--pgn-font-mono); font-size: 21px; color: var(--pgn-neutre-500); }
+.pdf-date { padding: 4px 12px; border-radius: 999px; background: var(--pgn-attention-bg); color: var(--pgn-attention-bg-text); }
+
+.postit {
+  position: absolute; width: 290px; padding: 26px 26px 32px;
+  background: #f6ecd8; color: #6b4e18;
+  font-family: var(--pgn-font-editorial); font-style: italic; font-size: 38px; line-height: 1.15;
+  box-shadow: 0 18px 30px -16px rgba(23, 19, 16, .45);
+}
+
+/* ---------- Avec Pignon ---------- */
+.panneau-stats { top: 600px; }
+#carteSurvie { top: 600px; padding: 40px 48px 38px; }
+#carteRapport { top: 600px; padding: 40px 48px 44px; }
+
+/* Récapitulatif */
+.duel { top: 600px; padding: 34px 44px 26px; }
+.du-entete, .du-ligne { display: grid; grid-template-columns: 1fr 250px 280px; align-items: center; gap: 12px; }
+.du-entete { padding-bottom: 20px; }
+.du-avant, .du-apres { justify-self: center; display: inline-flex; align-items: center; gap: 12px; padding: 12px 24px; border-radius: 999px; font-weight: 600; font-size: 27px; white-space: nowrap; }
+.du-avant { background: var(--pgn-neutre-100); color: var(--pgn-neutre-600); }
+.du-apres { background: var(--pgn-petrole-600); color: var(--pgn-neutre-0); }
+.du-apres i { width: 20px; height: 20px; border-radius: 50%; background: var(--pgn-neutre-0); }
+.du-ligne { padding: 26px 0; border-top: 1.5px solid var(--pgn-neutre-200); }
+.du-lib { font-size: 28px; font-weight: 500; color: var(--pgn-neutre-700); }
+.du-v { position: relative; justify-self: center; font-family: var(--pgn-font-mono); font-weight: 500; white-space: nowrap; }
+.du-v--avant { font-size: 31px; color: var(--pgn-neutre-500); }
+.du-v--avant s { position: absolute; left: -8px; right: -8px; top: 54%; height: 3px; border-radius: 2px; background: var(--pgn-terracotta-600); transform-origin: 0 50%; }
+.du-v--apres { font-size: 38px; color: var(--pgn-petrole-600); }
+
+.point-vol {
+  position: absolute; left: 0; top: 0; width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  border-radius: 50%; background: var(--pgn-petrole-600); border: 6px solid var(--pgn-neutre-0);
+  box-shadow: 0 6px 16px rgba(0, 56, 57, .35);
+}

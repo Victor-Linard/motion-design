@@ -134,11 +134,75 @@ Le film montre le formulaire « Créer un rapport » (analyse d’un emplacement
 
 Le film reprend les trois conversations fournies, reformulées et sans adresse : une comparaison en plusieurs tours (l’IA demande ce qui compte, répond sur le stationnement — parking à 47 m contre 299 m —, résume en 3 points et renvoie la décision par une question), l’explication du panneau Voisinage après un clic sur la carte (11 330 hab., 45,5 % de 15–29 ans, 1 950 commerces, âge médian 8,9 ans) et l’aide sur l’outil Concurrence et opportunités, ouverte depuis « Mes chats ». Les « Local A / Local B » remplacent les adresses ; la phrase du CTA est inventée.
 
+## Pignon · teaser — 10 s, 9:16
+
+**Vidéo : [`renders/pignon-teaser-10s-9x16.mp4`](renders/pignon-teaser-10s-9x16.mp4)** · couverture : [`renders/pignon-teaser-couverture.png`](renders/pignon-teaser-couverture.png)
+
+![Planche](renders/pignon-teaser-planche.png)
+
+Sans interface : la ville seule. Le point pétrole part d’un carrefour et suit le plus court chemin dans les rues (calculé sur le réseau de la carte, `pignon-teaser/teaser.js`). Il s’arrête deux fois devant un local, repart, puis trouve le sien. La caméra recule sur toute la ville et le point devient celui du i. L’accroche (« Chaque adresse a quelque chose à cacher. ») et la phrase finale (« Le bail dure trois ans. Le clic prend trois secondes. ») sont reprises du site.
+
+## Pignon · avant / après — 21 s, 9:16
+
+**Vidéo : [`renders/pignon-avant-apres-21s-9x16.mp4`](renders/pignon-avant-apres-21s-9x16.mp4)** · couverture : [`renders/pignon-avant-apres-couverture.png`](renders/pignon-avant-apres-couverture.png)
+
+![Planche](renders/pignon-avant-apres-planche.png)
+
+| Temps | Scène | Contenu |
+|---|---|---|
+| 0 – 4,7 s | Avant | « Des onglets, des tableurs, et un doute. » 14 onglets, une recherche d’annonces, un tableur plein de « ? » et de « #N/A », un PDF de 2019, des annonces légales sans résultat, un annuaire, des post-it. |
+| 4,7 – 6 s | Bascule | Tout est aspiré dans un point, qui devient le point de la carte. |
+| 6 – 8,7 s | Avec Pignon | « Tout part d’un point. » Panneau Voisinage du point. |
+| 8,7 – 11,6 s | Le métier | « Votre métier tient-il, ici ? » Chances de survie en pictogrammes, comme dans l’app. |
+| 11,6 – 14,4 s | Le dossier | « Un rapport, un seul lien. » |
+| 14,4 – 17,5 s | Avant / après | « Moins d’onglets, plus de réponses. » 14 onglets → 1 carte ; sources à retrouver → citées ; partage par e-mail → 1 lien. |
+| 17,5 – 21 s | Appel à l’action | Le point « Avec Pignon » devient le point du i. « Fermez les onglets. Ouvrez la carte. », « Explorer la carte → » |
+
+La partie « Avant » est une mise en scène : sites et fichiers génériques, sans marque ni adresse. Les chiffres de la partie « Avec Pignon » viennent de sessions réelles (voisinage et survie des débits de boissons). Le tableau avant / après est une comparaison de principe, pas une mesure. Les phrases « Moins d’onglets, plus de réponses. » et « Fermez les onglets. Ouvrez la carte. » sont des propositions.
+
+## Pignon · parcours d’un projet de café — 28,5 s, 9:16
+
+**Vidéo : [`renders/pignon-parcours-28.5s-9x16.mp4`](renders/pignon-parcours-28.5s-9x16.mp4)** · couverture : [`renders/pignon-parcours-couverture.png`](renders/pignon-parcours-couverture.png)
+
+![Planche](renders/pignon-parcours-planche.png)
+
+| Temps | Étape | Contenu |
+|---|---|---|
+| 0 – 2,4 s | Accroche | « Ouvrir un café. Mais où ? » et le rail des 5 étapes. |
+| 2,4 – 6,7 s | 01 · Le quartier | Un clic, le panneau Voisinage ; les lignes 15-29 ans et commerces actifs s’allument. |
+| 6,7 – 11,4 s | 02 · Le métier | « Ici, 1 sur 3 tient 10 ans. » Survie en pictogrammes (75 / 61 / 33 %) et CA médian du secteur (152 k€, IC 95 % 60–219 k€). |
+| 11,4 – 16 s | 03 · Les chiffres | 90 clients × 5,50 € × 300 jours = 148 500 € HT ; résultat 33 950 € ; seuil de rentabilité 61 clients / jour. |
+| 16 – 21 s | 04 · L’avis de l’IA | « 90 clients par jour, c’est réaliste ici ? » La réponse relie seuil, quartier et survie. |
+| 21 – 24,5 s | 05 · Le rapport | « Un dossier pour la banque. » Les 4 sections, le lien, « lisible sans compte ». |
+| 24,5 – 28,5 s | Appel à l’action | La dernière étape du rail devient le point du i. « De la carte à la décision. » (texte du site), « Créer un compte gratuit → » |
+
+Voisinage, survie et CA du secteur : chiffres de sessions réelles, sans adresse. La simulation est un exemple calculé et cohérent : achats 30 % du CA, charges fixes 70 000 €/an, donc seuil = 70 000 / (5,50 × 300 × 0,7) ≈ 61 clients/jour et marge de sécurité d’un tiers. Son CA (148,5 k€) est proche de la médiane réelle du secteur. La réponse de l’IA est écrite pour la vidéo, dans le style des sessions fournies ; la banque est un élément de récit.
+
+## Pignon · série « Le chiffre » — 3 × 11,5 s, 9:16
+
+| Épisode | Vidéo | Le chiffre | Image |
+|---|---|---|---|
+| n°1 | [`renders/pignon-chiffre-ep1-11.5s-9x16.mp4`](renders/pignon-chiffre-ep1-11.5s-9x16.mp4) | 33 % encore ouverts au bout de 10 ans | 10 pictogrammes de l’app, de l’ouverture à 3, 5 et 10 ans |
+| n°2 | [`renders/pignon-chiffre-ep2-11.5s-9x16.mp4`](renders/pignon-chiffre-ep2-11.5s-9x16.mp4) | 64 % des fermetures ont trouvé un repreneur sur place | 47 points, un par commerce fermé, colorés par devenir |
+| n°3 | [`renders/pignon-chiffre-ep3-11.5s-9x16.mp4`](renders/pignon-chiffre-ep3-11.5s-9x16.mp4) | 225 k€, prix médian d’un fonds | Échelle log : une vente sur deux entre 60 et 470 k€, ventes isolées, ventes par an |
+
+![Planche n°1](renders/pignon-chiffre-ep1-planche.png)
+![Planche n°2](renders/pignon-chiffre-ep2-planche.png)
+![Planche n°3](renders/pignon-chiffre-ep3-planche.png)
+
+Un seul gabarit (`pignon-chiffre/`), l’épisode est choisi par `?ep=1|2|3` (rendu : `--param ep=2`). Pour un nouvel épisode, ajoutez une entrée à `EPISODES` dans `chiffre.js` et son visuel dans `index.html`. Tous les chiffres viennent d’une même session de l’app (débits de boissons, un quartier, sans adresse) et les sources sont celles qu’affiche l’app :
+
+- **n°1** : codes NAF 55.4A-C et 56.30Z, 94 établissements observés, 73 fermetures. Les pictogrammes reprennent ceux de l’app (6/2/2, 5/2/3, 2/2/6 sur 10).
+- **n°2** : 47 fermetures entre janvier 2008 et septembre 2026, d’après les annonces légales (BODACC). Les nombres de points sont les pourcentages de l’app appliqués à 47 : 30 repris, 2 déménagés, 1 autre successeur, 3 procédures, 1 radié, 10 sans information.
+- **n°3** : 17 ventes annoncées entre 2017 et 2026 (BODACC). Médiane 225 k€, une vente sur deux entre 60 et 470 k€, extrêmes 21 k€ et 1,6 M€. Ventes par an de 2017 à 2025 ; 2026 est partiel, sans vente.
+
+La phrase de fin, « Ce chiffre change d’un quartier à l’autre. », est une proposition.
+
 ## Utilisation
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/ ou /pignon-ia2/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/, /pignon-ia2/, /pignon-teaser/, /pignon-avant-apres/, /pignon-parcours/ ou /pignon-chiffre/?ep=2 : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
 npm run render:ia           # renders/pignon-ia-15s-9x16.mp4
@@ -148,6 +212,10 @@ npm run render:simulation   # renders/pignon-simulation-21.5s-9x16.mp4
 npm run render:metier       # renders/pignon-metier-20s-9x16.mp4
 npm run render:rapports     # renders/pignon-rapports-19s-9x16.mp4
 npm run render:ia2          # renders/pignon-ia2-25s-9x16.mp4
+npm run render:teaser       # renders/pignon-teaser-10s-9x16.mp4
+npm run render:avant-apres  # renders/pignon-avant-apres-21s-9x16.mp4
+npm run render:parcours     # renders/pignon-parcours-28.5s-9x16.mp4
+npm run render:chiffre      # renders/pignon-chiffre-ep1|ep2|ep3-11.5s-9x16.mp4 (--param ep=N)
 npm run stills              # images clés et planche dans renders/stills/
 ```
 

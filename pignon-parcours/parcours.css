@@ -1,0 +1,38 @@
+/* Composition « Parcours » : un café, de l'idée au rapport. */
+
+/* Rail du parcours, en haut à droite */
+.parcours { position: absolute; right: var(--marge); top: 126px; width: 440px; height: 64px; display: flex; justify-content: space-between; align-items: center; }
+.pc-rail { position: absolute; left: 32px; right: 32px; top: 30px; height: 4px; border-radius: 2px; background: var(--pgn-neutre-200); }
+.pc-plein { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-radius: 2px; background: var(--pgn-petrole-600); transform-origin: 0 50%; }
+.pc-etape {
+  position: relative; width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--pgn-neutre-0); border: 3px solid var(--pgn-neutre-300); color: var(--pgn-neutre-400);
+}
+.pc-etape svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pc-etape .pc-ok { position: absolute; left: 14px; top: 14px; stroke: var(--pgn-neutre-0); stroke-width: 3; opacity: 0; }
+
+/* Cartes */
+.panneau-stats { top: 600px; }
+#carteSurvie { top: 600px; padding: 40px 48px 38px; }
+#carteCa { top: 1345px; padding: 30px 48px 26px; }
+#carteCa .cle { margin-top: 10px; }
+#carteSimu { top: 600px; padding: 40px 44px 40px; }
+#hypotheses { margin-top: 14px !important; }
+#carteRapport { top: 600px; padding: 40px 48px 44px; }
+
+/* Discussion */
+#chat { top: 600px; height: 640px; transform-origin: 50% 0%; }
+.chat-groupe .bulle-u, .chat-groupe .bulle-a { font-size: 34px; }
+.chat-groupe .bulle-attente-ia { left: 0; }
+.point-joint {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--pgn-font-mono); font-size: 22px; letter-spacing: .06em; text-transform: uppercase; color: var(--pgn-petrole-600);
+}
+.point-joint i { width: 16px; height: 16px; border-radius: 50%; background: var(--pgn-petrole-600); }
+
+.point-vol {
+  position: absolute; left: 0; top: 0; width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  border-radius: 50%; background: var(--pgn-petrole-600); border: 6px solid var(--pgn-neutre-0);
+  box-shadow: 0 6px 16px rgba(0, 56, 57, .35);
+}
