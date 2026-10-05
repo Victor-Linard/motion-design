@@ -87,7 +87,7 @@ Parcours et libellés repris de l’app (cadenas du panneau, message d’Insight
 
 ## Pignon · vue d’ensemble v2 — 29 s, 9:16
 
-**Vidéo : [`renders/pignon-v2-29s-9x16.mp4`](renders/pignon-v2-29s-9x16.mp4)** — la version à jour de l’app (barre Carte, Mes analyses, Simulations, Rapports, Partages).
+**Vidéo : [`renders/pignon-v2-29s-9x16.mp4`](renders/pignon-v2-29s-9x16.mp4)** · couverture : [`renders/pignon-v2-couverture.png`](renders/pignon-v2-couverture.png) — la version à jour de l’app (barre Carte, Mes analyses, Simulations, Rapports, Partages).
 
 ![Planche](renders/pignon-v2-planche.png)
 
@@ -104,15 +104,27 @@ Parcours et libellés repris de l’app (cadenas du panneau, message d’Insight
 
 ## Pignon · Simulations — 21,5 s, 9:16
 
-**Vidéo : [`renders/pignon-simulation-21.5s-9x16.mp4`](renders/pignon-simulation-21.5s-9x16.mp4)** — outils de recettes de l’app (couverts, postes, fréquentation, abonnements, personnalisé), valeur fixe ou fourchette, charges, salarié, dirigeant et statut, puis résultat, seuil de rentabilité et sensibilité (tornade). L’exemple de boulangerie est inventé mais cohérent : CA = clients × panier × 282 jours, achats 32 %, charges fixes 105 k€ ; les fourchettes, le seuil (79 clients/jour, marge de sécurité 48 %) et la tornade sont calculés à partir de ces hypothèses. Le coût employeur du salarié (≈ 31 k€) est une approximation, pas le calcul URSSAF de l’app.
+**Vidéo : [`renders/pignon-simulation-21.5s-9x16.mp4`](renders/pignon-simulation-21.5s-9x16.mp4)** · couverture : [`renders/pignon-simulation-couverture.png`](renders/pignon-simulation-couverture.png)
+
+![Planche](renders/pignon-simulation-planche.png)
+
+Le film montre les outils de recettes de l’app (couverts, postes, fréquentation, abonnements, personnalisé), valeur fixe ou fourchette, charges, salarié, dirigeant et statut, puis résultat, seuil de rentabilité et sensibilité (tornade). L’exemple de boulangerie est inventé mais cohérent : CA = clients × panier × 282 jours, achats 32 %, charges fixes 105 k€ ; les fourchettes, le seuil (79 clients/jour, marge de sécurité 48 %) et la tornade sont calculés à partir de ces hypothèses. Le coût employeur du salarié (≈ 31 k€) est une approximation, pas le calcul URSSAF de l’app.
 
 ## Pignon · Analyse du métier — 20 s, 9:16
 
-**Vidéo : [`renders/pignon-metier-20s-9x16.mp4`](renders/pignon-metier-20s-9x16.mp4)** — chiffres réels d’une session (débits de boissons), sans adresse : chances de survie (75 / 61 / 33 %), devenir des 47 commerces fermés depuis 2008, évolution 2016–2025 (20 → 22 établissements, créations et fermetures par an), prix de cession des fonds (médiane 225 k€, 17 ventes) et CA du secteur (médiane 152 k€, IC 95 % 60–219 k€).
+**Vidéo : [`renders/pignon-metier-20s-9x16.mp4`](renders/pignon-metier-20s-9x16.mp4)** · couverture : [`renders/pignon-metier-couverture.png`](renders/pignon-metier-couverture.png)
+
+![Planche](renders/pignon-metier-planche.png)
+
+Le film montre les chiffres réels d’une session (débits de boissons), sans adresse : chances de survie (75 / 61 / 33 %), devenir des 47 commerces fermés depuis 2008, évolution 2016–2025 (20 → 22 établissements, créations et fermetures par an), prix de cession des fonds (médiane 225 k€, 17 ventes) et CA du secteur (médiane 152 k€, IC 95 % 60–219 k€).
 
 ## Pignon · Rapports et partage — 19 s, 9:16
 
-**Vidéo : [`renders/pignon-rapports-19s-9x16.mp4`](renders/pignon-rapports-19s-9x16.mp4)** — formulaire « Créer un rapport » (analyse d’un emplacement, simulation, contenu à cocher), lien du rapport (« fige les données à sa date de création », lisible sans compte), puis fenêtre « Partager la session » : invitation par email du compte Pignon, Lecture ou Écriture, personnes ayant accès. L’aperçu du rapport est stylisé ; l’adresse email est fictive.
+**Vidéo : [`renders/pignon-rapports-19s-9x16.mp4`](renders/pignon-rapports-19s-9x16.mp4)** · couverture : [`renders/pignon-rapports-couverture.png`](renders/pignon-rapports-couverture.png)
+
+![Planche](renders/pignon-rapports-planche.png)
+
+Le film montre le formulaire « Créer un rapport » (analyse d’un emplacement, simulation, contenu à cocher), lien du rapport (« fige les données à sa date de création », lisible sans compte), puis fenêtre « Partager la session » : invitation par email du compte Pignon, Lecture ou Écriture, personnes ayant accès. L’aperçu du rapport est stylisé ; l’adresse email est fictive.
 
 ## Utilisation
 
