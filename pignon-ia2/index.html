@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · Insights IA v2 · 25 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="../pignon-ia/ia.css">
+  <link rel="stylesheet" href="../pignon/app.css">
+  <link rel="stylesheet" href="ia2.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile"></div>
+    <div class="fade-top" id="fonduHaut"></div>
+
+    <div class="pin" id="pin">
+      <span class="pin-onde" id="onde1"></span>
+      <span class="pin-dot" id="pinPoint"></span>
+    </div>
+
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Insights IA</p>
+      <h1 class="gros-titre" data-mots>Une question&nbsp;?<br><em>Réponse chiffrée.</em></h1>
+    </section>
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>01 · Comparer deux adresses</p>
+      <h1 class="gros-titre" data-mots>Il vous pose<br><em>les bonnes questions.</em></h1>
+    </section>
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>02 · La synthèse</p>
+      <h1 class="gros-titre" data-mots>Trois points,<br><em>et vous tranchez.</em></h1>
+    </section>
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>03 · Sur la carte</p>
+      <h1 class="gros-titre" data-mots>Vous cliquez,<br><em>il vous explique.</em></h1>
+    </section>
+    <section class="titre" id="titre4">
+      <p class="surtitre" data-frappe>04 · Dans l’app</p>
+      <h1 class="gros-titre" data-mots>Un outil<br><em>à prendre en main&nbsp;?</em></h1>
+    </section>
+
+    <!-- 1-2 — Discussion sur une comparaison (d'après une session réelle, sans adresse) -->
+    <div class="chat chat--grand" id="chatComp">
+      <div class="chat-entete">
+        <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        Insights IA
+      </div>
+      <div class="chat-contexte" id="contexteComp"><span class="cx-lib">Comparaison</span><span class="cmp-adresse cmp-adresse--a"><i></i>Local A</span><span class="cx-vs">vs</span><span class="cmp-adresse cmp-adresse--b"><i></i>Local B</span></div>
+      <div class="chat-corps" id="corpsComp">
+        <p class="chat-vide" id="chatVide">Une question sur un point, une comparaison, un quartier&nbsp;: il répond avec les données, en français courant.</p>
+        <div class="fil" id="filComp">
+          <div class="bulle-u" data-pas>J’hésite entre ces deux emplacements pour ma boulangerie. Tu en penses quoi&nbsp;?</div>
+          <div class="bulle-a" data-pas data-mots-flux>Pour t’aider à trancher, dis-moi ce qui compte le plus pour toi&nbsp;: la <strong>concurrence</strong>, le <strong>stationnement</strong>, les contraintes de façade&nbsp;?</div>
+          <div class="bulle-u" data-pas>Le stationnement. Mes clients viennent en voiture, tôt le matin.</div>
+          <div class="bulle-a" data-pas data-mots-flux>Alors <strong>A</strong> a un avantage net&nbsp;: parking à <strong>47&nbsp;m</strong>, et deux dans un rayon de 350&nbsp;m. Pour B, le plus proche est à <strong>299&nbsp;m</strong>.</div>
+          <div class="bulle-u" data-pas>Résume-moi en 3 points.</div>
+          <div class="bulle-a bulle-liste" data-pas>
+            <ol>
+              <li><strong>Stationnement</strong>&nbsp;: A gagne, 47&nbsp;m contre 299&nbsp;m.</li>
+              <li><strong>Concurrence</strong>&nbsp;: 4× plus de commerces autour de A. Plus de flux, plus de rivaux.</li>
+              <li><strong>Cadre</strong>&nbsp;: zones patrimoniales des deux côtés, contraintes proches.</li>
+            </ol>
+            <p class="question-retour">Es-tu prêt à accepter plus de concurrence pour un meilleur accès client&nbsp;?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 — Sur la carte : explication du panneau (session réelle) -->
+    <div class="carte panneau-stats" id="panneauStats">
+      <p class="ps-titre">Voisinage</p>
+      <div class="ps-ligne" id="ligneHab"><p class="ps-lib">Population<small>rayon de 500&nbsp;m</small></p><p class="ps-val">11&nbsp;330 <small>hab.</small></p></div>
+      <div class="ps-ligne" id="ligneJeunes"><p class="ps-lib">15 à 29 ans<small>part des habitants</small></p><p class="ps-val">45,5 <small>%</small></p></div>
+      <div class="ps-ligne" id="ligneCommerces"><p class="ps-lib">Commerces actifs<small>voisinage</small></p><p class="ps-val">1&nbsp;950</p></div>
+      <div class="ps-ligne" id="ligneAge"><p class="ps-lib">Âge médian<small>des commerces</small></p><p class="ps-val">8,9 <small>ans</small></p></div>
+    </div>
+    <div class="chat chat--petit" id="chatPoint">
+      <div class="chat-entete">
+        <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        Insights IA
+        <span class="entete-lien">Aller à ce point →</span>
+      </div>
+      <div class="chat-corps">
+        <div class="fil" id="filPoint">
+          <span class="point-joint-ia" data-pas><i></i>Point enregistré joint à la discussion</span>
+          <div class="bulle-u" data-pas>Détaille-moi ce qu’on voit dans le voisinage.</div>
+          <div class="bulle-a" data-pas data-mots-flux>Un quartier très jeune&nbsp;: <strong>45,5&nbsp;%</strong> des habitants ont 15 à 29&nbsp;ans. <strong>1&nbsp;950</strong> commerces actifs, âgés de <strong>8,9&nbsp;ans</strong> en médiane&nbsp;: beaucoup d’ouvertures récentes.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 — Mes chats, puis une question sur un outil (session réelle) -->
+    <div class="carte mes-chats" id="mesChats">
+      <p class="micro">Mes chats</p>
+      <div class="mc-ligne" id="chatOutilLigne"><p>Comment fonctionne l’outil pour voir sa concurrence&nbsp;?<small>Discussion libre · 30/09/2026 11:05</small></p></div>
+      <div class="mc-ligne"><p>Comparaison #5<small>Discussion libre · 30/09/2026 11:03</small></p></div>
+      <div class="mc-ligne"><p>Comparaison #4<small>Discussion libre · 25/09/2026 22:12</small></p></div>
+    </div>
+    <div class="chat chat--petit" id="chatOutil">
+      <div class="chat-entete">
+        <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        Insights IA
+      </div>
+      <div class="chat-corps">
+        <div class="fil" id="filOutil">
+          <div class="bulle-u" data-pas>Comment fonctionne l’outil pour voir sa concurrence&nbsp;?</div>
+          <div class="bulle-a" data-pas data-mots-flux>Ouvre <strong>Concurrence et opportunités</strong>, choisis ton activité et un rayon&nbsp;: les commerces existants s’affichent en points sur la carte. Données <strong>Sirene</strong> et <strong>BODACC</strong>, sans score ni classement.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lanceur" id="lanceur">
+      <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+    </div>
+
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Demandez-lui.<br><em>Il explique pourquoi,<br>pas juste combien.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Créer un compte gratuit
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="25" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="ia2.js"></script>
+</body>
+</html>

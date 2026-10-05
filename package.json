@@ -16,7 +16,8 @@
     "render:v2": "node scripts/render.mjs pignon-v2 --fps 60 --crf 17",
     "render:simulation": "node scripts/render.mjs pignon-simulation --fps 60 --crf 17",
     "render:metier": "node scripts/render.mjs pignon-metier --fps 60 --crf 17",
-    "render:rapports": "node scripts/render.mjs pignon-rapports --fps 60 --crf 17"
+    "render:rapports": "node scripts/render.mjs pignon-rapports --fps 60 --crf 17",
+    "render:ia2": "node scripts/render.mjs pignon-ia2 --fps 60 --crf 17"
   },
   "dependencies": {
     "gsap": "3.15.0"

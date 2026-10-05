@@ -126,11 +126,19 @@ Le film montre les chiffres réels d’une session (débits de boissons), sans a
 
 Le film montre le formulaire « Créer un rapport » (analyse d’un emplacement, simulation, contenu à cocher), lien du rapport (« fige les données à sa date de création », lisible sans compte), puis fenêtre « Partager la session » : invitation par email du compte Pignon, Lecture ou Écriture, personnes ayant accès. L’aperçu du rapport est stylisé ; l’adresse email est fictive.
 
+## Pignon · Insights IA v2 — 25 s, 9:16
+
+**Vidéo : [`renders/pignon-ia2-25s-9x16.mp4`](renders/pignon-ia2-25s-9x16.mp4)** · couverture : [`renders/pignon-ia2-couverture.png`](renders/pignon-ia2-couverture.png)
+
+![Planche](renders/pignon-ia2-planche.png)
+
+Le film reprend les trois conversations fournies, reformulées et sans adresse : une comparaison en plusieurs tours (l’IA demande ce qui compte, répond sur le stationnement — parking à 47 m contre 299 m —, résume en 3 points et renvoie la décision par une question), l’explication du panneau Voisinage après un clic sur la carte (11 330 hab., 45,5 % de 15–29 ans, 1 950 commerces, âge médian 8,9 ans) et l’aide sur l’outil Concurrence et opportunités, ouverte depuis « Mes chats ». Les « Local A / Local B » remplacent les adresses ; la phrase du CTA est inventée.
+
 ## Utilisation
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/ ou /pignon-rapports/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/ ou /pignon-ia2/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
 npm run render:ia           # renders/pignon-ia-15s-9x16.mp4
@@ -139,6 +147,7 @@ npm run render:v2           # renders/pignon-v2-29s-9x16.mp4
 npm run render:simulation   # renders/pignon-simulation-21.5s-9x16.mp4
 npm run render:metier       # renders/pignon-metier-20s-9x16.mp4
 npm run render:rapports     # renders/pignon-rapports-19s-9x16.mp4
+npm run render:ia2          # renders/pignon-ia2-25s-9x16.mp4
 npm run stills              # images clés et planche dans renders/stills/
 ```
 
