@@ -2,20 +2,26 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Pignon · teaser · 10 s · 9:16</title>
+  <title>Pignon · teaser · 13,6 s · 9:16</title>
   <link rel="stylesheet" href="../pignon/fonts/fonts.css">
   <link rel="stylesheet" href="../pignon/style.css">
   <link rel="stylesheet" href="teaser.css">
 </head>
 <body>
   <main class="stage" id="stage">
-    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <!-- Ville floue, secrets caviardés -->
+    <canvas class="map map--flou" id="mapFlou" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voileFlou"></div>
+    <div class="calque" id="caviars"></div>
+    <!-- Sous la loupe : ville nette, secrets lisibles -->
+    <canvas class="map map--net" id="mapNet" width="1080" height="1920"></canvas>
+    <div class="calque calque--net" id="reveles"></div>
     <div class="map-veil" id="voile"></div>
     <div class="fade-top" id="fonduHaut"></div>
 
+    <span class="loupe" id="loupe"></span>
     <div class="pin" id="pin">
       <span class="pin-onde" id="onde1"></span>
-      <span class="pin-onde" id="onde2"></span>
       <span class="pin-dot" id="pinPoint"></span>
     </div>
 
@@ -23,9 +29,18 @@
       <h1 class="gros-titre" data-mots>Chaque adresse<br>a quelque chose<br><em>à cacher.</em></h1>
     </section>
 
+    <!-- Le dossier du local (chiffres de l'exemple publié sur le site) -->
+    <div class="carte dossier" id="dossier">
+      <p class="micro">Ce que cache cette adresse</p>
+      <p class="secret-l"><span>8 commerces ouverts ici depuis 1992</span><i class="caviar"></i></p>
+      <p class="secret-l"><span>4 n’ont pas passé le cap des 2 ans</span><i class="caviar"></i></p>
+      <p class="secret-l"><span>63&nbsp;% des bars du quartier tiennent 5 ans</span><i class="caviar"></i></p>
+      <p class="secret-l"><span>3&nbsp;800&nbsp;€/m², prix médian des ventes</span><i class="caviar"></i></p>
+    </div>
+
     <section class="cta" id="cta">
       <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
-      <p class="cta-ligne" data-mots>Le bail dure trois ans.<br><em>Le clic prend trois secondes.</em></p>
+      <p class="cta-ligne" data-mots>Sachez-le<br><em>avant de signer.</em></p>
       <span class="cta-onde" id="ctaOnde"></span>
       <div class="cta-bouton" id="ctaBouton">
         Explorer la carte
@@ -41,7 +56,7 @@
 
   <div class="controles" id="controles">
     <button id="btnLecture">❚❚</button>
-    <input type="range" id="curseur" min="0" max="10" step="0.001" value="0">
+    <input type="range" id="curseur" min="0" max="13.6" step="0.001" value="0">
     <span id="temps">0.00 s</span>
   </div>
 

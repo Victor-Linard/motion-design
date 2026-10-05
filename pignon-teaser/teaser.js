@@ -1,12 +1,13 @@
 /*
- * Pignon — teaser, 10 s, 1080 x 1920 (9:16). Sans interface : la ville, le point qui cherche
- * son local dans les rues, s'arrête deux fois, le trouve, puis devient le point du i.
- * Accroche et phrase finale reprises du site.
+ * Pignon — teaser, 13,6 s, 1080 x 1920 (9:16). « Chaque adresse a quelque chose à cacher. »
+ * La ville est floue et ses secrets caviardés ; le point devient une loupe qui rend tout net
+ * et décaviarde les étiquettes sur son passage. Au local, son dossier se décaviarde ligne à
+ * ligne (exemple publié sur le site), puis la loupe s'ouvre sur toute la ville.
  */
 (function () {
   'use strict';
 
-  var DUREE = 10;
+  var DUREE = 13.6;
   if (new URLSearchParams(location.search).has('render')) document.body.classList.add('render');
 
   var O = window.PignonOutils;
@@ -78,80 +79,79 @@
     return out;
   }
 
-  // Bâtiments balayés au passage du point : plus ils sont proches, plus ils s'éclairent.
-  var BALAYAGE = 140, tmp = [0, 0], eclaires = [];
-  ville.lots.forEach(function (l) {
-    if (!l.bld || l === cible) return;
-    var best = Infinity, sBest = 0;
-    for (var s = 0; s <= L_RUE; s += 6) {
-      pointA(s, tmp);
-      var d = Math.hypot(tmp[0] - l.cx, tmp[1] - l.cy);
-      if (d < best) { best = d; sBest = s; }
-    }
-    if (best < BALAYAGE) eclaires.push({ poly: l.bld, k: 1 - best / BALAYAGE, s: sBest });
-  });
-  // Deux arrêts : le point examine un local voisin, puis repart.
-  var ARRETS = [0.36, 0.7].map(function (f) { return f * L_RUE; });
-  var candidats = ARRETS.map(function (s) {
-    pointA(s, tmp);
-    var lot = null, best = Infinity;
-    ville.lots.forEach(function (l) {
-      if (!l.bld || l === cible || l.area < 1500 || l.area > 6000) return;
-      var d = Math.hypot(l.cx - tmp[0], l.cy - tmp[1]);
-      if (d < best) { best = d; lot = l; }
+  // ---------- Secrets : étiquettes posées sur des bâtiments (illustratives) ----------
+  var SECRETS = [
+    ['Fermé · 2019', '#a39d97'], ['Repris · 2021', '#086b6c'], ['Procédure · 2017', '#a55535'],
+    ['Ouvert · 2014', '#00958f'], ['A déménagé · 2022', '#88bdbc'], ['Radié · 2016', '#d08b6c'],
+    ['Repris · 2012', '#086b6c'], ['Fermé · 2023', '#a39d97'], ['Ouvert · 2020', '#00958f'],
+    ['Procédure · 2009', '#a55535'], ['Repris · 2018', '#086b6c'], ['Fermé · 2015', '#a39d97']
+  ];
+  var tmp = [0, 0], ancres = [];
+  function distChemin(l) {
+    var best = Infinity;
+    for (var s = 0; s <= L_RUE; s += 8) { pointA(s, tmp); best = Math.min(best, Math.hypot(tmp[0] - l.cx, tmp[1] - l.cy)); }
+    return best;
+  }
+  ville.lots.filter(function (l) { return l.bld && l !== cible && l.area > 1400; })
+    .map(function (l) { return { l: l, d: distChemin(l), c: Math.hypot(l.cx - cible.cx, l.cy - cible.cy) }; })
+    .filter(function (o) { return (o.d > 60 && o.d < 230) || (o.c > 150 && o.c < 520); })
+    .sort(function (a, b) { return a.d - b.d; })
+    .forEach(function (o) {
+      if (ancres.length >= SECRETS.length * 2) return;
+      if (ancres.some(function (a) { return Math.hypot(a.l.cx - o.l.cx, a.l.cy - o.l.cy) < 165; })) return;
+      if (Math.hypot(o.l.cx - cible.cx, o.l.cy - cible.cy) < 120) return;
+      ancres.push(o);
     });
-    return { lot: lot, p: 0 };
+  ancres.forEach(function (a, k) {
+    var sec = SECRETS[k % SECRETS.length];
+    a.couleur = sec[1];
+    a.caviar = document.createElement('span');
+    a.caviar.className = 'etiquette etiquette--caviar';
+    a.caviar.innerHTML = '<i></i>' + sec[0];
+    a.nette = document.createElement('span');
+    a.nette.className = 'etiquette etiquette--nette';
+    a.nette.innerHTML = '<i style="background:' + sec[1] + '"></i>' + sec[0];
+    $('caviars').appendChild(a.caviar);
+    $('reveles').appendChild(a.nette);
   });
 
-  // ---------- Dessin ----------
+  // ---------- Dessin : ville floue, ville nette sous la loupe ----------
   var voyage = { s: 0 }, camVoyage = { s: 0 };
-  var cam = { x: 0, y: 0, s: 2.0, ax: 540, ay: 1240 };
-  var carte = { surbrillance: 0, recul: 0, trace: 1 };
+  var cam = { x: 0, y: 0, s: 1.7, ax: 540, ay: 1250 };
+  var carte = { surbrillance: 0, recul: 0 };
+  var loupe = { r: 0, bord: 1 };
   var vol = { u: 0 }, pointI = { x: 540, y: 620 };
-  var canvas = $('map'), ctx = canvas.getContext('2d'), pin = $('pin');
+  var ctxFlou = $('mapFlou').getContext('2d'), ctxNet = $('mapNet').getContext('2d');
+  var pin = $('pin'), loupeEl = $('loupe'), net = [$('mapNet'), $('reveles')];
   var pDot = [0, 0], pCam = [0, 0];
+  function ecran(x, y) { return [cam.ax + (x - cam.x) * cam.s, cam.ay + (y - cam.y) * cam.s]; }
 
   function maj(t) {
     pointA(camVoyage.s, pCam);
-    cam.x = melanger(pCam[0], CENTRE[0], carte.recul);
-    cam.y = melanger(pCam[1], CENTRE[1], carte.recul);
+    cam.x = melanger(pCam[0], cible.cx, carte.recul);
+    cam.y = melanger(pCam[1], cible.cy, carte.recul);
     pointA(voyage.s, pDot);
-    O.dessinerVille(ctx, ville, cam, t, {
+    O.dessinerVille(ctxFlou, ville, cam, t, {});
+    O.dessinerVille(ctxNet, ville, cam, t, {
       cible: cible, surbrillance: carte.surbrillance,
       apresBati: function (c) {
-        var attenue = 1 - carte.recul;
-        c.fillStyle = '#cce5e4';
-        eclaires.forEach(function (e) {
-          if (voyage.s < e.s) return;
-          var a = e.k * Math.exp(-(voyage.s - e.s) / 320) * borner((voyage.s - e.s) / 40, 0, 1) * attenue;
-          if (a < 0.01) return;
-          c.globalAlpha = a;
-          c.beginPath(); ville.tracePoly(c, e.poly); c.fill();
-        });
-        candidats.forEach(function (k) {
-          if (k.p <= 0.01) return;
-          c.globalAlpha = k.p;
-          c.fillStyle = '#b4dad9'; c.strokeStyle = '#086b6c'; c.lineWidth = 3 / cam.s;
-          c.beginPath(); ville.tracePoly(c, k.lot.bld); c.fill(); c.stroke();
-        });
+        c.globalAlpha = 0.4;
+        ancres.forEach(function (a) { c.fillStyle = a.couleur; c.beginPath(); ville.tracePoly(c, a.l.bld); c.fill(); });
         c.globalAlpha = 1;
       }
     });
-    // Trace de l'itinéraire dans les rues
-    var fin = Math.min(voyage.s, L_RUE);
-    if (fin > 0 && carte.trace > 0) {
-      ctx.globalAlpha = carte.trace;
-      ctx.strokeStyle = '#4e9493';
-      ctx.lineWidth = 7 / cam.s;
-      ctx.beginPath();
-      ctx.moveTo(pts[0][0], pts[0][1]);
-      for (var j = 1; j < pts.length && cum[j] < fin; j++) ctx.lineTo(pts[j][0], pts[j][1]);
-      pointA(fin, tmp);
-      ctx.lineTo(tmp[0], tmp[1]);
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-    }
-    var p = [cam.ax + (pDot[0] - cam.x) * cam.s, cam.ay + (pDot[1] - cam.y) * cam.s];
+    ancres.forEach(function (a) {
+      var e = ecran(a.l.cx, a.l.cy), tr = 'translate(' + e[0].toFixed(1) + 'px,' + e[1].toFixed(1) + 'px) translate(-50%,-50%)';
+      a.caviar.style.transform = tr + ' scale(' + a.caviar._k + ')';
+      a.nette.style.transform = tr + ' scale(' + a.caviar._k + ')';
+    });
+    var p = ecran(pDot[0], pDot[1]);
+    var clip = 'circle(' + loupe.r.toFixed(1) + 'px at ' + p[0].toFixed(1) + 'px ' + p[1].toFixed(1) + 'px)';
+    net.forEach(function (el) { el.style.clipPath = clip; });
+    loupeEl.style.left = p[0].toFixed(1) + 'px';
+    loupeEl.style.top = p[1].toFixed(1) + 'px';
+    loupeEl.style.width = loupeEl.style.height = (loupe.r * 2).toFixed(1) + 'px';
+    loupeEl.style.opacity = loupe.r > 1 ? loupe.bord.toFixed(3) : '0';
     if (vol.u > 0) {
       var u = vol.u, v = 1 - u, kx = Math.min(p[0], pointI.x) - 150, ky = Math.min(p[1], pointI.y) - 120;
       p = [v * v * p[0] + 2 * v * u * kx + u * u * pointI.x, v * v * p[1] + 2 * v * u * ky + u * u * pointI.y];
@@ -161,54 +161,57 @@
 
   // ---------- États initiaux ----------
   O.etatsInitiaux();
-  var titre = $('titre0'), pinPoint = $('pinPoint'), ondes = [$('onde1'), $('onde2')];
+  var titre = $('titre0'), pinPoint = $('pinPoint'), dossier = $('dossier');
+  ancres.forEach(function (a) { a.caviar._k = 0; });
   gsap.set(pinPoint, { scale: 0 });
-  gsap.set(ondes, { scale: 1, opacity: 0 });
+  gsap.set($('onde1'), { scale: 1, opacity: 0 });
+  gsap.set(dossier, { autoAlpha: 0, y: 60 });
+  gsap.set(tous('.caviar'), { scaleX: 1 });
+  gsap.set(tous('.secret-l span'), { opacity: 0 });
 
-  // ---------- Timeline ----------
   var tl = gsap.timeline({ paused: true, defaults: { ease: O.STANDARD, duration: 0.7 } });
-  function onde(el, t, echelle, duree) {
-    tl.fromTo(el, { scale: 1, opacity: 0.75 }, { scale: echelle, opacity: 0, duration: duree, ease: 'power2.out', immediateRender: false }, t);
-  }
 
-  // Accroche (texte du site), sans surtitre
+  // Accroche (texte du site) : la ville floue, les secrets caviardés
   tl.set(titre, { autoAlpha: 1 }, 0.2);
   tl.to(tous('.mot-in', titre), { yPercent: 0, duration: 0.8, stagger: 0.07 }, 0.25);
-  tl.to(tous('.mot-in', titre), { yPercent: -118, duration: 0.32, stagger: 0.012, ease: SORTIE }, 4.0);
-  tl.set(titre, { autoAlpha: 0 }, 4.45);
+  tl.to(ancres.map(function (a) { return a.caviar; }), { _k: 1, duration: 0.4, stagger: 0.05, ease: RESSORT }, 0.5);
+  tl.to(tous('.mot-in', titre), { yPercent: -118, duration: 0.32, stagger: 0.012, ease: SORTIE }, 3.9);
+  tl.set(titre, { autoAlpha: 0 }, 4.35);
+  tl.to($('fonduHaut'), { height: 0, duration: 0.6, ease: 'power1.inOut' }, 4.0);
 
-  // Le point part, s'arrête deux fois devant un local, repart, puis trouve le sien
-  tl.to(pinPoint, { scale: 1, duration: 0.5, ease: RESSORT }, 0.1);
-  tl.to(voyage, { s: ARRETS[0], duration: 1.4, ease: 'power1.inOut' }, 0.45);
-  tl.to(voyage, { s: ARRETS[1], duration: 1.05, ease: 'power1.inOut' }, 2.25);
-  tl.to(voyage, { s: L, duration: 1.05, ease: 'power2.inOut' }, 3.65);
-  tl.to(camVoyage, { s: ARRETS[0], duration: 1.6, ease: 'sine.inOut' }, 0.55);
-  tl.to(camVoyage, { s: ARRETS[1], duration: 1.25, ease: 'sine.inOut' }, 2.35);
-  tl.to(camVoyage, { s: L, duration: 1.25, ease: 'sine.inOut' }, 3.75);
-  [1.85, 3.3].forEach(function (t, k) {
-    tl.to(candidats[k], { p: 1, duration: 0.18, ease: 'power1.out' }, t);
-    tl.to(candidats[k], { p: 0, duration: 0.45, ease: 'power1.in' }, t + 0.32);
-    onde(ondes[0], t + 0.02, 2.2, 0.5);
+  // Le point devient une loupe et parcourt les rues : sous elle, tout est net et lisible
+  tl.to(pinPoint, { scale: 1, duration: 0.5, ease: RESSORT }, 1.4);
+  tl.to(loupe, { r: 265, duration: 0.6, ease: RESSORT }, 1.7);
+  var ARRET = 0.5 * L_RUE;
+  tl.to(voyage, { s: ARRET, duration: 1.8, ease: 'power1.inOut' }, 2.2);
+  tl.to(voyage, { s: L, duration: 1.6, ease: 'power2.inOut' }, 4.4);
+  tl.to(camVoyage, { s: ARRET, duration: 2.0, ease: 'sine.inOut' }, 2.35);
+  tl.to(camVoyage, { s: L, duration: 1.8, ease: 'sine.inOut' }, 4.55);
+
+  // Le local : il s'allume, son dossier se décaviarde ligne à ligne
+  tl.to(carte, { surbrillance: 1, duration: 0.35, ease: 'none' }, 5.9);
+  tl.fromTo($('onde1'), { scale: 1, opacity: 0.75 }, { scale: 3.4, opacity: 0, duration: 0.9, ease: 'power2.out', immediateRender: false }, 5.95);
+  tl.to(loupe, { r: 320, duration: 0.6, ease: RESSORT }, 6.0);
+  tl.to(dossier, { autoAlpha: 1, y: 0, duration: 0.7 }, 6.2);
+  tous('.secret-l').forEach(function (l, k) {
+    var t = 6.8 + k * 0.6;
+    tl.set(l.querySelector('span'), { opacity: 1 }, t);
+    tl.to(l.querySelector('.caviar'), { scaleX: 0, duration: 0.45, ease: 'power2.inOut' }, t);
   });
 
-  // Trouvé : le local s'allume
-  tl.to(carte, { surbrillance: 1, duration: 0.35, ease: 'none' }, 4.62);
-  tl.fromTo(pinPoint, { scale: 1 }, { scale: 1.25, duration: 0.16, yoyo: true, repeat: 1, ease: 'power1.inOut', immediateRender: false }, 4.62);
-  onde(ondes[0], 4.66, 3.4, 0.9);
-  onde(ondes[1], 4.9, 3.4, 0.9);
-
-  // Recul : toute la ville, un seul local allumé
-  tl.to(cam, { s: 1.0, ay: 960, duration: 1.4, ease: CAMERA }, 5.2);
-  tl.to(carte, { recul: 1, duration: 1.4, ease: CAMERA }, 5.2);
-  tl.to(carte, { trace: 0.55, duration: 1.0, ease: 'none' }, 5.2);
-  tl.to($('fonduHaut'), { height: 0, duration: 0.6, ease: 'power1.inOut' }, 5.2);
+  // Tout est révélé : la loupe s'ouvre sur toute la ville
+  tl.to(dossier, { autoAlpha: 0, y: -50, duration: 0.4, ease: SORTIE }, 9.5);
+  tl.to(loupe, { r: 2300, duration: 1.1, ease: CAMERA }, 9.6);
+  tl.to(loupe, { bord: 0, duration: 0.6, ease: 'none' }, 10.0);
+  tl.to(carte, { recul: 1, duration: 1.2, ease: CAMERA }, 9.6);
+  tl.to(cam, { s: 1.25, ay: 1100, duration: 1.2, ease: CAMERA }, 9.6);
 
   // Appel à l'action : le point devient le point du i
-  tl.to($('voile'), { opacity: 0.78, duration: 0.6, ease: 'power1.inOut' }, 6.45);
-  tl.to(vol, { u: 1, duration: 0.6, ease: CAMERA }, 6.55);
-  tl.to(pinPoint, { width: 41.4, height: 41.4, left: -20.7, top: -20.7, borderWidth: 0, boxShadow: 'rgba(0, 56, 57, 0) 0px 0px 0px 0px, rgba(0, 73, 74, 0) 0px 0px 0px 0px', duration: 0.6, ease: CAMERA }, 6.55);
-  tl.set(pin, { autoAlpha: 0 }, 7.15);
-  O.finCta(tl, 7.15);
+  tl.to($('voile'), { opacity: 0.8, duration: 0.6, ease: 'power1.inOut' }, 10.75);
+  tl.to(vol, { u: 1, duration: 0.6, ease: CAMERA }, 10.85);
+  tl.to(pinPoint, { width: 41.4, height: 41.4, left: -20.7, top: -20.7, borderWidth: 0, boxShadow: 'rgba(0, 56, 57, 0) 0px 0px 0px 0px, rgba(0, 73, 74, 0) 0px 0px 0px 0px', duration: 0.6, ease: CAMERA }, 10.85);
+  tl.set(pin, { autoAlpha: 0 }, 11.45);
+  O.finCta(tl, 11.45);
   tl.set({}, {}, DUREE);
 
   function allerA(t) {

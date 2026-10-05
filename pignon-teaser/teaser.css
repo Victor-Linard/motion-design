@@ -1,3 +1,33 @@
-/* Teaser : la ville seule, sans interface. */
+/* Teaser : la ville floue garde ses secrets, la loupe les révèle. */
 .titre { top: 190px; }
 .fade-top { height: 760px; }
+.map--flou { filter: blur(9px) saturate(.5); }
+#voileFlou { opacity: .35; }
+.calque { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+/* Étiquettes : caviardées hors de la loupe, lisibles dessous (même position) */
+.etiquette {
+  position: absolute; left: 0; top: 0;
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 54px; padding: 0 22px 0 16px; border-radius: 999px;
+  font-family: var(--pgn-font-mono); font-weight: 500; font-size: 27px; letter-spacing: .03em; white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+.etiquette--caviar { background: var(--pgn-neutre-900); color: transparent; box-shadow: 0 8px 18px -8px rgba(11, 8, 7, .6); }
+.etiquette--caviar i { width: 14px; height: 14px; border-radius: 50%; background: var(--pgn-neutre-700); }
+.etiquette--nette { background: var(--pgn-neutre-0); color: var(--pgn-neutre-800); border: 1.5px solid var(--pgn-neutre-200); box-shadow: 0 10px 22px -10px rgba(11, 8, 7, .45); }
+.etiquette--nette i { width: 14px; height: 14px; border-radius: 50%; }
+
+.loupe {
+  position: absolute; left: 0; top: 0; width: 0; height: 0; border-radius: 50%;
+  border: 5px solid var(--pgn-petrole-600);
+  box-shadow: 0 0 0 10px rgba(0, 73, 74, .12), 0 24px 60px -10px rgba(11, 8, 7, .35);
+  transform: translate(-50%, -50%);
+}
+
+/* Dossier du local */
+.dossier { top: 220px; padding: 34px 44px 30px; }
+.secret-l { position: relative; width: fit-content; margin-top: 18px !important; font-size: 38px; line-height: 1.25; color: var(--pgn-neutre-900); }
+.secret-l span { position: relative; }
+.caviar { position: absolute; left: -8px; right: -8px; top: 2px; bottom: 0; border-radius: 6px; background: var(--pgn-neutre-900); transform-origin: 100% 50%; }
+.dossier .micro { color: var(--pgn-petrole-600); }

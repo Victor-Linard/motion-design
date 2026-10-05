@@ -134,13 +134,15 @@ Le film montre le formulaire « Créer un rapport » (analyse d’un emplacement
 
 Le film reprend les trois conversations fournies, reformulées et sans adresse : une comparaison en plusieurs tours (l’IA demande ce qui compte, répond sur le stationnement — parking à 47 m contre 299 m —, résume en 3 points et renvoie la décision par une question), l’explication du panneau Voisinage après un clic sur la carte (11 330 hab., 45,5 % de 15–29 ans, 1 950 commerces, âge médian 8,9 ans) et l’aide sur l’outil Concurrence et opportunités, ouverte depuis « Mes chats ». Les « Local A / Local B » remplacent les adresses ; la phrase du CTA est inventée.
 
-## Pignon · teaser — 10 s, 9:16
+## Pignon · teaser — 13,6 s, 9:16
 
-**Vidéo : [`renders/pignon-teaser-10s-9x16.mp4`](renders/pignon-teaser-10s-9x16.mp4)** · couverture : [`renders/pignon-teaser-couverture.png`](renders/pignon-teaser-couverture.png)
+**Vidéo : [`renders/pignon-teaser-13.6s-9x16.mp4`](renders/pignon-teaser-13.6s-9x16.mp4)** · couverture : [`renders/pignon-teaser-couverture.png`](renders/pignon-teaser-couverture.png)
 
 ![Planche](renders/pignon-teaser-planche.png)
 
-Sans interface : la ville seule. Le point pétrole part d’un carrefour et suit le plus court chemin dans les rues (calculé sur le réseau de la carte, `pignon-teaser/teaser.js`). Il s’arrête deux fois devant un local, repart, puis trouve le sien. La caméra recule sur toute la ville et le point devient celui du i. L’accroche (« Chaque adresse a quelque chose à cacher. ») et la phrase finale (« Le bail dure trois ans. Le clic prend trois secondes. ») sont reprises du site.
+Sans interface. « Chaque adresse a quelque chose à cacher. » (site) : la ville est floue et des étiquettes caviardées sont posées sur les bâtiments. Le point devient une loupe qui suit le plus court chemin dans les rues ; sous elle, la ville est nette et les étiquettes se lisent (« Fermé · 2019 », « Repris · 2021 »…). Arrivé au local, son dossier se décaviarde ligne à ligne : 8 commerces depuis 1992, 4 n’ont pas passé 2 ans, 63 % des bars du quartier tiennent 5 ans, 3 800 €/m². La loupe s’ouvre ensuite sur toute la ville et le point devient celui du i.
+
+Les chiffres du dossier viennent de l’exemple publié sur le site. Les étiquettes de la ville sont illustratives (catégories de l’app, années inventées). La phrase « Sachez-le avant de signer. » est une proposition.
 
 ## Pignon · avant / après — 21 s, 9:16
 
@@ -212,7 +214,7 @@ npm run render:simulation   # renders/pignon-simulation-21.5s-9x16.mp4
 npm run render:metier       # renders/pignon-metier-20s-9x16.mp4
 npm run render:rapports     # renders/pignon-rapports-19s-9x16.mp4
 npm run render:ia2          # renders/pignon-ia2-25s-9x16.mp4
-npm run render:teaser       # renders/pignon-teaser-10s-9x16.mp4
+npm run render:teaser       # renders/pignon-teaser-13.6s-9x16.mp4
 npm run render:avant-apres  # renders/pignon-avant-apres-21s-9x16.mp4
 npm run render:parcours     # renders/pignon-parcours-28.5s-9x16.mp4
 npm run render:chiffre      # renders/pignon-chiffre-ep1|ep2|ep3-11.5s-9x16.mp4 (--param ep=N)
