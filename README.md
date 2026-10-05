@@ -85,15 +85,48 @@ Couverture : [`renders/pignon-tuto-couverture.png`](renders/pignon-tuto-couvertu
 
 Parcours et libellés repris de l’app (cadenas du panneau, message d’Insights IA sur l’enregistrement, Mes analyses, « Comparer les analyses cochées ») et du site (« Invitez vos associés à lire ou à modifier », « Pignon vous prévient quand les données ont changé »). La forme exacte du partage (sélecteur Lecture / Modification, « Invitation envoyée ») est une mise en scène. Aucune adresse n’est citée.
 
+## Pignon · vue d’ensemble v2 — 29 s, 9:16
+
+**Vidéo : [`renders/pignon-v2-29s-9x16.mp4`](renders/pignon-v2-29s-9x16.mp4)** — la version à jour de l’app (barre Carte, Mes analyses, Simulations, Rapports, Partages).
+
+![Planche](renders/pignon-v2-planche.png)
+
+| Temps | Scène | Contenu |
+|---|---|---|
+| 0 – 2,4 s | Accroche | « Ce n’est pas juste un bail, c’est votre projet. » (site) |
+| 2,4 – 6,3 s | 01 · La carte | Clic sur une adresse, chances de survie du métier : 75 % à 3 ans, 61 % à 5 ans, 33 % à 10 ans |
+| 6,3 – 9,8 s | 02 · Autour du point | Isochrone à pied, concurrents, outils Isochrones / Concurrence / Ombres |
+| 9,8 – 13,9 s | 03 · Votre métier | Prix de cession des fonds (médiane 225 k€), devenir des commerces fermés (64 % repris sur place) |
+| 13,9 – 18,3 s | 04 · Simulations | Clients × panier × jours, résultat, seuil de rentabilité (exemple) |
+| 18,3 – 22 s | 05 · Comparez | Comparateur et réponse d’Insights IA |
+| 22 – 25,5 s | 06 · Rapports | Un rapport, un lien, données figées, lisible sans compte |
+| 25,5 – 29 s | Appel à l’action | « Le bail dure trois ans. Le clic prend trois secondes. », « Explorer la carte → » |
+
+## Pignon · Simulations — 21,5 s, 9:16
+
+**Vidéo : [`renders/pignon-simulation-21.5s-9x16.mp4`](renders/pignon-simulation-21.5s-9x16.mp4)** — outils de recettes de l’app (couverts, postes, fréquentation, abonnements, personnalisé), valeur fixe ou fourchette, charges, salarié, dirigeant et statut, puis résultat, seuil de rentabilité et sensibilité (tornade). L’exemple de boulangerie est inventé mais cohérent : CA = clients × panier × 282 jours, achats 32 %, charges fixes 105 k€ ; les fourchettes, le seuil (79 clients/jour, marge de sécurité 48 %) et la tornade sont calculés à partir de ces hypothèses. Le coût employeur du salarié (≈ 31 k€) est une approximation, pas le calcul URSSAF de l’app.
+
+## Pignon · Analyse du métier — 20 s, 9:16
+
+**Vidéo : [`renders/pignon-metier-20s-9x16.mp4`](renders/pignon-metier-20s-9x16.mp4)** — chiffres réels d’une session (débits de boissons), sans adresse : chances de survie (75 / 61 / 33 %), devenir des 47 commerces fermés depuis 2008, évolution 2016–2025 (20 → 22 établissements, créations et fermetures par an), prix de cession des fonds (médiane 225 k€, 17 ventes) et CA du secteur (médiane 152 k€, IC 95 % 60–219 k€).
+
+## Pignon · Rapports et partage — 19 s, 9:16
+
+**Vidéo : [`renders/pignon-rapports-19s-9x16.mp4`](renders/pignon-rapports-19s-9x16.mp4)** — formulaire « Créer un rapport » (analyse d’un emplacement, simulation, contenu à cocher), lien du rapport (« fige les données à sa date de création », lisible sans compte), puis fenêtre « Partager la session » : invitation par email du compte Pignon, Lecture ou Écriture, personnes ayant accès. L’aperçu du rapport est stylisé ; l’adresse email est fictive.
+
 ## Utilisation
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/ ou /pignon-tuto/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/ ou /pignon-rapports/ : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
 npm run render:ia           # renders/pignon-ia-15s-9x16.mp4
 npm run render:tuto         # renders/pignon-tuto-20s-9x16.mp4
+npm run render:v2           # renders/pignon-v2-29s-9x16.mp4
+npm run render:simulation   # renders/pignon-simulation-21.5s-9x16.mp4
+npm run render:metier       # renders/pignon-metier-20s-9x16.mp4
+npm run render:rapports     # renders/pignon-rapports-19s-9x16.mp4
 npm run stills              # images clés et planche dans renders/stills/
 ```
 

@@ -96,7 +96,7 @@
   // 0 — Accroche
   T.entrer(titres[0], 0);
   tl.fromTo(tous('#puces span'), { autoAlpha: 0, y: 40, scale: 0.9 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.18, ease: RESSORT }, 0.55);
-  tl.to(tous('#puces span'), { autoAlpha: 0, y: -30, duration: 0.35, stagger: 0.05, ease: SORTIE }, 2.2);
+  tl.to(tous('#puces span'), { autoAlpha: 0, y: -30, duration: 0.3, stagger: 0.04, ease: SORTIE }, 1.98);
   T.sortir(titres[0], 2.25);
 
   // 1 — Vos recettes : l'outil qui correspond au métier
