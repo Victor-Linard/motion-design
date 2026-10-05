@@ -1,0 +1,98 @@
+/* Composants des pages récentes de l'app (navigation, métier, simulations, rapports), à l'échelle de la vidéo. */
+
+/* Navigation de l'app : Carte, Mes analyses, Simulations, Rapports, Partages */
+.nav-app {
+  position: absolute; right: var(--marge); top: 128px;
+  display: flex; gap: 8px; padding: 8px;
+  background: var(--pgn-neutre-0);
+  border: 1.5px solid var(--pgn-neutre-200);
+  border-radius: 999px;
+  box-shadow: 0 14px 32px -18px rgba(11, 8, 7, .35);
+}
+.na-curseur { position: absolute; left: 8px; top: 8px; width: 64px; height: 64px; border-radius: 50%; background: var(--pgn-petrole-600); }
+.na-item { position: relative; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; color: var(--pgn-neutre-500); }
+.na-item svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Titre de carte et petites mentions */
+.sc-titre { font-family: var(--pgn-font-editorial); font-size: 48px; line-height: 1.1; letter-spacing: -0.01em; }
+.sc-sous { font-size: 25px; color: var(--pgn-neutre-600); margin-top: 8px !important; }
+.exemple { display: inline-flex; padding: 6px 16px; border-radius: 999px; background: var(--pgn-attention-bg); color: var(--pgn-attention-bg-text); font-size: 22px; font-weight: 600; }
+
+/* Chances de survie : encore ouverts à 3, 5 et 10 ans */
+.survie-lignes { display: flex; flex-direction: column; gap: 22px; margin-top: 30px; }
+.survie-l { display: grid; grid-template-columns: 130px 1fr 120px; align-items: center; gap: 20px; }
+.survie-l .lib { font-family: var(--pgn-font-mono); font-size: 25px; color: var(--pgn-neutre-600); }
+.survie-l .piste { position: relative; height: 34px; border-radius: 8px; background: var(--pgn-neutre-100); overflow: hidden; }
+.survie-l .plein { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 8px; background: var(--pgn-petrole-500); transform-origin: 0 50%; }
+.survie-l .val { font-family: var(--pgn-font-mono); font-weight: 500; font-size: 40px; text-align: right; }
+.survie-l .val small { font-size: 24px; color: var(--pgn-neutre-600); }
+
+/* Ce que sont devenus les commerces fermés */
+.devenir-barre { display: flex; height: 54px; border-radius: 10px; overflow: hidden; margin-top: 26px; }
+.devenir-barre span { height: 100%; transform-origin: 0 50%; }
+.dv-repris { background: var(--pgn-petrole-500); }
+.dv-demenage { background: var(--pgn-petrole-300); }
+.dv-successeur { background: var(--pgn-petrole-200); }
+.dv-procedure { background: var(--pgn-terracotta-600); }
+.dv-radie { background: var(--pgn-terracotta-300); }
+.dv-info { background: var(--pgn-neutre-300); }
+.devenir-legende { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin-top: 22px; font-size: 25px; }
+.devenir-legende p { display: flex; align-items: center; gap: 12px; }
+.devenir-legende i { width: 22px; height: 22px; border-radius: 5px; flex: none; }
+.devenir-legende b { font-family: var(--pgn-font-mono); font-weight: 500; margin-left: auto; }
+
+/* Chiffre clé avec sa fourchette (prix de cession, CA du secteur) */
+.cle { display: flex; align-items: baseline; gap: 14px; margin-top: 18px; }
+.cle-val { font-family: var(--pgn-font-mono); font-weight: 500; font-size: 92px; line-height: 1; letter-spacing: -0.02em; }
+.cle-val small { font-size: 42px; color: var(--pgn-neutre-600); letter-spacing: 0; }
+.cle-lib { font-size: 27px; color: var(--pgn-neutre-700); }
+.plage { position: relative; height: 44px; margin-top: 22px; }
+.plage-piste { position: absolute; left: 0; right: 0; top: 19px; height: 6px; border-radius: 3px; background: var(--pgn-neutre-200); }
+.plage-bande { position: absolute; top: 12px; height: 20px; border-radius: 10px; background: var(--pgn-petrole-200); transform-origin: 50% 50%; }
+.plage-marque { position: absolute; top: 0; width: 8px; height: 44px; margin-left: -4px; border-radius: 3px; background: var(--pgn-petrole-600); transform-origin: 50% 100%; }
+.plage-axe { position: relative; height: 30px; margin-top: 8px; }
+.plage-axe span { position: absolute; transform: translateX(-50%); font-family: var(--pgn-font-mono); font-size: 21px; color: var(--pgn-neutre-500); white-space: nowrap; }
+
+/* Évolution du métier : créations au-dessus, fermetures en dessous */
+.evol { position: relative; height: 230px; margin-top: 24px; display: flex; align-items: center; gap: 14px; }
+.evol-axe { position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--pgn-neutre-300); }
+.evol-an { position: relative; flex: 1; height: 100%; }
+.evol-cre, .evol-fer { position: absolute; left: 12%; right: 12%; border-radius: 5px; }
+.evol-cre { bottom: 50%; background: #008d85; transform-origin: 50% 100%; }
+.evol-fer { top: 50%; background: #c0603a; transform-origin: 50% 0%; }
+.evol-lib { position: absolute; left: 50%; bottom: -36px; transform: translateX(-50%); font-family: var(--pgn-font-mono); font-size: 19px; color: var(--pgn-neutre-500); }
+
+/* Simulation : facteurs × facteurs = chiffre d'affaires */
+.formule { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 14px; margin-top: 30px; }
+.facteur { padding: 20px 18px; border-radius: 14px; background: var(--pgn-neutre-100); text-align: center; }
+.facteur b { display: block; font-family: var(--pgn-font-mono); font-weight: 500; font-size: 46px; line-height: 1.1; white-space: nowrap; }
+.facteur small { display: block; margin-top: 6px; font-size: 22px; color: var(--pgn-neutre-600); }
+.fois { font-family: var(--pgn-font-mono); font-size: 40px; color: var(--pgn-neutre-500); }
+.resultat-sim { margin-top: 26px; padding-top: 24px; border-top: 1.5px solid var(--pgn-neutre-200); display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+.resultat-sim .lib { font-size: 28px; color: var(--pgn-neutre-700); }
+.resultat-sim b { font-family: var(--pgn-font-mono); font-weight: 500; font-size: 58px; white-space: nowrap; }
+.resultat-sim b small { font-size: 28px; color: var(--pgn-neutre-600); }
+.seuil { display: flex; align-items: center; gap: 14px; margin-top: 20px; padding: 18px 24px; border-radius: 12px; background: var(--pgn-petrole-50); color: var(--pgn-petrole-700); font-size: 28px; }
+.seuil b { font-family: var(--pgn-font-mono); font-weight: 500; }
+.seuil svg { width: 34px; height: 34px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Rapport : une page qui se compose, puis son lien */
+.rapport-entete { display: flex; align-items: center; gap: 20px; }
+.rapport-icone { width: 76px; height: 76px; flex: none; border-radius: 16px; background: var(--pgn-terracotta-50); color: var(--pgn-terracotta-600); display: flex; align-items: center; justify-content: center; }
+.rapport-icone svg { width: 42px; height: 42px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rapport-nom { font-weight: 600; font-size: 32px; }
+.rapport-nom small { display: block; font-weight: 400; font-size: 23px; color: var(--pgn-neutre-600); margin-top: 4px; }
+.rapport-sections { margin-top: 26px; display: flex; flex-direction: column; gap: 4px; }
+.rapport-sections p { display: flex; align-items: center; gap: 16px; padding: 14px 0; font-size: 28px; border-top: 1.5px solid var(--pgn-neutre-200); }
+.rapport-sections .coche { width: 38px; height: 38px; flex: none; border-radius: 8px; background: var(--pgn-petrole-600); display: flex; align-items: center; justify-content: center; }
+.rapport-sections .coche svg { width: 26px; height: 26px; fill: none; stroke: var(--pgn-neutre-0); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.rapport-sections small { margin-left: auto; font-size: 22px; color: var(--pgn-neutre-500); }
+.lien {
+  display: flex; align-items: center; gap: 16px; margin-top: 24px;
+  padding: 18px 20px 18px 24px; border-radius: 14px; background: var(--pgn-neutre-100);
+  font-family: var(--pgn-font-mono); font-size: 25px; color: var(--pgn-neutre-700);
+}
+.lien svg { width: 32px; height: 32px; flex: none; fill: none; stroke: var(--pgn-petrole-600); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.lien .copier { margin-left: auto; font-family: var(--pgn-font-ui); font-weight: 600; font-size: 25px; padding: 12px 22px; border-radius: 10px; background: var(--pgn-terracotta-600); color: var(--pgn-neutre-0); white-space: nowrap; }
+.sans-compte { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; padding: 10px 22px 10px 16px; border-radius: 999px; background: var(--pgn-attention-bg); color: var(--pgn-attention-bg-text); font-weight: 600; font-size: 26px; }
+.sans-compte svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }

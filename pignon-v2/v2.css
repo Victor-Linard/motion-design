@@ -1,0 +1,27 @@
+/* Placement des cartes de la vue d'ensemble. */
+#carteSurvie { top: 880px; padding: 40px 48px 44px; }
+#carteCession { top: 600px; padding: 38px 48px 30px; }
+#carteDevenir { top: 1010px; padding: 38px 48px 40px; }
+#carteSimu { top: 600px; padding: 40px 44px 40px; }
+#carteRapport { top: 600px; padding: 40px 48px 44px; }
+
+.outils-ligne { position: absolute; left: var(--marge); top: 1420px; width: var(--largeur); display: flex; justify-content: center; gap: 14px; }
+.ol-item {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 26px 16px 20px; border-radius: 999px;
+  background: var(--pgn-neutre-0); border: 1.5px solid var(--pgn-neutre-200);
+  font-size: 28px; font-weight: 600; color: var(--pgn-neutre-700);
+  box-shadow: 0 14px 30px -18px rgba(11, 8, 7, .4);
+}
+.ol-item svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ol-actif { background: var(--pgn-petrole-600); border-color: var(--pgn-petrole-600); color: var(--pgn-neutre-0); }
+
+.bulle-ia-seule {
+  position: absolute; left: var(--marge); top: 1010px; width: var(--largeur);
+  padding: 30px 34px 34px; border-radius: 18px;
+  background: var(--pgn-neutre-0); border: 1.5px solid var(--pgn-neutre-200);
+  box-shadow: var(--ombre-carte);
+}
+.bis-qui { display: flex; align-items: center; gap: 12px; font-size: 27px; font-weight: 600; color: var(--pgn-petrole-600); }
+.bis-qui svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bulle-ia-seule .bulle-a { margin-top: 16px !important; max-width: none; font-size: 36px; }

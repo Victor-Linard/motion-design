@@ -1,0 +1,58 @@
+/* Composition « Rapports et partage ». */
+#carteForm, #carteRapport, #cartePartage { top: 600px; padding: 40px 46px 44px; }
+
+.champ { margin-top: 22px; }
+.champ-lib { font-size: 24px; font-weight: 600; color: var(--pgn-neutre-700); }
+.champ-val {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 10px !important; padding: 18px 22px; border-radius: 10px;
+  border: 1.5px solid var(--pgn-neutre-300); font-size: 29px;
+}
+.champ-val span { color: var(--pgn-neutre-500); font-size: 24px; }
+.cases { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; margin-top: 14px; }
+.cases p { display: flex; align-items: center; gap: 14px; font-size: 27px; }
+.coche-f { width: 38px; height: 38px; flex: none; border-radius: 8px; border: 3px solid var(--pgn-neutre-400); display: flex; align-items: center; justify-content: center; }
+.coche-f svg { width: 26px; height: 26px; fill: none; stroke: var(--pgn-neutre-0); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+.bouton-creer {
+  display: inline-flex; margin-top: 30px; padding: 20px 32px; border-radius: 10px;
+  background: var(--pgn-terracotta-600); color: var(--pgn-neutre-0); font-weight: 600; font-size: 29px; white-space: nowrap;
+}
+
+.apercu { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 26px; height: 220px; padding: 20px; border-radius: 14px; background: var(--pgn-neutre-100); }
+.ap-carte { border-radius: 10px; background: repeating-linear-gradient(35deg, #e7e1d9 0 18px, #fefbf9 18px 30px); position: relative; }
+.ap-carte::after { content: ''; position: absolute; left: 46%; top: 42%; width: 26px; height: 26px; border-radius: 50%; background: var(--pgn-petrole-600); border: 5px solid var(--pgn-neutre-0); }
+.ap-col { display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.ap-ligne { display: block; height: 16px; border-radius: 8px; background: var(--pgn-neutre-300); }
+.ap-barres { display: flex; align-items: flex-end; gap: 10px; height: 80px; }
+.ap-barres i { flex: 1; border-radius: 4px 4px 0 0; background: var(--pgn-petrole-400); }
+
+.pa-session { font-weight: 600; font-size: 36px; margin-top: 8px !important; }
+.saisie { display: flex; align-items: center; margin-top: 12px !important; padding: 18px 22px; border-radius: 10px; border: 2px solid var(--pgn-petrole-400); font-size: 30px; min-height: 76px; }
+.caret { display: inline-block; width: 3px; height: 34px; margin-left: 2px; background: var(--pgn-petrole-600); }
+.pa-ligne { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+.pa-ligne .bouton-creer { margin-top: 0; }
+.bascule { position: relative; display: inline-flex; padding: 6px; border-radius: 12px; background: var(--pgn-neutre-100); }
+.bascule-fond { position: absolute; left: 6px; top: 6px; bottom: 6px; width: 150px; border-radius: 9px; background: var(--pgn-neutre-0); box-shadow: 0 2px 8px rgba(23, 19, 16, .14); }
+.b-opt { position: relative; width: 150px; text-align: center; padding: 14px 0; font-size: 27px; font-weight: 600; color: var(--pgn-neutre-600); }
+.acces { display: flex; align-items: center; gap: 18px; padding: 18px 0; border-bottom: 1.5px solid var(--pgn-neutre-200); }
+.acces p { font-size: 28px; font-weight: 500; }
+.acces small { margin-left: auto; font-size: 25px; color: var(--pgn-neutre-600); }
+.avatar { width: 58px; height: 58px; flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--pgn-terracotta-600); color: var(--pgn-neutre-0); font-weight: 600; font-size: 26px; }
+.avatar--petrole { background: var(--pgn-petrole-600); }
+
+.cta .cta-ligne { font-size: 66px; }
+.cta-bouton { font-size: 42px; }
+
+.accroche-lien {
+  position: absolute; left: var(--marge); top: 820px; width: var(--largeur);
+  display: flex; align-items: center; gap: 22px; padding: 30px 34px; border-radius: 18px;
+  background: var(--pgn-neutre-0); border: 1.5px solid var(--pgn-neutre-200); box-shadow: var(--ombre-carte);
+}
+.accroche-lien p { font-size: 30px; font-weight: 600; line-height: 1.3; }
+.al-fleche { font-family: var(--pgn-font-mono); font-size: 44px; color: var(--pgn-neutre-500); }
+.al-lien { margin-left: auto; display: inline-flex; align-items: center; gap: 12px; padding: 16px 26px; border-radius: 999px; background: var(--pgn-petrole-600); color: var(--pgn-neutre-0); font-size: 30px; font-weight: 600; white-space: nowrap; }
+.al-lien svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.point-vol {
+  position: absolute; left: 0; top: 0; width: 58px; height: 58px; margin: -29px 0 0 -29px;
+  border-radius: 50%; background: var(--pgn-petrole-600);
+}

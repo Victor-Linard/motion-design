@@ -12,7 +12,11 @@
     "render:ia": "node scripts/render.mjs pignon-ia --fps 60 --crf 17",
     "stills:ia": "node scripts/render.mjs pignon-ia --stills 1.9,4.6,8.4,11.6,12.6,14.9",
     "render:tuto": "node scripts/render.mjs pignon-tuto --fps 60 --crf 17",
-    "stills:tuto": "node scripts/render.mjs pignon-tuto --stills 3.6,6.2,7.9,12.6,14.3,16.8,19.95"
+    "stills:tuto": "node scripts/render.mjs pignon-tuto --stills 3.6,6.2,7.9,12.6,14.3,16.8,19.95",
+    "render:v2": "node scripts/render.mjs pignon-v2 --fps 60 --crf 17",
+    "render:simulation": "node scripts/render.mjs pignon-simulation --fps 60 --crf 17",
+    "render:metier": "node scripts/render.mjs pignon-metier --fps 60 --crf 17",
+    "render:rapports": "node scripts/render.mjs pignon-rapports --fps 60 --crf 17"
   },
   "dependencies": {
     "gsap": "3.15.0"

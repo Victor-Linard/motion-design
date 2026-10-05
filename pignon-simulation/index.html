@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · Simulations · 21 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="../pignon/app.css">
+  <link rel="stylesheet" href="simulation.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile" style="opacity:.86"></div>
+
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Simulations</p>
+      <h1 class="gros-titre" data-mots>Combien ça peut<br>vous rapporter,<br><em>vraiment&nbsp;?</em></h1>
+    </section>
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>01 · Vos recettes</p>
+      <h1 class="gros-titre" data-mots>Partez de<br><em>votre métier.</em></h1>
+    </section>
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>02 · Vos hypothèses</p>
+      <h1 class="gros-titre" data-mots>Un chiffre,<br><em>ou une fourchette.</em></h1>
+    </section>
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>03 · Charges et statut</p>
+      <h1 class="gros-titre" data-mots>Loyer, salaires,<br><em>forme juridique.</em></h1>
+    </section>
+    <section class="titre" id="titre4">
+      <p class="surtitre" data-frappe>04 · Le verdict</p>
+      <h1 class="gros-titre" data-mots>Rentable,<br><em>et à quel prix&nbsp;?</em></h1>
+    </section>
+
+    <div class="accroche-puces" id="puces">
+      <span>Chiffre d’affaires <b>€ HT / an</b></span>
+      <span>Résultat avant impôt <b>€</b></span>
+      <span>Seuil de rentabilité <b>clients / jour</b></span>
+    </div>
+
+    <!-- 1 — Outils de calcul des recettes (libellés de l'app) -->
+    <div class="carte" id="carteOutils">
+      <p class="micro">Ajouter un outil de calcul</p>
+      <div class="tuiles">
+        <div class="tuile"><b>Couverts / places assises</b><small>Restaurant, bar, salon de thé&nbsp;: places × remplissage × ticket moyen</small></div>
+        <div class="tuile"><b>Postes de travail</b><small>Coiffure, esthétique, garage&nbsp;: postes × occupation × prix moyen</small></div>
+        <div class="tuile" id="tuileFrequentation"><b>Fréquentation</b><small>Boulangerie, épicerie, boutique&nbsp;: clients × panier moyen</small><span class="tuile-coche"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span></div>
+        <div class="tuile"><b>Abonnements</b><small>Salle de sport, coworking, cours&nbsp;: abonnés × prix mensuel</small></div>
+        <div class="tuile"><b>Personnalisé</b><small>Vos propres facteurs, multipliés entre eux</small></div>
+      </div>
+    </div>
+
+    <!-- 2 — Formule de la fréquentation -->
+    <div class="carte" id="carteFormule">
+      <div class="rapport-entete">
+        <p class="rapport-nom" style="flex:1">Fréquentation · boulangerie<small>clients × panier moyen × jours d’ouverture</small></p>
+        <span class="exemple">Exemple</span>
+      </div>
+      <div class="formule">
+        <div class="facteur" id="fClients"><b><span id="valClients">150</span></b><small>clients / jour</small><span class="variable" id="variable">variable · 120 à 180</span></div><span class="fois">×</span>
+        <div class="facteur"><b>7,00&nbsp;€</b><small>panier moyen</small></div><span class="fois">×</span>
+        <div class="facteur"><b>282</b><small>jours / an</small></div>
+      </div>
+      <div class="resultat-sim" id="lCa"><p class="lib">Chiffre d’affaires</p><b><span id="nCa">296&nbsp;100</span> <small>€ HT / an</small></b></div>
+      <div class="fourchette-ca" id="fourchetteCa">
+        <p class="micro">Selon la fréquentation</p>
+        <div class="plage">
+          <span class="plage-piste"></span>
+          <span class="plage-bande" id="bandeCa" style="left:20%; width:60%"></span>
+          <span class="plage-marque" style="left:50%"></span>
+        </div>
+        <div class="plage-axe"><span style="left:20%">236&nbsp;880&nbsp;€</span><span style="left:80%">355&nbsp;320&nbsp;€</span></div>
+      </div>
+    </div>
+
+    <!-- 3 — Charges, personnel, dirigeant, statut -->
+    <div class="carte" id="carteCharges">
+      <div class="ch-ligne"><p>Loyer<small>charge fixe</small></p><b>2&nbsp;000 <small>€ / mois</small></b></div>
+      <div class="ch-ligne"><p>Achats (farine, matières)<small>charge proportionnelle</small></p><b>32 <small>% du CA</small></b></div>
+      <div class="ch-ligne"><p>Un salarié · 2&nbsp;000&nbsp;€ brut<small>coût employeur selon les paramètres URSSAF</small></p><b>≈&nbsp;31&nbsp;000 <small>€ / an</small></b></div>
+      <div class="ch-ligne"><p>Rémunération du dirigeant</p><b>3&nbsp;000 <small>€ / mois</small></b></div>
+      <p class="micro" style="margin-top:28px">Statut</p>
+      <div class="statuts">
+        <span>Micro</span><span>EI</span><span>EURL</span><span>SARL</span><span id="statutSas">SAS / SASU</span>
+      </div>
+    </div>
+
+    <!-- 4 — Verdict : résultat, seuil, sensibilité -->
+    <div class="carte" id="carteVerdict">
+      <p class="micro">Résultat avant impôt · année type</p>
+      <div class="cle"><p class="cle-val"><span id="nRes">96&nbsp;348</span>&nbsp;<small>€</small></p></div>
+      <div class="seuil" id="seuil"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg><span>Seuil de rentabilité&nbsp;: <b>79 clients / jour</b><br><small>atteint au bout de 6,3&nbsp;mois · marge de sécurité 48&nbsp;%</small></span></div>
+      <p class="micro" style="margin-top:30px">Ce qui pèse le plus sur le résultat</p>
+      <div class="tornade" id="tornade"></div>
+    </div>
+
+    <span class="point-vol" id="pointVol"></span>
+
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Le bail dure trois ans.<br><em>Faites vos comptes avant.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Créer un compte gratuit
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="21" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="simulation.js"></script>
+</body>
+</html>

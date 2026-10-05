@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · Analyse du métier · 20 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="../pignon/app.css">
+  <link rel="stylesheet" href="metier.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile"></div>
+    <div class="fade-top" id="fonduHaut"></div>
+
+    <div class="pin" id="pin">
+      <span class="pin-onde" id="onde1"></span>
+      <span class="pin-dot" id="pinPoint"></span>
+    </div>
+    <div class="choix-metier" id="choixMetier">
+      <span class="cm-lib">Métier</span>
+      <span class="cm-val">Débits de boissons</span>
+      <span class="cm-naf">NAF 56.30Z</span>
+    </div>
+
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Analyse du métier</p>
+      <h1 class="gros-titre" data-mots>Votre métier<br>tient-il,<br><em>ici&nbsp;?</em></h1>
+    </section>
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>01 · Chances de survie</p>
+      <h1 class="gros-titre" data-mots>Combien sont<br><em>encore ouverts&nbsp;?</em></h1>
+    </section>
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>02 · Commerces fermés</p>
+      <h1 class="gros-titre" data-mots>Et après<br><em>la fermeture<h1 class="gros-titre" data-mots>Fermé ne veut pas<br><em>dire raté.</em></h1>nbsp;?</em></h1>
+    </section>
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>03 · Évolution du métier</p>
+      <h1 class="gros-titre" data-mots>Ça ouvre,<br><em>ou ça ferme&nbsp;?</em></h1>
+    </section>
+    <section class="titre" id="titre4">
+      <p class="surtitre" data-frappe>04 · Ce que ça vaut</p>
+      <h1 class="gros-titre" data-mots>Le prix des fonds,<br><em>le CA du secteur.</em></h1>
+    </section>
+
+    <div class="carte" id="carteSurvie">
+      <p class="micro">94 établissements observés · 73 fermetures</p>
+      <p class="sc-titre" style="margin-top:14px">Vos chances de survie</p>
+      <p class="sc-sous">Encore ouverts, sur 10 commerces de ce type&nbsp;:</p>
+      <div class="survie-lignes">
+        <div class="survie-l"><p class="lib">à 3 ans</p><div class="piste"><span class="plein" style="width:75%"></span></div><p class="val">75<small>&nbsp;%</small></p></div>
+        <div class="survie-l"><p class="lib">à 5 ans</p><div class="piste"><span class="plein" style="width:61%"></span></div><p class="val">61<small>&nbsp;%</small></p></div>
+        <div class="survie-l"><p class="lib">à 10 ans</p><div class="piste"><span class="plein" style="width:33%"></span></div><p class="val">33<small>&nbsp;%</small></p></div>
+      </div>
+    </div>
+
+    <div class="carte" id="carteDevenir">
+      <p class="micro">47 commerces fermés · 2008–2026</p>
+      <p class="sc-titre" style="margin-top:12px">Ce qu’ils sont devenus</p>
+      <div class="devenir-barre" id="barreDevenir">
+        <span class="dv-repris" style="width:63.8%"></span><span class="dv-demenage" style="width:4.3%"></span><span class="dv-successeur" style="width:2.1%"></span><span class="dv-procedure" style="width:6.4%"></span><span class="dv-radie" style="width:2.1%"></span><span class="dv-info" style="width:21.3%"></span>
+      </div>
+      <div class="devenir-legende devenir-legende--colonne">
+        <p><i class="dv-repris"></i>Repris sur place<b>64&nbsp;%</b></p>
+        <p><i class="dv-demenage"></i>A déménagé<b>4&nbsp;%</b></p>
+        <p><i class="dv-successeur"></i>Autre successeur<b>2&nbsp;%</b></p>
+        <p><i class="dv-procedure"></i>Procédure collective annoncée<b>6&nbsp;%</b></p>
+        <p><i class="dv-radie"></i>Radié, sans autre annonce<b>2&nbsp;%</b></p>
+        <p><i class="dv-info"></i>Pas d’information<b>21&nbsp;%</b></p>
+      </div>
+    </div>
+
+    <div class="carte" id="carteEvolution">
+      <p class="micro">Établissements actifs en fin d’année</p>
+      <div class="cle"><p class="cle-val">20 <small>→</small> 22</p><p class="cle-lib">2016 → 2025</p></div>
+      <div class="evol" id="evol"><span class="evol-axe"></span></div>
+      <div class="evol-legende"><span><i style="background:#008d85"></i>Créations</span><span><i style="background:#c0603a"></i>Fermetures</span></div>
+    </div>
+
+    <div class="carte" id="carteCession">
+      <p class="micro">Prix de cession des fonds · 17 ventes, 2017–2026</p>
+      <div class="cle"><p class="cle-val"><span id="nCession">225</span>&nbsp;<small>k€</small></p><p class="cle-lib">médiane</p></div>
+      <div class="plage">
+        <span class="plage-piste"></span>
+        <span class="plage-bande" id="bandeCession" style="left:23.9%; width:44.7%"></span>
+        <span class="plage-marque" id="marqueCession" style="left:52.6%"></span>
+      </div>
+      <div class="plage-axe"><span style="left:0%">20 k€</span><span style="left:34.9%">100 k€</span><span style="left:69.9%">500 k€</span><span style="left:100%">2 M€</span></div>
+    </div>
+    <div class="carte" id="carteCa">
+      <p class="micro">CA du secteur · 10 bilans, rayon de 5 km</p>
+      <div class="cle"><p class="cle-val"><span id="nCa">152</span>&nbsp;<small>k€</small></p><p class="cle-lib">CA médian des sociétés</p></div>
+      <div class="plage">
+        <span class="plage-piste"></span>
+        <span class="plage-bande" id="bandeCa" style="left:24%; width:63.6%"></span>
+        <span class="plage-marque" id="marqueCa" style="left:60.8%"></span>
+      </div>
+      <div class="plage-axe"><span style="left:24%">60 k€</span><span style="left:87.6%">219 k€</span></div>
+      <p class="sc-sous" style="margin-top:6px">Intervalle de confiance à 95&nbsp;%</p>
+    </div>
+
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Le bail dure trois ans.<br><em>Le clic prend trois secondes.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Explorer la carte
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="20" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="metier.js"></script>
+</body>
+</html>

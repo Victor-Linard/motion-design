@@ -1,0 +1,19 @@
+/* Composition « Analyse du métier » : placement et compléments. */
+#carteSurvie, #carteDevenir, #carteEvolution, #carteCession { top: 600px; padding: 40px 48px 44px; }
+#carteCa { top: 1040px; padding: 38px 48px 40px; }
+.devenir-legende--colonne { grid-template-columns: 1fr; gap: 14px; }
+.evol { margin-top: 34px; margin-bottom: 44px; }
+.evol-legende { display: flex; gap: 30px; font-size: 25px; color: var(--pgn-neutre-600); }
+.evol-legende span { display: inline-flex; align-items: center; gap: 10px; }
+.evol-legende i { width: 22px; height: 22px; border-radius: 5px; }
+
+.choix-metier {
+  position: absolute; left: 50%; top: 1250px;
+  display: inline-flex; align-items: center; gap: 16px;
+  padding: 18px 28px; border-radius: 999px; white-space: nowrap;
+  background: var(--pgn-neutre-0); border: 1.5px solid var(--pgn-neutre-200);
+  box-shadow: var(--ombre-carte);
+}
+.cm-lib { font-family: var(--pgn-font-mono); font-size: 22px; letter-spacing: .1em; text-transform: uppercase; color: var(--pgn-petrole-600); }
+.cm-val { font-size: 32px; font-weight: 600; }
+.cm-naf { font-family: var(--pgn-font-mono); font-size: 22px; padding: 6px 12px; border-radius: 8px; background: var(--pgn-neutre-100); color: var(--pgn-neutre-600); }
