@@ -1,0 +1,57 @@
+/* Teaser 3 : une façade en accéléré, de 1992 à aujourd'hui. */
+
+/* ---------- Façade ---------- */
+.facade { position: absolute; left: 120px; top: 660px; width: 840px; height: 780px; }
+.mur { position: absolute; inset: 0; background: #ebe3d8; border-radius: 6px 6px 0 0; box-shadow: inset 0 -2px 0 rgba(23, 19, 16, .06); }
+.mur::before { content: ''; position: absolute; left: 0; right: 0; top: 232px; height: 10px; background: #ddd3c6; }
+.fenetre-haut { position: absolute; top: 34px; width: 200px; height: 170px; background: linear-gradient(160deg, #e3ecea, #c9d6d5); border: 12px solid #fbf8f4; box-shadow: 0 2px 0 #d6ccbf; }
+
+.enseignes { position: absolute; left: 40px; right: 40px; top: 262px; height: 112px; }
+.enseigne {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  border-radius: 6px; font-size: 72px; line-height: 1; white-space: nowrap;
+  box-shadow: 0 10px 22px -12px rgba(23, 19, 16, .45);
+}
+.enseigne--vide { background: #d8cfc3; }
+
+.stores { position: absolute; left: 26px; right: 26px; top: 374px; height: 86px; }
+.store { position: absolute; inset: 0; transform-origin: 50% 0; clip-path: polygon(0 0, 100% 0, 100% 78%, 96% 100%, 92% 78%, 88% 100%, 84% 78%, 80% 100%, 76% 78%, 72% 100%, 68% 78%, 64% 100%, 60% 78%, 56% 100%, 52% 78%, 48% 100%, 44% 78%, 40% 100%, 36% 78%, 32% 100%, 28% 78%, 24% 100%, 20% 78%, 16% 100%, 12% 78%, 8% 100%, 4% 78%, 0 100%); }
+
+.vitrine { position: absolute; left: 40px; right: 40px; top: 466px; height: 314px; display: flex; gap: 14px; padding: 14px; background: #fbf8f4; }
+.vitre { position: relative; flex: 1; background: linear-gradient(165deg, #e6eeed 0%, #ccd9d8 100%); overflow: hidden; }
+.vitre::after { content: ''; position: absolute; left: -20%; top: 0; width: 30%; height: 100%; background: rgba(255, 255, 255, .35); transform: skewX(-18deg); }
+.vitre svg { position: absolute; left: 50%; top: 50%; width: 190px; height: 190px; margin: -95px 0 0 -95px; fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.porte { width: 190px; background: linear-gradient(165deg, #dbe5e4, #c3d1d0); position: relative; }
+.porte span { position: absolute; left: 22px; top: 140px; width: 10px; height: 46px; border-radius: 5px; background: #a39d97; }
+
+.rideau {
+  position: absolute; left: 40px; right: 40px; top: 466px; height: 314px; transform-origin: 50% 0;
+  background: repeating-linear-gradient(180deg, #b3ada7 0 16px, #9c958f 16px 19px);
+  display: flex; align-items: center; justify-content: center;
+}
+.a-louer {
+  padding: 18px 34px; border-radius: 8px; background: var(--pgn-neutre-0); color: var(--pgn-terracotta-600);
+  font-family: var(--pgn-font-ui); font-weight: 700; font-size: 48px; letter-spacing: .08em; text-transform: uppercase;
+  box-shadow: 0 10px 20px -10px rgba(23, 19, 16, .5);
+}
+.trottoir { position: absolute; left: 60px; right: 60px; top: 1440px; height: 16px; border-radius: 8px; background: var(--pgn-neutre-300); }
+
+/* ---------- Le temps ---------- */
+.annee {
+  position: absolute; left: 0; right: 0; top: 1490px; text-align: center;
+  font-family: var(--pgn-font-mono); font-weight: 500; font-size: 104px; line-height: 1; letter-spacing: -.02em;
+  color: var(--pgn-petrole-600); font-variant-numeric: tabular-nums;
+}
+.frise { position: absolute; left: var(--marge); width: var(--largeur); top: 1640px; }
+.frise-piste { position: relative; height: 34px; border-radius: 8px; background: var(--pgn-neutre-200); overflow: hidden; }
+.frise-piste span { position: absolute; top: 0; bottom: 0; border-radius: 6px; transform-origin: 0 50%; }
+.frise-bornes { display: flex; justify-content: space-between; margin-top: 12px; font-family: var(--pgn-font-mono); font-size: 24px; color: var(--pgn-neutre-500); }
+.frise-legende { display: flex; justify-content: center; gap: 36px; margin-top: 18px; font-size: 26px; color: var(--pgn-neutre-700); }
+.frise-legende span { display: inline-flex; align-items: center; gap: 10px; }
+.frise-legende i { width: 22px; height: 22px; border-radius: 6px; }
+
+.point-vol {
+  position: absolute; left: 0; top: 0; width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  border-radius: 50%; background: var(--pgn-petrole-600); border: 6px solid var(--pgn-neutre-0);
+  box-shadow: 0 6px 16px rgba(0, 56, 57, .35);
+}

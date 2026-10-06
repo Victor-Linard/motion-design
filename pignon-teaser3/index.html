@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · teaser 3 · 16 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="teaser3.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Une adresse, depuis 1992</p>
+      <h1 class="gros-titre" data-mots>Avant vous,<br><em>il y en a eu d’autres.</em></h1>
+    </section>
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>Cette adresse, depuis 1992</p>
+      <h1 class="gros-titre" data-mots>8 commerces.<br>4 n’ont pas<br><em>tenu 2 ans.</em></h1>
+    </section>
+
+    <!-- La façade : enseignes, stores et vitrines des occupants successifs (remplis par teaser3.js) -->
+    <div class="facade" id="facade">
+      <div class="mur"></div>
+      <span class="fenetre-haut" style="left:150px"></span>
+      <span class="fenetre-haut" style="left:490px"></span>
+      <div class="enseignes" id="enseignes"><span class="enseigne enseigne--vide"></span></div>
+      <div class="stores" id="stores"></div>
+      <div class="vitrine">
+        <div class="vitre" id="vitre"></div>
+        <div class="porte"><span></span></div>
+      </div>
+      <div class="rideau" id="rideau"><span class="a-louer" id="aLouer">À louer</span></div>
+    </div>
+    <div class="trottoir" id="trottoir"></div>
+
+    <!-- Le temps : année et frise des occupants -->
+    <p class="annee" id="annee">1992</p>
+    <div class="frise" id="frise">
+      <div class="frise-piste" id="frisePiste"></div>
+      <div class="frise-bornes"><span>1992</span><span>2026</span></div>
+      <div class="frise-legende" id="friseLegende"><span><i style="background:#086b6c"></i>2 ans ou plus</span><span><i style="background:#a55535"></i>moins de 2 ans</span></div>
+    </div>
+    <span class="point-vol" id="pointVol"></span>
+
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Le bail dure trois ans.<br><em>Le clic prend trois secondes.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Explorer la carte
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="16" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="teaser3.js"></script>
+</body>
+</html>

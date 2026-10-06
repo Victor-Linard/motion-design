@@ -154,6 +154,16 @@ Variante du teaser : la ville et ses données sont floues, sans caviardage. Le p
 
 Les valeurs viennent de sessions réelles et de l’exemple du site ; leur placement sur la carte est illustratif, et les années du devenir sont inventées. La phrase « Sachez-le avant de signer. » est une proposition.
 
+## Pignon · teaser 3, « Avant vous » — 16,2 s, 9:16
+
+**Vidéo : [`renders/pignon-teaser3-16.2s-9x16.mp4`](renders/pignon-teaser3-16.2s-9x16.mp4)** · couverture : [`renders/pignon-teaser3-couverture.png`](renders/pignon-teaser3-couverture.png)
+
+![Planche](renders/pignon-teaser3-planche.png)
+
+Une seule façade, de 1992 à 2026 en accéléré (1 an ≈ 0,26 s). Les occupants se succèdent : rideau qui se lève, enseigne, store, vitrine, puis rideau baissé et « À louer ». Pendant ce temps, l’année défile et une frise se remplit, en pétrole pour les commerces de 2 ans ou plus et en terracotta pour les autres. Arrêt sur image : « 8 commerces. 4 n’ont pas tenu 2 ans. » L’enseigne devient « Et vous ? », puis son point devient celui du i. La phrase finale (« Le bail dure trois ans. Le clic prend trois secondes. ») est reprise du site.
+
+Le chiffre (8 ouvertures depuis 1992, dont 4 de moins de 2 ans) vient de l’exemple publié sur le site. Les métiers, les enseignes et les dates exactes sont inventés. Pour changer les occupants, modifiez `OCCUPANTS` dans `pignon-teaser3/teaser3.js`.
+
 ## Pignon · avant / après — 21 s, 9:16
 
 **Vidéo : [`renders/pignon-avant-apres-21s-9x16.mp4`](renders/pignon-avant-apres-21s-9x16.mp4)** · couverture : [`renders/pignon-avant-apres-couverture.png`](renders/pignon-avant-apres-couverture.png)
@@ -214,7 +224,7 @@ La phrase de fin, « Ce chiffre change d’un quartier à l’autre. », est une
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/, /pignon-ia2/, /pignon-teaser/, /pignon-teaser2/, /pignon-avant-apres/, /pignon-parcours/ ou /pignon-chiffre/?ep=2 : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/, /pignon-ia2/, /pignon-teaser/, /pignon-teaser2/, /pignon-teaser3/, /pignon-avant-apres/, /pignon-parcours/ ou /pignon-chiffre/?ep=2 : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
 npm run render:ia           # renders/pignon-ia-15s-9x16.mp4
@@ -226,6 +236,7 @@ npm run render:rapports     # renders/pignon-rapports-19s-9x16.mp4
 npm run render:ia2          # renders/pignon-ia2-25s-9x16.mp4
 npm run render:teaser       # renders/pignon-teaser-13.6s-9x16.mp4
 npm run render:teaser2      # renders/pignon-teaser2-14s-9x16.mp4
+npm run render:teaser3      # renders/pignon-teaser3-16.2s-9x16.mp4
 npm run render:avant-apres  # renders/pignon-avant-apres-21s-9x16.mp4
 npm run render:parcours     # renders/pignon-parcours-28.5s-9x16.mp4
 npm run render:chiffre      # renders/pignon-chiffre-ep1|ep2|ep3-11.5s-9x16.mp4 (--param ep=N)

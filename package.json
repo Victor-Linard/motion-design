@@ -22,7 +22,8 @@
     "render:avant-apres": "node scripts/render.mjs pignon-avant-apres --fps 60 --crf 17",
     "render:parcours": "node scripts/render.mjs pignon-parcours --fps 60 --crf 17",
     "render:chiffre": "node scripts/render.mjs pignon-chiffre --param ep=1 --fps 60 --crf 17 && node scripts/render.mjs pignon-chiffre --param ep=2 --fps 60 --crf 17 && node scripts/render.mjs pignon-chiffre --param ep=3 --fps 60 --crf 17",
-    "render:teaser2": "node scripts/render.mjs pignon-teaser2 --fps 60 --crf 17"
+    "render:teaser2": "node scripts/render.mjs pignon-teaser2 --fps 60 --crf 17",
+    "render:teaser3": "node scripts/render.mjs pignon-teaser3 --fps 60 --crf 17"
   },
   "dependencies": {
     "gsap": "3.15.0"
