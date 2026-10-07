@@ -1,0 +1,80 @@
+/* Composition « Rapport + simulation ». Socle : style, ia, app, rapports. */
+.map-veil { opacity: .88; }
+#carteForm, #carteModes, #carteRecettes, #carteCharges, #carteVerdict { top: 600px; padding: 40px 46px 42px; }
+
+/* 0 — Formulaire */
+.cases--petit { margin-top: 18px; }
+.coche-f--on { background: var(--pgn-petrole-600); border-color: var(--pgn-petrole-600); }
+.coche-f--on svg { opacity: 1; }
+.champ--simu { position: relative; margin-top: 28px; padding: 22px 24px 20px; border-radius: 14px; background: var(--pgn-petrole-50); border: 2px solid var(--pgn-petrole-300); }
+.champ--simu .champ-val { background: var(--pgn-neutre-0); }
+.nouveau { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; margin-left: 8px; border-radius: 50%; background: var(--pgn-petrole-600); color: var(--pgn-neutre-0); font-size: 26px; line-height: 1; vertical-align: middle; }
+.simu-modes { display: flex; align-items: center; gap: 12px; margin-top: 14px !important; font-size: 24px; color: var(--pgn-neutre-600); }
+.simu-modes span { padding: 8px 18px; border-radius: 999px; background: var(--pgn-neutre-0); border: 1.5px solid var(--pgn-petrole-200); color: var(--pgn-petrole-700); font-weight: 600; }
+
+/* 1 — Essentiel / Détaillé */
+.seg { position: relative; display: inline-flex; padding: 6px; border-radius: 14px; background: var(--pgn-neutre-100); }
+.seg-pastille { position: absolute; left: 6px; top: 6px; bottom: 6px; width: 210px; border-radius: 10px; background: var(--pgn-petrole-600); box-shadow: 0 4px 10px rgba(0, 56, 57, .25); }
+.seg-opt { position: relative; width: 210px; padding: 16px 0; text-align: center; font-size: 30px; font-weight: 600; color: var(--pgn-neutre-600); }
+.sections { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 30px; }
+.sections span { display: flex; align-items: center; min-height: 66px; padding: 0 22px; border-radius: 12px; border: 1.5px solid var(--pgn-neutre-200); background: var(--pgn-neutre-50); font-size: 26px; font-weight: 500; color: var(--pgn-neutre-800); }
+.sections span.det { background: var(--pgn-petrole-50); border-color: var(--pgn-petrole-200); color: var(--pgn-petrole-700); font-weight: 600; }
+#notesModes { margin-top: 22px !important; font-size: 26px; }
+
+/* 2 — Recettes */
+.outils { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 14px; }
+.outil { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 18px 6px 16px; border-radius: 12px; border: 1.5px solid var(--pgn-neutre-200); background: var(--pgn-neutre-50); text-align: center; font-size: 20px; font-weight: 600; line-height: 1.2; color: var(--pgn-neutre-700); }
+.outil svg { width: 44px; height: 44px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.recette { margin-top: 24px; padding: 22px 26px; border-radius: 14px; background: var(--pgn-neutre-100); }
+.rc-nom { font-weight: 600; font-size: 28px; }
+.rc-nom small { font-weight: 400; font-size: 24px; color: var(--pgn-neutre-600); }
+.formule-l { margin-top: 10px !important; font-size: 27px; line-height: 1.55; color: var(--pgn-neutre-700); }
+.formule-l b { font-family: var(--pgn-font-mono); font-weight: 500; color: var(--pgn-neutre-900); }
+.formule-l i { font-style: normal; color: var(--pgn-neutre-400); margin: 0 4px; }
+.rc-total { margin-top: 6px !important; text-align: right; font-size: 28px; color: var(--pgn-neutre-600); }
+.rc-total b { font-family: var(--pgn-font-mono); font-weight: 500; font-size: 36px; color: var(--pgn-petrole-600); }
+.principe { margin-top: 20px !important; padding: 16px 22px; border-radius: 12px; background: var(--pgn-attention-bg); color: var(--pgn-attention-bg-text); font-size: 26px; font-weight: 600; }
+
+/* 3 — Charges et statut */
+.bloc-lib { margin-top: 28px !important; font-size: 24px; font-weight: 600; color: var(--pgn-neutre-700); }
+.ch-l { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1.5px solid var(--pgn-neutre-200); font-size: 27px; }
+.ch-l b { font-family: var(--pgn-font-mono); font-weight: 500; }
+.perso { display: flex; align-items: center; gap: 18px; margin-top: 14px; }
+.perso > div { flex: 1; padding: 18px 22px; border-radius: 12px; background: var(--pgn-neutre-100); }
+.perso small { display: block; font-size: 22px; color: var(--pgn-neutre-600); }
+.perso b { display: block; margin-top: 4px; font-family: var(--pgn-font-mono); font-weight: 500; font-size: 32px; white-space: nowrap; }
+.perso .perso-cout { background: var(--pgn-petrole-50); box-shadow: inset 0 0 0 2px var(--pgn-petrole-200); }
+.perso .perso-cout b { color: var(--pgn-petrole-700); }
+.perso-fleche { font-size: 38px; color: var(--pgn-neutre-400); }
+.source { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; padding: 8px 18px 8px 12px; border-radius: 999px; background: var(--pgn-petrole-100); color: var(--pgn-petrole-700); font-size: 23px; font-weight: 600; }
+.source svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+#noteIs { margin-top: 18px !important; font-size: 25px; }
+
+/* 4 — Verdict */
+#carteVerdict .cle-lib { line-height: 1.25; }
+#carteVerdict .bloc-lib b { font-family: var(--pgn-font-mono); font-weight: 500; color: var(--pgn-neutre-900); }
+.jauge { position: relative; height: 40px; margin-top: 20px; border-radius: 10px; background: var(--pgn-neutre-100); overflow: hidden; }
+.jauge-seuil { position: absolute; left: 0; top: 0; bottom: 0; width: 87.1%; background: var(--pgn-neutre-300); transform-origin: 0 50%; }
+.jauge-marge { position: absolute; left: 87.1%; top: 0; bottom: 0; width: 12.9%; background: var(--pgn-petrole-500); transform-origin: 0 50%; }
+.jauge-repere { position: absolute; top: 0; bottom: 0; width: 4px; margin-left: -2px; background: var(--pgn-neutre-900); }
+.jauge-axe { position: relative; height: 30px; margin-top: 8px; font-family: var(--pgn-font-mono); font-size: 21px; color: var(--pgn-neutre-500); }
+.jauge-axe span { position: absolute; white-space: nowrap; }
+.jauge-axe span:nth-child(2) { transform: translateX(-100%); }
+.marge { margin-top: 22px !important; font-size: 29px; color: var(--pgn-neutre-800); }
+.marge b { font-family: var(--pgn-font-mono); font-weight: 500; color: var(--pgn-petrole-600); }
+.fragile { display: flex; align-items: center; gap: 14px; margin-top: 22px !important; padding: 18px 24px; border-radius: 12px; background: var(--pgn-attention-bg); color: var(--pgn-attention-bg-text); font-size: 28px; font-weight: 600; }
+.fragile svg { width: 34px; height: 34px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* 5 — Aide à la saisie */
+.aide { position: absolute; left: var(--marge); top: 600px; display: inline-flex; align-items: center; gap: 12px; padding: 18px 28px 18px 22px; border-radius: 999px; background: var(--pgn-neutre-0); border: 2px solid var(--pgn-petrole-300); color: var(--pgn-petrole-700); font-size: 29px; font-weight: 600; box-shadow: 0 14px 30px -16px rgba(11, 8, 7, .4); }
+.aide svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#chat { top: 720px; height: 540px; transform-origin: 0 0; }
+.chat-groupe .bulle-u, .chat-groupe .bulle-a { font-size: 33px; }
+.chat-groupe .bulle-attente-ia { left: 0; }
+
+.point-vol {
+  position: absolute; left: 0; top: 0; width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  border-radius: 50%; background: var(--pgn-petrole-600); border: 6px solid var(--pgn-neutre-0);
+  box-shadow: 0 6px 16px rgba(0, 56, 57, .35);
+}
+.cta .cta-ligne { font-size: 64px; }

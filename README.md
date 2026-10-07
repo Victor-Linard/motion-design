@@ -220,11 +220,29 @@ Un seul gabarit (`pignon-chiffre/`), l’épisode est choisi par `?ep=1|2|3` (re
 
 La phrase de fin, « Ce chiffre change d’un quartier à l’autre. », est une proposition.
 
+## Pignon · rapport + simulation — 25 s, 9:16
+
+**Vidéo : [`renders/pignon-rapport-simu-25s-9x16.mp4`](renders/pignon-rapport-simu-25s-9x16.mp4)** · couverture : [`renders/pignon-rapport-simu-couverture.png`](renders/pignon-rapport-simu-couverture.png)
+
+![Planche](renders/pignon-rapport-simu-planche.png)
+
+| Temps | Scène | Contenu |
+|---|---|---|
+| 0 – 3,2 s | Accroche | « Votre analyse, et vos chiffres. » Formulaire « Créer un rapport » : l’analyse d’un emplacement (dont l’analyse du métier), puis la simulation de chiffre d’affaires, en Essentiel ou Détaillé. |
+| 3,2 – 7 s | 01 · Essentiel ou Détaillé | « Simplifiée ou complète. » La pastille glisse, les réglages détaillés apparaissent (charges variables, investissements, plan de financement, saisonnalité, graphiques, compte de résultat). « Mêmes données : le mode montre ou cache des réglages. » |
+| 7 – 10,9 s | 02 · Recettes | « Vos hypothèses, nos calculs. » Les 5 outils, la formule de chaque outil avec ses valeurs (203 040 + 50 760 = 253 800 € HT). « Pignon ne devine jamais votre CA. » |
+| 10,9 – 14,7 s | 03 · Charges et statut | Statut SAS, charges fixes, salaire brut 2 000 € → coût employeur 2 248,52 €/mois (paramètres URSSAF), barème de l’IS. |
+| 14,7 – 18,5 s | 04 · Le verdict | Résultat net 18 928 €, seuil de rentabilité 221 053 € (mois 10,5), marge de sécurité 12,9 % soit 31 couverts/jour, « Votre résultat s’annule avec −13 % de CA ». |
+| 18,5 – 22 s | 05 · Aide à la saisie | L’assistant pose les questions et dit où saisir, sans proposer de chiffre. |
+| 22 – 25 s | Appel à l’action | « Votre analyse. Vos chiffres. Un rapport. », « Créer un compte gratuit → » |
+
+Libellés repris de la page Simulations (export fourni) et de la spécification du simulateur. Recettes, charges fixes, résultat, seuil, marge et fragilité : exemple de contrôle de la spécification (restaurant en SAS, salle + vente à emporter, prix TTC convertis en HT). Le coût employeur (2 000 € brut → 2 248,52 €/mois) est un appel URSSAF documenté, montré pour le mécanisme : il n’est pas celui de l’exemple de contrôle, dont les salaires sont saisis en coût. La réponse de l’assistant est écrite pour la vidéo, selon ses règles (guide sans action, libellés exacts, aucune valeur proposée). La phrase du CTA est une proposition.
+
 ## Utilisation
 
 ```bash
 npm install                 # Chromium : npx playwright install chromium (hors de cet environnement)
-npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/, /pignon-ia2/, /pignon-teaser/, /pignon-teaser2/, /pignon-teaser3/, /pignon-avant-apres/, /pignon-parcours/ ou /pignon-chiffre/?ep=2 : espace = pause, flèches = image par image, ?t=7.5 pour figer
+npm run preview             # http://127.0.0.1:4173/pignon/, /pignon-ombres/, /pignon-ia/, /pignon-tuto/, /pignon-v2/, /pignon-simulation/, /pignon-metier/, /pignon-rapports/, /pignon-ia2/, /pignon-teaser/, /pignon-teaser2/, /pignon-teaser3/, /pignon-rapport-simu/, /pignon-avant-apres/, /pignon-parcours/ ou /pignon-chiffre/?ep=2 : espace = pause, flèches = image par image, ?t=7.5 pour figer
 npm run render              # renders/pignon-15s-9x16.mp4 (60 i/s)
 npm run render:ombres       # renders/pignon-ombres-15s-9x16.mp4
 npm run render:ia           # renders/pignon-ia-15s-9x16.mp4
@@ -237,6 +255,7 @@ npm run render:ia2          # renders/pignon-ia2-25s-9x16.mp4
 npm run render:teaser       # renders/pignon-teaser-13.6s-9x16.mp4
 npm run render:teaser2      # renders/pignon-teaser2-14s-9x16.mp4
 npm run render:teaser3      # renders/pignon-teaser3-16.2s-9x16.mp4
+npm run render:rapport-simu # renders/pignon-rapport-simu-25s-9x16.mp4
 npm run render:avant-apres  # renders/pignon-avant-apres-21s-9x16.mp4
 npm run render:parcours     # renders/pignon-parcours-28.5s-9x16.mp4
 npm run render:chiffre      # renders/pignon-chiffre-ep1|ep2|ep3-11.5s-9x16.mp4 (--param ep=N)

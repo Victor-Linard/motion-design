@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Pignon · rapport + simulation · 25 s · 9:16</title>
+  <link rel="stylesheet" href="../pignon/fonts/fonts.css">
+  <link rel="stylesheet" href="../pignon/style.css">
+  <link rel="stylesheet" href="../pignon-ia/ia.css">
+  <link rel="stylesheet" href="../pignon/app.css">
+  <link rel="stylesheet" href="../pignon-rapports/rapports.css">
+  <link rel="stylesheet" href="rapport-simu.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob--petrole" id="blobPetrole"></div>
+      <div class="blob blob--terracotta" id="blobTerracotta"></div>
+    </div>
+    <canvas class="map" id="map" width="1080" height="1920"></canvas>
+    <div class="map-veil" id="voile"></div>
+
+    <div class="logo logo--petit" id="logoPetit"><span class="logo-part"><span>P</span></span><span class="logo-i"><span class="logo-stem"></span><span class="logo-dot"></span></span><span class="logo-part"><span>gnon</span></span></div>
+
+    <section class="titre" id="titre0">
+      <p class="surtitre" data-frappe>Rapports · Simulations</p>
+      <h1 class="gros-titre" data-mots>Votre analyse,<br><em>et vos chiffres.</em></h1>
+    </section>
+    <section class="titre" id="titre1">
+      <p class="surtitre" data-frappe>01 · Essentiel ou Détaillé</p>
+      <h1 class="gros-titre" data-mots>Simplifiée<br><em>ou complète.</em></h1>
+    </section>
+    <section class="titre" id="titre2">
+      <p class="surtitre" data-frappe>02 · Recettes</p>
+      <h1 class="gros-titre" data-mots>Vos hypothèses,<br><em>nos calculs.</em></h1>
+    </section>
+    <section class="titre" id="titre3">
+      <p class="surtitre" data-frappe>03 · Charges et statut</p>
+      <h1 class="gros-titre" data-mots>Les cotisations,<br><em>calculées pour vous.</em></h1>
+    </section>
+    <section class="titre" id="titre4">
+      <p class="surtitre" data-frappe>04 · Le verdict</p>
+      <h1 class="gros-titre" data-mots>Rentable&nbsp;?<br><em>À partir de quand&nbsp;?</em></h1>
+    </section>
+    <section class="titre" id="titre5">
+      <p class="surtitre" data-frappe>05 · Aide à la saisie</p>
+      <h1 class="gros-titre" data-mots>L’IA vous guide,<br><em>vous décidez.</em></h1>
+    </section>
+
+    <!-- 0 — Créer un rapport : l'analyse, puis la simulation -->
+    <div class="carte" id="carteForm">
+      <p class="sc-titre">Créer un rapport</p>
+      <div class="champ"><p class="champ-lib">Analyse d’un emplacement</p><p class="champ-val">Local A<span>▾</span></p></div>
+      <div class="cases cases--petit">
+        <p><span class="coche-f coche-f--on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Voisinage</p>
+        <p><span class="coche-f coche-f--on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Historique du local</p>
+        <p id="caseMetier"><span class="coche-f coche-f--on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Analyse du métier</p>
+        <p><span class="coche-f coche-f--on"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Accessibilité</p>
+      </div>
+      <div class="champ champ--simu" id="champSimu">
+        <p class="champ-lib">Simulation de chiffre d’affaires <b class="nouveau">+</b></p>
+        <p class="champ-val">Projet de café<span>▾</span></p>
+        <p class="simu-modes"><span>Essentiel</span>ou<span>Détaillé</span></p>
+      </div>
+      <span class="bouton-creer" id="btnCreer">Créer le rapport</span>
+    </div>
+
+    <!-- 1 — Essentiel / Détaillé : mêmes données, plus ou moins de réglages -->
+    <div class="carte" id="carteModes">
+      <div class="seg" id="seg"><span class="seg-pastille" id="segPastille"></span><span class="seg-opt" id="optEss">Essentiel</span><span class="seg-opt" id="optDet">Détaillé</span></div>
+      <div class="sections" id="sections">
+        <span>Statut</span><span>Calendrier</span><span>Recettes</span><span>Charges fixes</span>
+        <span>Personnel</span><span>Dirigeant</span><span>Emprunt</span><span>Évolution sur 3 ans</span>
+        <span class="det">Charges variables</span><span class="det">Investissements</span>
+        <span class="det">Plan de financement</span><span class="det">Saisonnalité et démarrage</span>
+        <span class="det">Sensibilité · fourchette · tornade</span><span class="det">Compte de résultat détaillé</span>
+      </div>
+      <p class="sc-sous" id="notesModes">Mêmes données : le mode montre ou cache des réglages.</p>
+    </div>
+
+    <!-- 2 — Recettes : outils de calcul, formules avec les valeurs -->
+    <div class="carte" id="carteRecettes">
+      <p class="champ-lib">Ajouter un outil de calcul</p>
+      <div class="outils" id="outils">
+        <span class="outil" id="outilCouverts"><svg viewBox="0 0 24 24"><path d="M7 2v20M4 2v6a3 3 0 0 0 6 0V2M17 2c-2 2-3 5-3 8h3v12"/></svg>Couverts / places</span>
+        <span class="outil"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>Postes de travail</span>
+        <span class="outil" id="outilFreq"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Fréquentation</span>
+        <span class="outil"><svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Abonnements</span>
+        <span class="outil"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>Personnalisé</span>
+      </div>
+      <div class="recette" id="recette1">
+        <p class="rc-nom">Salle <small>· Couverts / places assises</small></p>
+        <p class="formule-l"><b>30</b> places <i>×</i> <b>2</b> services <i>×</i> <b>1</b> rotation <i>×</i> <b>60&nbsp;%</b> <i>×</i> <b>20&nbsp;€</b> HT <i>×</i> <b>282</b> jours</p>
+        <p class="rc-total">= <b><span id="nSalle">203 040</span> € HT</b></p>
+      </div>
+      <div class="recette" id="recette2">
+        <p class="rc-nom">Vente à emporter <small>· Fréquentation</small></p>
+        <p class="formule-l"><b>20</b> clients <i>×</i> <b>9&nbsp;€</b> HT <i>×</i> <b>282</b> jours</p>
+        <p class="rc-total">= <b><span id="nEmporter">50 760</span> € HT</b></p>
+      </div>
+      <div class="resultat-sim" id="lCaTotal"><p class="lib">Chiffre d’affaires annuel HT</p><b><span id="nCa">253 800</span> <small>€</small></b></div>
+      <p class="principe" id="principe">Pignon ne devine jamais votre CA&nbsp;: chaque valeur est la vôtre.</p>
+    </div>
+
+    <!-- 3 — Statut, charges, personnel au coût URSSAF -->
+    <div class="carte" id="carteCharges">
+      <div class="champ" style="margin-top:0"><p class="champ-lib">Statut</p><p class="champ-val">SAS ou SASU (président)<span>▾</span></p></div>
+      <p class="bloc-lib">Charges fixes</p>
+      <div class="ch-l"><p>Loyer et charges locatives</p><b>2 000 € / mois</b></div>
+      <div class="ch-l"><p>Énergie et eau</p><b>600 € / mois</b></div>
+      <div class="ch-l"><p>Expert-comptable</p><b>250 € / mois</b></div>
+      <p class="bloc-lib">Personnel</p>
+      <div class="perso" id="perso">
+        <div class="perso-brut"><small>Salaire brut</small><b>2 000 € / mois</b></div>
+        <span class="perso-fleche">→</span>
+        <div class="perso-cout"><small>Coût pour l’entreprise</small><b><span id="nCout">2 248,52</span> € / mois</b></div>
+      </div>
+      <span class="source" id="sourceUrssaf"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>Paramètres officiels de l’URSSAF</span>
+      <p class="sc-sous" id="noteIs">Impôt sur les sociétés&nbsp;: 15&nbsp;% jusqu’à 42&nbsp;500&nbsp;€, 25&nbsp;% au-delà.</p>
+    </div>
+
+    <!-- 4 — Synthèse : résultat, seuil, marge, fragilité -->
+    <div class="carte" id="carteVerdict">
+      <div class="cle" style="margin-top:0"><p class="cle-val"><span id="nNet">18 928</span>&nbsp;<small>€</small></p><p class="cle-lib">résultat net<br>année type</p></div>
+      <p class="bloc-lib">Seuil de rentabilité&nbsp;: <b>221 053 €</b>, atteint au mois 10,5</p>
+      <div class="jauge" id="jauge">
+        <span class="jauge-seuil" id="jaugeSeuil"></span>
+        <span class="jauge-marge" id="jaugeMarge"></span>
+        <span class="jauge-repere" style="left:87.1%"></span>
+      </div>
+      <div class="jauge-axe"><span style="left:0">0 €</span><span style="left:100%">CA 253 800 €</span></div>
+      <p class="marge" id="marge">Marge de sécurité <b>12,9&nbsp;%</b> · soit <b>31 couverts / jour</b></p>
+      <p class="fragile" id="fragile"><svg viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Votre résultat s’annule avec −13&nbsp;% de CA</p>
+    </div>
+
+    <!-- 5 — Aide à la saisie : l'assistant guide, il ne remplit rien -->
+    <span class="aide" id="aide"><svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path></svg>Aide à la saisie</span>
+    <div class="chat" id="chat">
+      <div class="chat-entete">
+        <svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"></path></svg>
+        Insights IA
+      </div>
+      <div class="chat-corps">
+        <div class="chat-groupe" id="groupe">
+          <div class="bulle-u" id="question">Aide-moi à remplir ma simulation.</div>
+          <div class="bulle-a" id="reponse" data-mots-flux>Commençons par vos recettes&nbsp;: combien de places assises, et combien de services par jour&nbsp;? Saisissez-les dans <strong>Recettes › Couverts / places assises</strong>. Je ne propose pas de chiffres&nbsp;: ce sont vos hypothèses.</div>
+          <div class="bulle-attente-ia" id="attente"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+    <span class="point-vol" id="pointVol"></span>
+
+    <section class="cta" id="cta">
+      <div class="logo logo--grand" id="logoGrand"><span class="logo-part"><span id="logoP">P</span></span><span class="logo-i"><span class="logo-stem" id="logoTige"></span><span class="logo-dot" id="logoPoint"></span></span><span class="logo-part"><span id="logoGnon">gnon</span></span></div>
+      <p class="cta-ligne" data-mots>Votre analyse.<br><em>Vos chiffres. Un rapport.</em></p>
+      <span class="cta-onde" id="ctaOnde"></span>
+      <div class="cta-bouton" id="ctaBouton">
+        Créer un compte gratuit
+        <svg viewBox="0 0 24 24" id="ctaFleche"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+      <p class="cta-sous" id="ctaSous">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Compte gratuit, sans carte bancaire.
+      </p>
+      <p class="cta-url" id="ctaUrl">pignon.webapp.lv</p>
+    </section>
+  </main>
+
+  <div class="controles" id="controles">
+    <button id="btnLecture">❚❚</button>
+    <input type="range" id="curseur" min="0" max="25" step="0.001" value="0">
+    <span id="temps">0.00 s</span>
+  </div>
+
+  <script src="../node_modules/gsap/dist/gsap.min.js"></script>
+  <script src="../pignon/outils.js"></script>
+  <script src="../pignon/city.js"></script>
+  <script src="rapport-simu.js"></script>
+</body>
+</html>
